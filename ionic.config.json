@@ -1,0 +1,8 @@
+{
+  "name": "smart",
+  "app_id": "2921c5ef",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
