@@ -96,4 +96,9 @@ export class MyApp {
     console.log ('http try to do');
     alert('http try to do...........');
   }
+  doReload(){
+    location.reload();
+  }
+
+
 }
