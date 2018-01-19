@@ -1,11 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, Nav, NavController } from 'ionic-angular';
 
+//import {LoginPage} from '../login/login';
+import { Item } from '../../models/item';
+import { Items } from '../../providers/providers';
+
 interface PageItem {
   title: string
   component: any
 }
-type PageList = PageItem[]
+type PageList = PageItem[];
 
 @IonicPage()
 @Component({
@@ -37,4 +41,8 @@ export class MenuPage {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+  openHttp(){
+    console.log ('http try to do');
+  }
+
 }

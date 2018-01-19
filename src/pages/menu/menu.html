@@ -1,11 +1,32 @@
-<ion-menu [content]="content">
-  <ion-content>
+<ion-menu [content]="content" >
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Pages</ion-title>
+    </ion-toolbar>
+  </ion-header>
+<ion-content>
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
+        {{p.title}} ++
       </button>
     </ion-list>
+    <button  ion-item (click)="openHttp()">--Test--</button>
   </ion-content>
 </ion-menu>
+<ion-fab right bottom style="bottom: 10%;opacity: 0.7;" #fab1>
+  <button ion-fab color="primary"><ion-icon name="arrow-dropleft"></ion-icon></button>
+   <ion-fab-list side="left">
+     <button ion-fab (click)="openSocial('facebook', fab2)"><ion-icon name="logo-facebook"></ion-icon></button>
+     <button ion-fab (click)="openSocial('twitter', fab2)"><ion-icon name="logo-twitter"></ion-icon></button>
+     <button ion-fab (click)="openSocial('vimeo', fab2)"><ion-icon name="logo-vimeo"></ion-icon></button>
+     <button ion-fab (click)="openSocial('googleplus', fab2)"><ion-icon name="logo-googleplus"></ion-icon></button>
+   </ion-fab-list>
+   <ion-fab-list side="top">
+     <button ion-fab (click)="openSocial('facebook', fab2)"><ion-icon name="logo-facebook"></ion-icon></button>
+     <button ion-fab (click)="openSocial('twitter', fab2)"><ion-icon name="logo-twitter"></ion-icon></button>
+     <button ion-fab (click)="openSocial('vimeo', fab2)"><ion-icon name="logo-vimeo"></ion-icon></button>
+     <button ion-fab (click)="openSocial('googleplus', fab2)"><ion-icon name="logo-googleplus"></ion-icon></button>
+   </ion-fab-list>
+ </ion-fab>
 
 <ion-nav #content [root]="rootPage"></ion-nav>

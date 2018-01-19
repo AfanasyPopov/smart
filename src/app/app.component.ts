@@ -8,7 +8,10 @@ import { FirstRunPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
 
 @Component({
-  template: `<ion-menu [content]="content">
+  selector:'page-menu',
+  templateUrl:'../pages/menu/menu.html'
+  /* 
+  `<ion-menu [content]="content">
     <ion-header>
       <ion-toolbar>
         <ion-title>Pages</ion-title>
@@ -18,13 +21,14 @@ import { Settings } from '../providers/providers';
     <ion-content>
       <ion-list>
         <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-          {{p.title}}
+          {{p.title}} ../
         </button>
+        <button></
       </ion-list>
     </ion-content>
 
   </ion-menu>
-  <ion-nav #content [root]="rootPage"></ion-nav>`
+  <ion-nav #content [root]="rootPage"></ion-nav>`*/
 })
 export class MyApp {
   rootPage = FirstRunPage;
@@ -73,7 +77,7 @@ export class MyApp {
         this.translate.use(this.translate.getBrowserLang());
       }
     } else {
-      this.translate.use('en'); // Set your language here
+      this.translate.use('ru'); // Set your language here
     }
 
     this.translate.get(['BACK_BUTTON_TEXT']).subscribe(values => {
@@ -84,6 +88,12 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
+    alert('http try to do...........');
     this.nav.setRoot(page.component);
+    alert('http try to do...........1');
+  }
+  openHttp(){
+    console.log ('http try to do');
+    alert('http try to do...........');
   }
 }

@@ -97,7 +97,7 @@ var LoginPage = (function () {
             var toast = _this.toastCtrl.create({
                 message: _this.loginErrorString,
                 duration: 3000,
-                position: 'top'
+                position: 'bottom'
             });
             toast.present();
         });
