@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { Config, Nav, Platform } from 'ionic-angular';
+import { Config, Nav, Platform, FabContainer } from 'ionic-angular';
 
 import { FirstRunPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
@@ -32,7 +32,6 @@ import { Settings } from '../providers/providers';
 })
 export class MyApp {
   rootPage = FirstRunPage;
-
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
@@ -88,17 +87,24 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    alert('http try to do...........');
     this.nav.setRoot(page.component);
     alert('http try to do...........1');
   }
   openHttp(){
     console.log ('http try to do');
-    alert('http try to do...........');
+    alert('openPage(page)try to do...........');
   }
   doReload(){
     location.reload();
   }
-
-
-}
+  fabClose (fab: FabContainer) {
+    fab.close ();
+    console.log ( "fabClose()");
+  }
+  fabCloseAfterTime (fab: FabContainer ) {
+    setTimeout(() => {
+      fab.close ();
+      console.log ( "fabCloseAfterTime () ");
+    }, 3000);
+  }
+} 

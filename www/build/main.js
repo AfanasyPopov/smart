@@ -722,16 +722,25 @@ var MyApp = (function () {
     MyApp.prototype.openPage = function (page) {
         // Reset the content nav to have just this page
         // we wouldn't want the back button to show in this scenario
-        alert('http try to do...........');
         this.nav.setRoot(page.component);
         alert('http try to do...........1');
     };
     MyApp.prototype.openHttp = function () {
         console.log('http try to do');
-        alert('http try to do...........');
+        alert('openPage(page)try to do...........');
     };
     MyApp.prototype.doReload = function () {
         location.reload();
+    };
+    MyApp.prototype.fabClose = function (fab) {
+        fab.close();
+        console.log("fabClose()");
+    };
+    MyApp.prototype.fabCloseAfterTime = function (fab) {
+        setTimeout(function () {
+            fab.close();
+            console.log("fabCloseAfterTime () ");
+        }, 3000);
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* Nav */]),
@@ -739,7 +748,7 @@ var MyApp = (function () {
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-menu',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/menu/menu.html"*/'<ion-menu [content]="content" >\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Pages</ion-title>\n    </ion-toolbar>\n  </ion-header>\n<ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}} ++\n      </button>\n    </ion-list>\n    <button  ion-item (click)="openHttp()">--Test--</button>\n  </ion-content>\n</ion-menu>\n<ion-fab right bottom style="bottom: 10%;opacity: 0.7;" #fab1>\n  <button ion-fab mini color="primary"><ion-icon name="arrow-dropleft"></ion-icon></button>\n   <ion-fab-list side="left">\n     <button ion-fab (click)="openSocial(\'facebook\', fab2)"><ion-icon name="logo-facebook"></ion-icon></button>\n     <button ion-fab (click)="openSocial(\'twitter\', fab2)"><ion-icon name="logo-twitter"></ion-icon></button>\n     <button ion-fab (click)="openSocial(\'vimeo\', fab2)"><ion-icon name="logo-vimeo"></ion-icon></button>\n     <button ion-fab (click)="doReload()"><ion-icon name="ios-refresh-outline"></ion-icon></button>\n   </ion-fab-list>\n   <ion-fab-list side="top">\n     <button ion-fab (click)="openSocial(\'facebook\', fab2)"><ion-icon name="logo-facebook"></ion-icon></button>\n     <button ion-fab (click)="openSocial(\'twitter\', fab2)"><ion-icon name="logo-twitter"></ion-icon></button>\n     <button ion-fab (click)="openSocial(\'vimeo\', fab2)"><ion-icon name="logo-vimeo"></ion-icon></button>\n     <button ion-fab (click)="openSocial(\'googleplus\', fab2)"><ion-icon name="logo-googleplus"></ion-icon></button>\n   </ion-fab-list>\n </ion-fab>\n\n<ion-nav #content [root]="rootPage"></ion-nav>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/menu/menu.html"*/
+            selector: 'page-menu',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/menu/menu.html"*/'<ion-menu [content]="content" >\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Pages</ion-title>\n    </ion-toolbar>\n  </ion-header>\n<ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}} ++\n      </button>\n    </ion-list>\n    <button  ion-item (click)="openHttp()">--Test--</button>\n  </ion-content>\n</ion-menu>\n<ion-fab right bottom style="bottom: 10%;opacity: 0.7;" #fab1>\n  <button ion-fab mini color="primary" (click)="fabCloseAfterTime(fab1)"><ion-icon name="arrow-dropleft"></ion-icon></button>\n   <ion-fab-list side="left">\n     <button ion-fab (click)="openSocial(\'facebook\', fab2)"><ion-icon name="logo-facebook"></ion-icon></button>\n     <button ion-fab (click)="openSocial(\'twitter\', fab2)"><ion-icon name="logo-twitter"></ion-icon></button>\n     <button ion-fab (click)="openSocial(\'vimeo\', fab2)"><ion-icon name="logo-vimeo"></ion-icon></button>\n     <button ion-fab (click)="doReload()"><ion-icon name="ios-refresh-outline"></ion-icon></button>\n   </ion-fab-list>\n   <ion-fab-list side="top">\n     <button ion-fab (click)="openSocial(\'facebook\', fab2)"><ion-icon name="logo-facebook"></ion-icon></button>\n     <button ion-fab (click)="openSocial(\'twitter\', fab2)"><ion-icon name="logo-twitter"></ion-icon></button>\n     <button ion-fab (click)="openSocial(\'vimeo\', fab2)"><ion-icon name="logo-vimeo"></ion-icon></button>\n     <button ion-fab (click)="openSocial(\'googleplus\', fab2)"><ion-icon name="logo-googleplus"></ion-icon></button>\n   </ion-fab-list>\n </ion-fab>\n\n<ion-nav #content [root]="rootPage" (click)="fabClose(fab1)"></ion-nav>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/menu/menu.html"*/
             /*
             `<ion-menu [content]="content">
               <ion-header>
