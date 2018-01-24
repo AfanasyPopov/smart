@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, Nav, NavController } from 'ionic-angular';
 
-//import {LoginPage} from '../login/login';
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
 
@@ -36,13 +35,10 @@ export class MenuPage {
     console.log('Hello MenuPage Page');
   }
 
-  openPage(page: PageItem) {
+ /* openPage(page: PageItem) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
-  }
-  openHttp(){
-    console.log ('http try to do');
-  }
+  }*/
 
 }

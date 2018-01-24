@@ -7,9 +7,9 @@
 </ion-header>
 
 
-<ion-content>
-  <form (submit)="doLogin()">
-    <ion-list>
+<ion-content> 
+  <form (submit)="doLogin()" class="login-content" vertical-align>
+    <ion-list >
 
       <ion-item>
         <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
@@ -33,6 +33,10 @@
       <div padding>
         <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
       </div>
+      <ion-item>
+          <ion-label>{{ 'IS_AUTOLOGIN_CHECKBOX' | translate }}</ion-label>
+          <ion-checkbox block [(ngModel)]="account.isautologin" name="isautologin"></ion-checkbox>
+        </ion-item>
 
     </ion-list>
   </form>

@@ -30573,6 +30573,23 @@ page-item-detail .item-detail {
   position: absolute;
 }
 
+page-login .login-content {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-pack: center !important;
+  -webkit-justify-content: center !important;
+  -ms-flex-pack: center !important;
+  justify-content: center !important;
+  -webkit-box-align: center !important;
+  -webkit-align-items: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+  height: 100%;
+  width: 100%;
+}
+
 page-tabs .ion-fab {
   bottom: 10%;
   opacity: 0.7;

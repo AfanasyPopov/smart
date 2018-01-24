@@ -2,38 +2,19 @@ import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { Config, Nav, Platform, FabContainer } from 'ionic-angular';
+import {  Config, Nav, Platform, FabContainer, Menu, ToastController} from 'ionic-angular';
 
 import { FirstRunPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
+import { MenuController } from 'ionic-angular/components/app/menu-controller';
 
 @Component({
   selector:'page-menu',
   templateUrl:'../pages/menu/menu.html'
-  /* 
-  `<ion-menu [content]="content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Pages</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-content>
-      <ion-list>
-        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-          {{p.title}} ../
-        </button>
-        <button></
-      </ion-list>
-    </ion-content>
-
-  </ion-menu>
-  <ion-nav #content [root]="rootPage"></ion-nav>`*/
 })
 export class MyApp {
   rootPage = FirstRunPage;
   @ViewChild(Nav) nav: Nav;
-
   pages: any[] = [
     { title: 'Tutorial', component: 'TutorialPage' },
     { title: 'Welcome', component: 'WelcomePage' },
@@ -46,16 +27,17 @@ export class MyApp {
     { title: 'Menu', component: 'MenuPage' },
     { title: 'Settings', component: 'SettingsPage' },
     { title: 'Search', component: 'SearchPage' }
-  ]
+  ];
 
-  constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(private menuCtrl: MenuController , private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen,     public toastCtrl: ToastController  ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.ionViewDidEnter();
     });
-    this.initTranslate();
+    this.initTranslate(); 
   }
 
   initTranslate() {
@@ -88,7 +70,7 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
-    alert('http try to do...........1');
+    console.log(page.component+";"+page.title);
   }
   openHttp(){
     console.log ('http try to do');
@@ -96,6 +78,20 @@ export class MyApp {
   }
   doReload(){
     location.reload();
+  }
+  menuToggle(menu: Menu ){
+    menu.enable(!menu.enabled);
+    console.log ('menuToggle()');
+  }
+  menuToggleWidth(menu: Menu ){
+    let toast = this.toastCtrl.create({
+      message: 'menu.enabled:'+menu.enabled,
+      duration: 3000,
+      position: 'bottom'
+    });
+    toast.present();
+
+    console.log ( "menu.enabled:"+menu.enabled);
   }
   fabClose (fab: FabContainer) {
     fab.close ();
@@ -105,6 +101,22 @@ export class MyApp {
     setTimeout(() => {
       fab.close ();
       console.log ( "fabCloseAfterTime () ");
-    }, 3000);
+    }, 2500);
   }
+  ionViewDidEnter() {
+    // the root left menu should be disabled on the tutorial page
+    console.log ('ionViewDidEnter');
+    this.menuCtrl.enable(false);
+    let toast=this.toastCtrl.create({
+      message: 'this.menu.enabled: '+this.menuCtrl.isEnabled(),
+      duration: 3000,
+      position: 'bottom'
+    });
+    toast.present();
+
+  }
+  ionViewWillLeave() {
+    console.log("Looks like I'm about to leave :(");
+  }
+
 } 
