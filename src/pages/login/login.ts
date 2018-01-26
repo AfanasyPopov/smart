@@ -34,7 +34,10 @@ export class LoginPage {
 
   // Attempt to login in through our User service
   doLogin() {
-    this.user.login(this.account).subscribe((resp) => {
+    console.log('Login button pushed')
+    this.user.login(this.account);
+    console.log('User.Login drove through...')
+    /*this.user.login(this.account).subscribe((resp) => {
       this.navCtrl.push(MainPage);
     }, (err) => {
       //this.navCtrl.push(MainPage);
@@ -45,6 +48,6 @@ export class LoginPage {
         position: 'bottom'
       });
       toast.present();
-    });
+    });*/
   }
 }
