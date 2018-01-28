@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 386:
+/***/ 387:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,7 +9,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__welcome__ = __webpack_require__(400);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__welcome__ = __webpack_require__(401);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -453,7 +453,7 @@ if (Md5.hashStr('hello') !== '5d41402abc4b2a76b9719d911017c592') {
 
 /***/ }),
 
-/***/ 400:
+/***/ 401:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -503,7 +503,8 @@ var WelcomePage = (function () {
         this.account = {
             email: '',
             password: '',
-            isautologin: true,
+            isautologin: false,
+            isLogedIn: false
         };
         this.pass = '';
         this.translateService.get('LOGIN_ERROR').subscribe(function (value) {
@@ -516,21 +517,21 @@ var WelcomePage = (function () {
         //this.nav.swipeBackEnabled = true;
         this.storage.get('account').then(function (val) {
             if (val) {
-                console.log('val is true:' + JSON.stringify(val));
                 _this.account.email = val.email;
                 _this.account.password = val.password;
                 _this.account.isautologin = val.isautologin;
+                _this.account.isLogedIn = val.isLogedIn;
+                if (_this.account.isautologin) {
+                    _this.doAutoLogin();
+                }
             }
             else {
-                console.log('val is false:' + val);
                 _this.storage.get('account').then(function (val) {
                     console.log('val is true atfer false:' + val);
                     _this.storage.set('account', _this.account);
                 });
             }
         });
-        if (this.account.isautologin) {
-        }
     };
     WelcomePage.prototype.getAccountFromStorage = function () {
         var _this = this;
@@ -569,6 +570,7 @@ var WelcomePage = (function () {
                     closeButtonText: 'OK'
                 });
                 toast.present();
+                _this.account.isLogedIn = true;
             }
             else if (res.active == undefined) {
                 var toast = _this.toastCtrl.create({
@@ -578,6 +580,9 @@ var WelcomePage = (function () {
                     cssClass: 'error'
                 });
                 toast.present();
+                _this.navCtrl.push('LoginPage');
+                _this.menuCtrl.enable(false);
+                _this.account.isLogedIn = false;
             }
         });
     };
