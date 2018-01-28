@@ -26,6 +26,7 @@ import { Api } from '../api/api';
 @Injectable()
 export class User {
   _user: any;
+  res:any = null;
 
   constructor(public api: Api) { }
 
@@ -33,23 +34,15 @@ export class User {
    * Send a POST request to our login endpoint with the data
    * the user entered on the form.
    */
-  login(accountInfo: any) {
+  login(accountInfo: any):any {
     
-    let seq = this.api.postData('login', accountInfo);
-    /*let seq = this.api.post('login', accountInfo).share();
-
-    seq.subscribe((res: any) => {
-      // If the API returned a successful response, mark the user as logged in
-      alert(res.status);
-      if (res.status == 'success') {
-        this._loggedIn(res);
+     let seq = this.api.postData('login', accountInfo);
+    /*let seq = this.api.post('login', accountInfo).share();*/
+      if (seq) {
+        this._loggedIn(seq);
       } else {
       }
-    }, err => {
-      //alert(err);
-      console.log('ERROR', err);
-    });
-*/
+
     return seq;
   }
 

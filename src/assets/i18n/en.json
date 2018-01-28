@@ -65,6 +65,6 @@
 
   "SEARCH_TITLE": "Search",
   "SEARCH_PLACEHOLDER": "Search the items list, e.g. \"Donald Duck\"",
-  "IS_AUTOLOGIN_CHECKBOX": "autologin"
-
+  "IS_AUTOLOGIN_CHECKBOX": "autologin",
+  "LOGOUT_BUTTON": "Logout"
 }

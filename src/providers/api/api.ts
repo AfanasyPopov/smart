@@ -21,30 +21,35 @@ export class Api {
     headers.append('Access-Control-Allow-Headers', "X-Requested-With, Content-Type, Origin, Accept");
     headers.append('Access-Control-Allow-Credentials', 'true');*/
     console.log(headers);
-    this.httpCli.post(this.url + '/' + endpoint, data, {
+    return this.httpCli.post(this.url + '/' + endpoint, data, {
       headers: headers,
       params: new HttpParams().set('id', '3'),
     })
+    /*
     .subscribe(res => {
+      console.log("Response: ");
       console.log(res);
 
       let  toast = this.toastCtrl.create({
-        message: 'POST request done successfull:'+JSON.stringify(res),
+        message: 'POST request done successfull.',
         duration: 3000,
-        position: 'bottom'
+        position: 'bottom',
+        cssClass:'success'
       });
       toast.present();
+      return res;
     }, (err) => {
       console.log(err);
       let  toast = this.toastCtrl.create({
         message: 'POST request done ERROR.',
         duration: 3000,
-        position: 'bottom'
+        position: 'bottom',
+        cssClass:'error'
       });
       toast.present();
-
     });
-  
+    */
+    //return null;
   }
   get(endpoint: string, params?: any, reqOpts?: any) {
     if (!reqOpts) {
@@ -110,7 +115,7 @@ export class Api {
 
 
   post(endpoint: string, body: any, reqOpts?: any) {
-    console.log('User.Login.post drove through...')
+    console.log('User.Login.post drove through...');
     return this.httpCli.post(this.url + '/' + endpoint, body, reqOpts);
   }
 

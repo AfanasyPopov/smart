@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
+    <ion-title class="connectionStatus">{{ 'LOGIN_TITLE' | translate }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -12,8 +12,8 @@
     <ion-list >
 
       <ion-item>
-        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+        <ion-label  >{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input  type="email" [(ngModel)]="account.email" name="email" #inputemail></ion-input>
       </ion-item>
 
       <!--
@@ -25,19 +25,23 @@
       </ion-item>
       -->
 
-      <ion-item>
-        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
+      <ion-item style="width:350px important;"> 
+        <ion-label >{{ 'PASSWORD' | translate }}</ion-label>
         <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
       </ion-item>
 
       <div padding>
-        <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
+        <button ion-button color="primary"  [disabled]="account.isLogedIn" block>{{ 'LOGIN_BUTTON' | translate }}</button>
       </div>
-      <ion-item>
+      <ion-item >
           <ion-label>{{ 'IS_AUTOLOGIN_CHECKBOX' | translate }}</ion-label>
           <ion-checkbox block [(ngModel)]="account.isautologin" name="isautologin"></ion-checkbox>
         </ion-item>
-
+          <div padding>
+            <button ion-button color="primary" (click)="logout()" [disabled]="!account.isLogedIn" block>{{ 'LOGOUT_BUTTON' | translate }}</button>
+          </div>      
     </ion-list>
+
   </form>
+  
 </ion-content>

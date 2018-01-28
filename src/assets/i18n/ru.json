@@ -46,5 +46,6 @@
 
   "SEARCH_TITLE": "Поиск",
   "RELOAD_BUTTON_TEXT": "Перезагрузить",
-  "IS_AUTOLOGIN_CHECKBOX": "входить автоматически"
+  "IS_AUTOLOGIN_CHECKBOX": "входить автоматически",
+  "LOGOUT_BUTTON": "Выход"
 }

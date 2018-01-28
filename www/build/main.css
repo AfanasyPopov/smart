@@ -30530,6 +30530,16 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+.ion-toast.success .toast-wrapper {
+  background: green;
+  opacity: 0.90;
+}
+
+.ion-toast.error .toast-wrapper {
+  background: #d14747;
+  opacity: 0.90;
+}
+
 page-item-create .profile-image-wrapper {
   text-align: center;
   margin: 20px 0;
