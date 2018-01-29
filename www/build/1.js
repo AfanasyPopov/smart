@@ -9,7 +9,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login__ = __webpack_require__(394);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login__ = __webpack_require__(396);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,7 +44,7 @@ var LoginPageModule = (function () {
 
 /***/ }),
 
-/***/ 388:
+/***/ 390:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -453,7 +453,7 @@ if (Md5.hashStr('hello') !== '5d41402abc4b2a76b9719d911017c592') {
 
 /***/ }),
 
-/***/ 394:
+/***/ 396:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -462,10 +462,11 @@ if (Md5.hashStr('hello') !== '5d41402abc4b2a76b9719d911017c592') {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5__ = __webpack_require__(388);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5__ = __webpack_require__(390);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_providers__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_app_component__ = __webpack_require__(248);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -482,9 +483,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var LoginPage = (function () {
-    function LoginPage(menuCtrl, storage, navCtrl, user, toastCtrl, translateService, nav) {
+    function LoginPage(myapp, menuCtrl, storage, navCtrl, user, toastCtrl, translateService, nav) {
         var _this = this;
+        this.myapp = myapp;
         this.menuCtrl = menuCtrl;
         this.storage = storage;
         this.navCtrl = navCtrl;
@@ -538,6 +541,7 @@ var LoginPage = (function () {
             console.log(this.account.password);
         }
         this.user.login(this.account).subscribe(function (res) {
+            console.log('LoginePage:');
             console.log(res);
             if (res.active) {
                 _this.storage.set('connectionStatus', true);
@@ -553,6 +557,7 @@ var LoginPage = (function () {
                 });
                 toast.present();
                 _this.account.isLogedIn = true;
+                _this.myapp.user = res;
             }
             else if (res.active == undefined) {
                 var toast = _this.toastCtrl.create({
@@ -569,19 +574,28 @@ var LoginPage = (function () {
     };
     // Logout from Application Service 185.63.32.215:8801
     LoginPage.prototype.logout = function () {
+        var _this = this;
         this.account.isLogedIn = false;
-        this.menuCtrl.enable(false);
+        this.menuCtrl.enable(false, 'menu1');
         this.account.password = '';
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__pages__["a" /* FirstRunPage */]);
+        this.storage.set('account', this.account).then(function (val) {
+            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__pages__["a" /* FirstRunPage */]);
+        });
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-login',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/login/login.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title class="connectionStatus">{{ \'LOGIN_TITLE\' | translate }}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content> \n  <form (submit)="doLogin()" class="login-content" vertical-align>\n    <ion-list >\n\n      <ion-item>\n        <ion-label  >{{ \'EMAIL\' | translate }}</ion-label>\n        <ion-input  type="email" [(ngModel)]="account.email" name="email" #inputemail></ion-input>\n      </ion-item>\n\n      <!--\n      Want to use a Username instead of an Email? Here you go:\n\n      <ion-item>\n        <ion-label floating>{{ \'USERNAME\' | translate }}</ion-label>\n        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>\n      </ion-item>\n      -->\n\n      <ion-item style="width:350px important;"> \n        <ion-label >{{ \'PASSWORD\' | translate }}</ion-label>\n        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>\n      </ion-item>\n\n      <div padding>\n        <button ion-button color="primary"  block>{{ \'LOGIN_BUTTON\' | translate }}</button>\n      </div>\n      <ion-item >\n          <ion-label>{{ \'IS_AUTOLOGIN_CHECKBOX\' | translate }}</ion-label>\n          <ion-checkbox block [(ngModel)]="account.isautologin" name="isautologin"></ion-checkbox>\n        </ion-item>\n          <div padding>\n            <button ion-button color="primary" (click)="logout()" [disabled]="!account.isLogedIn" block>{{ \'LOGOUT_BUTTON\' | translate }}</button>\n          </div>      \n    </ion-list>\n\n  </form>\n  \n</ion-content>\n'/*ion-inline-end:"/Users/afpopov/smart/src/pages/login/login.html"*/
+            selector: 'page-login',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/login/login.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title class="connectionStatus">{{ \'LOGIN_TITLE\' | translate }}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content> \n  <form (submit)="doLogin()" class="login-content" vertical-align>\n    <ion-list >\n\n      <ion-item>\n        <ion-label  >{{ \'EMAIL\' | translate }}</ion-label>\n        <ion-input  type="email" [(ngModel)]="account.email" name="email" #inputemail></ion-input>\n      </ion-item>\n\n      <!--\n      Want to use a Username instead of an Email? Here you go:\n\n      <ion-item>\n        <ion-label floating>{{ \'USERNAME\' | translate }}</ion-label>\n        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>\n      </ion-item>\n      -->\n\n      <ion-item style="width:350px important;"> \n        <ion-label >{{ \'PASSWORD\' | translate }}</ion-label>\n        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>\n      </ion-item>\n\n      <div padding>\n        <button ion-button color="primary"  block>{{ \'LOGIN_BUTTON\' | translate }}</button>\n      </div>\n      <ion-item >\n          <ion-label>{{ \'IS_AUTOLOGIN_CHECKBOX\' | translate }}</ion-label>\n          <ion-checkbox block [(ngModel)]="account.isautologin" name="isautologin"></ion-checkbox>\n        </ion-item>\n          <div padding>\n            <button ion-button color="primary" (click)="logout()" [disabled]="!account.isLogedIn" block small clear>{{ \'LOGOUT_BUTTON\' | translate }}</button>\n          </div>      \n    </ion-list>\n\n  </form>\n  \n</ion-content>\n'/*ion-inline-end:"/Users/afpopov/smart/src/pages/login/login.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* MenuController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__providers_providers__["d" /* User */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_providers__["d" /* User */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* ToastController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* Nav */]) === "function" && _g || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_7__app_app_component__["a" /* MyApp */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* MenuController */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_providers__["d" /* User */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* Nav */]])
     ], LoginPage);
     return LoginPage;
-    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=login.js.map

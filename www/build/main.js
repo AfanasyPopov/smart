@@ -1,4 +1,4 @@
-webpackJsonp([13],{
+webpackJsonp([15],{
 
 /***/ 140:
 /***/ (function(module, exports) {
@@ -21,56 +21,64 @@ webpackEmptyAsyncContext.id = 140;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"../pages/cards/cards.module": [
+	"../pages/admin/admin.module": [
 		375,
-		12
+		14
+	],
+	"../pages/cards/cards.module": [
+		376,
+		13
 	],
 	"../pages/content/content.module": [
-		376,
-		11
+		377,
+		12
 	],
 	"../pages/item-create/item-create.module": [
-		377,
-		10
+		378,
+		11
 	],
 	"../pages/item-detail/item-detail.module": [
-		378,
-		9
+		379,
+		10
 	],
 	"../pages/list-master/list-master.module": [
-		379,
-		8
+		381,
+		9
 	],
 	"../pages/login/login.module": [
 		380,
 		1
 	],
 	"../pages/menu/menu.module": [
-		381,
-		7
+		382,
+		8
 	],
 	"../pages/search/search.module": [
-		382,
-		6
+		383,
+		7
 	],
 	"../pages/settings/settings.module": [
-		383,
-		5
+		384,
+		6
 	],
 	"../pages/signup/signup.module": [
-		384,
-		4
+		385,
+		5
 	],
 	"../pages/tabs/tabs.module": [
-		385,
-		3
+		386,
+		4
 	],
 	"../pages/tutorial/tutorial.module": [
-		386,
+		387,
+		3
+	],
+	"../pages/users-list/users-list.module": [
+		388,
 		2
 	],
 	"../pages/welcome/welcome.module": [
-		387,
+		389,
 		0
 	]
 };
@@ -133,31 +141,6 @@ var Api = (function () {
             headers: headers,
             params: new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["e" /* HttpParams */]().set('id', '3'),
         });
-        /*
-        .subscribe(res => {
-          console.log("Response: ");
-          console.log(res);
-    
-          let  toast = this.toastCtrl.create({
-            message: 'POST request done successfull.',
-            duration: 3000,
-            position: 'bottom',
-            cssClass:'success'
-          });
-          toast.present();
-          return res;
-        }, (err) => {
-          console.log(err);
-          let  toast = this.toastCtrl.create({
-            message: 'POST request done ERROR.',
-            duration: 3000,
-            position: 'bottom',
-            cssClass:'error'
-          });
-          toast.present();
-        });
-        */
-        //return null;
     };
     Api.prototype.get = function (endpoint, params, reqOpts) {
         if (!reqOpts) {
@@ -232,7 +215,7 @@ var Api = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Items; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_item__ = __webpack_require__(331);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_item__ = __webpack_require__(332);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -352,13 +335,232 @@ var Tab3Root = 'SettingsPage';
 
 /***/ }),
 
-/***/ 249:
+/***/ 248:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_pages__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_providers__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ionic_angular_components_app_menu_controller__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_storage__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ng_socket_io__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ng_socket_io___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_ng_socket_io__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+
+var MyApp = (function () {
+    function MyApp(translateService, socket, storage, menuCtrl, translate, platform, settings, config, statusBar, splashScreen, toastCtrl) {
+        var _this = this;
+        this.translateService = translateService;
+        this.socket = socket;
+        this.storage = storage;
+        this.menuCtrl = menuCtrl;
+        this.translate = translate;
+        this.platform = platform;
+        this.settings = settings;
+        this.config = config;
+        this.statusBar = statusBar;
+        this.splashScreen = splashScreen;
+        this.toastCtrl = toastCtrl;
+        this.user = [];
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_5__pages_pages__["a" /* FirstRunPage */];
+        this.pages = [
+            { title: 'Поиск', component: 'SearchPage', icon: 'ios-search-outline' },
+            // { title: 'Tutorial', component: 'TutorialPage', icon:'albums' },
+            // { title: 'Welcome', component: 'WelcomePage' , icon:'albums'},
+            { title: 'Проекты', component: 'TabsPage', icon: 'ios-albums-outline' },
+            // { title: 'Cards', component: 'CardsPage' , icon:'albums'},
+            // { title: 'Content', component: 'ContentPage', icon:'albums' },
+            { title: 'Авторизация', component: 'LoginPage', icon: 'ios-contact-outline' },
+            //{ title: 'Signup', component: 'SignupPage' },
+            //{ title: 'Master Detail', component: 'ListMasterPage' },
+            //{ title: 'Menu', component: 'MenuPage' },
+            { title: 'Настройки', component: 'SettingsPage', icon: 'ios-settings-outline' },
+            { title: 'Администратор', component: 'AdminPage', icon: 'ios-construct-outline' },
+        ];
+        this.menuTitle = "";
+        platform.ready().then(function () {
+            // Okay, so the platform is ready and our plugins are available.
+            // Here you can do any higher level native things you might need.
+            _this.statusBar.styleDefault();
+            _this.splashScreen.hide();
+            _this.ionViewDidEnter();
+        });
+        this.initTranslate();
+        this.storage.set('connectionStatus', false);
+        this.addSocket(this);
+        translateService.get(['MENU_TITLE']).subscribe(function (values) {
+            _this.menuTitle = values['MENU_TITLE'];
+        });
+    }
+    MyApp.prototype.initTranslate = function () {
+        var _this = this;
+        // Set the default language for translation strings, and the current language.
+        this.translate.setDefaultLang('en');
+        var browserLang = this.translate.getBrowserLang();
+        if (browserLang) {
+            if (browserLang === 'zh') {
+                var browserCultureLang = this.translate.getBrowserCultureLang();
+                if (browserCultureLang.match(/-CN|CHS|Hans/i)) {
+                    this.translate.use('zh-cmn-Hans');
+                }
+                else if (browserCultureLang.match(/-TW|CHT|Hant/i)) {
+                    this.translate.use('zh-cmn-Hant');
+                }
+            }
+            else {
+                this.translate.use(this.translate.getBrowserLang());
+            }
+        }
+        else {
+            this.translate.use('ru'); // Set your language here
+        }
+        this.translate.get(['BACK_BUTTON_TEXT']).subscribe(function (values) {
+            _this.config.set('ios', 'backButtonText', values.BACK_BUTTON_TEXT);
+        });
+    };
+    MyApp.prototype.openPage = function (page) {
+        // Reset the content nav to have just this page
+        // we wouldn't want the back button to show in this scenario
+        this.nav.setRoot(page.component);
+        console.log(page.component + "; " + page.title);
+    };
+    MyApp.prototype.openHttp = function () {
+        console.log('http try to do');
+        alert('openPage(page)try to do...........');
+    };
+    MyApp.prototype.doReload = function () {
+        location.reload();
+    };
+    MyApp.prototype.menuToggle = function (menu) {
+        menu.enable(!menu.enabled);
+        console.log('menuToggle()');
+    };
+    MyApp.prototype.menuToggleWidth = function (menu) {
+        var toast = this.toastCtrl.create({
+            message: 'menu.enabled:' + menu.enabled,
+            duration: 3000,
+            position: 'bottom'
+        });
+        toast.present();
+        console.log("menu.enabled:" + menu.enabled);
+    };
+    MyApp.prototype.fabClose = function (fab) {
+        fab.close();
+        console.log("fabClose()");
+    };
+    MyApp.prototype.fabCloseAfterTime = function (fab) {
+        setTimeout(function () {
+            fab.close();
+            console.log("fabCloseAfterTime () ");
+        }, 2500);
+    };
+    MyApp.prototype.ionViewDidEnter = function () {
+        // the root left menu should be disabled on the tutorial page
+        console.log('ionViewDidEnter');
+        this.menuCtrl.enable(false);
+        console.log("App.Comp.user:");
+        console.log(this.user);
+    };
+    MyApp.prototype.ionViewWillLeave = function () {
+        console.log("Looks like I'm about to leave :(");
+    };
+    MyApp.prototype.addSocket = function (thisapp) {
+        thisapp.socket.on('connected', function (msg) {
+            thisapp.storage.set('connectionStatus', true).then(function (res) {
+                thisapp.setBackgroundColor();
+            });
+        });
+        thisapp.socket.on('disconnected', function (msg) {
+            thisapp.storage.set('connectionStatus', false).then(function (res) {
+                thisapp.setBackgroundColor();
+            });
+        });
+        thisapp.socket.on('connect_error', function (msg) {
+            thisapp.storage.set('connectionStatus', false).then(function (res) {
+                thisapp.setBackgroundColor();
+            });
+        });
+    };
+    MyApp.prototype.getSelector = function (sText) {
+        var s = document.styleSheets[0];
+        var rules = s['rules'] || s['cssRules']; // IE || others 
+        for (var r = 0; r < rules.length; r++)
+            if (rules[r].selectorText == sText)
+                return rules[r]['style'];
+        s = document.styleSheets[1];
+        rules = s['rules'] || s['cssRules']; // IE || others 
+        for (r = 0; r < rules.length; r++)
+            if (rules[r].selectorText == sText)
+                return rules[r]['style'];
+        // }
+        return null;
+    };
+    MyApp.prototype.setBackgroundColor = function () {
+        var _this = this;
+        this.storage.get('connectionStatus').then(function (res) {
+            if (res) {
+                _this.getSelector(".toolbar-background").backgroundColor = '#e4ffbf';
+                _this.getSelector(".toolbar-background-md").backgroundColor = '#e4ffbf';
+                _this.getSelector(".toolbar-background-ios").backgroundColor = '#e4ffbf';
+            }
+            else {
+                _this.getSelector(".toolbar-background").backgroundColor = '#ffdeba';
+                _this.getSelector(".toolbar-background-md").backgroundColor = '#ffdeba';
+                _this.getSelector(".toolbar-background-ios").backgroundColor = '#ffdeba';
+            }
+        }, function (err) { });
+    };
+    MyApp.prototype.goHome = function () {
+        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_5__pages_pages__["a" /* FirstRunPage */]);
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* Nav */]),
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* Nav */]) === "function" && _a || Object)
+    ], MyApp.prototype, "nav", void 0);
+    MyApp = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-menu',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/menu/menu.html"*/'<ion-split-pane when="lg">\n  <ion-menu [content]="content" #menu1 id="menu1" width="150px">\n    <ion-header >\n      <ion-toolbar>\n        <ion-title >{{menuTitle}}</ion-title>\n      </ion-toolbar>\n    </ion-header>\n  <ion-content>\n      <ion-list>\n          <ion-item>\n              <h2>{{user[\'last_name\']+\' \'+user[\'username\']}}</h2>\n              <p>{{user[\'email\']}}</p>\n              <ion-thumbnail item-end>\n                <img src="../../assets/img/ian-avatar.png">\n              </ion-thumbnail>\n            </ion-item>\n                  <button block menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" icon-left detail-push>\n            <ion-icon [name]="p.icon" color="primary" ></ion-icon>\n            {{p.title}}\n        </button>\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  <ion-fab right bottom style="bottom: 10%;opacity: 0.7;" #fab1>\n    <button ion-fab color="primary" ><ion-icon name="arrow-dropleft"></ion-icon></button>\n    <ion-fab-list side="left">\n      <button ion-fab (click)="goHome()"><ion-icon name="home" color="primary" ></ion-icon></button>\n      <button ion-fab (click)="fabClose(fab1)"><ion-icon name="ios-podium-outline"></ion-icon></button>\n      <button ion-fab (click)="menuToggle(menu1)"><ion-icon name="ios-menu-outline"></ion-icon></button>\n      <button ion-fab (click)="doReload()"><ion-icon name="ios-refresh-outline"></ion-icon></button>\n    </ion-fab-list>\n    <ion-fab-list side="top">\n      <button ion-fab (click)="openSocial(\'facebook\', fab2)"><ion-icon name="logo-facebook"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'twitter\', fab2)"><ion-icon name="logo-twitter"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'vimeo\', fab2)"><ion-icon name="logo-vimeo"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'googleplus\', fab2)"><ion-icon name="logo-googleplus"></ion-icon></button>\n    </ion-fab-list>\n  </ion-fab>\n\n  <ion-nav #content main [root]="rootPage" (click)="fabClose(fab1)" swipeBackEnabled="true"></ion-nav>\n</ion-split-pane>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/menu/menu.html"*/,
+        }),
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_9_ng_socket_io__["Socket"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9_ng_socket_io__["Socket"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_8__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__ionic_storage__["b" /* Storage */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_7_ionic_angular_components_app_menu_controller__["a" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_ionic_angular_components_app_menu_controller__["a" /* MenuController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* Platform */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_6__providers_providers__["c" /* Settings */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_providers__["c" /* Settings */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* Config */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* Config */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* ToastController */]) === "function" && _m || Object])
+    ], MyApp);
+    return MyApp;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
+}());
+
+//# sourceMappingURL=app.component.js.map
+
+/***/ }),
+
+/***/ 250:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(250);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(264);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -366,7 +568,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 263:
+/***/ 264:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -376,17 +578,17 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__ = __webpack_require__(249);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(143);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(144);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ngx_translate_core__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ngx_translate_http_loader__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ngx_translate_http_loader__ = __webpack_require__(308);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ionic_angular__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__mocks_providers_items__ = __webpack_require__(193);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_providers__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__(352);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_ng_socket_io__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_ng_socket_io__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_ng_socket_io___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_ng_socket_io__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -450,18 +652,20 @@ var AppModule = (function () {
                 }),
                 __WEBPACK_IMPORTED_MODULE_9_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* MyApp */], {}, {
                     links: [
+                        { loadChildren: '../pages/admin/admin.module#AdminPageModule', name: 'AdminPage', segment: 'admin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/cards/cards.module#CardsPageModule', name: 'CardsPage', segment: 'cards', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/content/content.module#ContentPageModule', name: 'ContentPage', segment: 'content', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/item-create/item-create.module#ItemCreatePageModule', name: 'ItemCreatePage', segment: 'item-create', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/item-detail/item-detail.module#ItemDetailPageModule', name: 'ItemDetailPage', segment: 'item-detail', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/list-master/list-master.module#ListMasterPageModule', name: 'ListMasterPage', segment: 'list-master', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/list-master/list-master.module#ListMasterPageModule', name: 'ListMasterPage', segment: 'list-master', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tutorial/tutorial.module#TutorialPageModule', name: 'TutorialPage', segment: 'tutorial', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/users-list/users-list.module#UsersListPageModule', name: 'UsersListPage', segment: 'users-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] }
                     ]
                 }),
@@ -492,7 +696,7 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 331:
+/***/ 332:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -521,7 +725,7 @@ var Item = (function () {
 
 /***/ }),
 
-/***/ 332:
+/***/ 333:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -610,12 +814,12 @@ var Settings = (function () {
 
 /***/ }),
 
-/***/ 333:
+/***/ 334:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_toPromise__ = __webpack_require__(334);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_toPromise__ = __webpack_require__(335);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_toPromise__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_api__ = __webpack_require__(192);
@@ -709,213 +913,7 @@ var User = (function () {
 
 /***/ }),
 
-/***/ 352:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__ = __webpack_require__(143);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(144);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_pages__ = __webpack_require__(247);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_providers__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ionic_angular_components_app_menu_controller__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_storage__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ng_socket_io__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ng_socket_io___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_ng_socket_io__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-
-
-
-var MyApp = (function () {
-    function MyApp(socket, storage, menuCtrl, translate, platform, settings, config, statusBar, splashScreen, toastCtrl) {
-        var _this = this;
-        this.socket = socket;
-        this.storage = storage;
-        this.menuCtrl = menuCtrl;
-        this.translate = translate;
-        this.config = config;
-        this.statusBar = statusBar;
-        this.splashScreen = splashScreen;
-        this.toastCtrl = toastCtrl;
-        //storage: any;
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_5__pages_pages__["a" /* FirstRunPage */];
-        this.pages = [
-            // { title: 'Tutorial', component: 'TutorialPage' },
-            // { title: 'Welcome', component: 'WelcomePage' },
-            { title: 'Tabs', component: 'TabsPage' },
-            // { title: 'Cards', component: 'CardsPage' },
-            // { title: 'Content', component: 'ContentPage' },
-            { title: 'Login', component: 'LoginPage' },
-            //{ title: 'Signup', component: 'SignupPage' },
-            //{ title: 'Master Detail', component: 'ListMasterPage' },
-            //{ title: 'Menu', component: 'MenuPage' },
-            { title: 'Settings', component: 'SettingsPage' },
-            { title: 'Search', component: 'SearchPage' }
-        ];
-        platform.ready().then(function () {
-            // Okay, so the platform is ready and our plugins are available.
-            // Here you can do any higher level native things you might need.
-            _this.statusBar.styleDefault();
-            _this.splashScreen.hide();
-            _this.ionViewDidEnter();
-        });
-        this.initTranslate();
-        this.storage.set('connectionStatus', false);
-        this.addSocket(this);
-    }
-    MyApp.prototype.initTranslate = function () {
-        var _this = this;
-        // Set the default language for translation strings, and the current language.
-        this.translate.setDefaultLang('en');
-        var browserLang = this.translate.getBrowserLang();
-        if (browserLang) {
-            if (browserLang === 'zh') {
-                var browserCultureLang = this.translate.getBrowserCultureLang();
-                if (browserCultureLang.match(/-CN|CHS|Hans/i)) {
-                    this.translate.use('zh-cmn-Hans');
-                }
-                else if (browserCultureLang.match(/-TW|CHT|Hant/i)) {
-                    this.translate.use('zh-cmn-Hant');
-                }
-            }
-            else {
-                this.translate.use(this.translate.getBrowserLang());
-            }
-        }
-        else {
-            this.translate.use('ru'); // Set your language here
-        }
-        this.translate.get(['BACK_BUTTON_TEXT']).subscribe(function (values) {
-            _this.config.set('ios', 'backButtonText', values.BACK_BUTTON_TEXT);
-        });
-    };
-    MyApp.prototype.openPage = function (page) {
-        // Reset the content nav to have just this page
-        // we wouldn't want the back button to show in this scenario
-        this.nav.setRoot(page.component);
-        console.log(page.component + ";" + page.title);
-    };
-    MyApp.prototype.openHttp = function () {
-        console.log('http try to do');
-        alert('openPage(page)try to do...........');
-    };
-    MyApp.prototype.doReload = function () {
-        location.reload();
-    };
-    MyApp.prototype.menuToggle = function (menu) {
-        menu.enable(!menu.enabled);
-        console.log('menuToggle()');
-    };
-    MyApp.prototype.menuToggleWidth = function (menu) {
-        var toast = this.toastCtrl.create({
-            message: 'menu.enabled:' + menu.enabled,
-            duration: 3000,
-            position: 'bottom'
-        });
-        toast.present();
-        console.log("menu.enabled:" + menu.enabled);
-    };
-    MyApp.prototype.fabClose = function (fab) {
-        fab.close();
-        console.log("fabClose()");
-    };
-    MyApp.prototype.fabCloseAfterTime = function (fab) {
-        setTimeout(function () {
-            fab.close();
-            console.log("fabCloseAfterTime () ");
-        }, 2500);
-    };
-    MyApp.prototype.ionViewDidEnter = function () {
-        // the root left menu should be disabled on the tutorial page
-        console.log('ionViewDidEnter');
-        this.menuCtrl.enable(false);
-    };
-    MyApp.prototype.ionViewWillLeave = function () {
-        console.log("Looks like I'm about to leave :(");
-    };
-    MyApp.prototype.addSocket = function (thisapp) {
-        thisapp.socket.on('connected', function (msg) {
-            thisapp.storage.set('connectionStatus', true).then(function (res) {
-                thisapp.setBackgroundColor();
-            });
-        });
-        thisapp.socket.on('disconnected', function (msg) {
-            thisapp.storage.set('connectionStatus', false).then(function (res) {
-                thisapp.setBackgroundColor();
-            });
-        });
-        thisapp.socket.on('connect_error', function (msg) {
-            thisapp.storage.set('connectionStatus', false).then(function (res) {
-                thisapp.setBackgroundColor();
-            });
-        });
-    };
-    MyApp.prototype.getSelector = function (sText) {
-        //for (var len=0; len< document.stylesheets.length;len++){
-        var s = document.styleSheets[0];
-        var rules = s['rules'] || s['cssRules']; // IE || others 
-        for (var r = 0; r < rules.length; r++)
-            if (rules[r].selectorText == sText)
-                return rules[r]['style'];
-        var s = document.styleSheets[1];
-        var rules = s['rules'] || s['cssRules']; // IE || others 
-        for (var r = 0; r < rules.length; r++)
-            if (rules[r].selectorText == sText)
-                return rules[r]['style'];
-        // }
-        return null;
-    };
-    MyApp.prototype.setBackgroundColor = function () {
-        var _this = this;
-        this.storage.get('connectionStatus').then(function (res) {
-            if (res) {
-                _this.getSelector(".toolbar-background").backgroundColor = '#e4ffbf';
-                _this.getSelector(".toolbar-background-md").backgroundColor = '#e4ffbf';
-                _this.getSelector(".toolbar-background-ios").backgroundColor = '#e4ffbf';
-            }
-            else {
-                _this.getSelector(".toolbar-background").backgroundColor = '#ffdeba';
-                _this.getSelector(".toolbar-background-md").backgroundColor = '#ffdeba';
-                _this.getSelector(".toolbar-background-ios").backgroundColor = '#ffdeba';
-            }
-        }, function (err) { });
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* Nav */])
-    ], MyApp.prototype, "nav", void 0);
-    MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-menu',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/menu/menu.html"*/'<ion-split-pane when="lg">\n  <ion-menu [content]="content" #menu1 id="menu1">\n    <ion-header >\n      <ion-toolbar>\n        <ion-title class="connectionStatus">Pages</ion-title>\n      </ion-toolbar>\n    </ion-header>\n  <ion-content>\n      <ion-list>\n        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n          {{p.title}} ++\n        </button>\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  <ion-fab right bottom style="bottom: 10%;opacity: 0.7;" #fab1>\n    <button ion-fab color="primary" (click)="fabCloseAfterTime(fab1)"><ion-icon name="arrow-dropleft"></ion-icon></button>\n    <ion-fab-list side="left">\n      <button ion-fab (click)="openSocial(\'facebook\', fab2)"><ion-icon name="logo-facebook"></ion-icon></button>\n      <button ion-fab (click)="menuToggleWidth(menu1)"><ion-icon name="ios-podium-outline"></ion-icon></button>\n      <button ion-fab (click)="menuToggle(menu1)"><ion-icon name="ios-menu-outline"></ion-icon></button>\n      <button ion-fab (click)="doReload()"><ion-icon name="ios-refresh-outline"></ion-icon></button>\n    </ion-fab-list>\n    <ion-fab-list side="top">\n      <button ion-fab (click)="openSocial(\'facebook\', fab2)"><ion-icon name="logo-facebook"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'twitter\', fab2)"><ion-icon name="logo-twitter"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'vimeo\', fab2)"><ion-icon name="logo-vimeo"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'googleplus\', fab2)"><ion-icon name="logo-googleplus"></ion-icon></button>\n    </ion-fab-list>\n  </ion-fab>\n\n  <ion-nav #content main [root]="rootPage" swipeBackEnabled="false"></ion-nav>\n</ion-split-pane>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/menu/menu.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_9_ng_socket_io__["Socket"], __WEBPACK_IMPORTED_MODULE_8__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_7_ionic_angular_components_app_menu_controller__["a" /* MenuController */], __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_6__providers_providers__["c" /* Settings */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* Config */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* ToastController */]])
-    ], MyApp);
-    return MyApp;
-}());
-
-//# sourceMappingURL=app.component.js.map
-
-/***/ }),
-
-/***/ 372:
+/***/ 355:
 /***/ (function(module, exports) {
 
 /* (ignored) */
@@ -928,8 +926,8 @@ var MyApp = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mocks_providers_items__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__settings_settings__ = __webpack_require__(332);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_user__ = __webpack_require__(333);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__settings_settings__ = __webpack_require__(333);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_user__ = __webpack_require__(334);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__api_api__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__mocks_providers_items__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__settings_settings__["a"]; });
@@ -943,5 +941,5 @@ var MyApp = (function () {
 
 /***/ })
 
-},[249]);
+},[250]);
 //# sourceMappingURL=main.js.map

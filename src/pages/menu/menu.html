@@ -1,23 +1,31 @@
 <ion-split-pane when="lg">
-  <ion-menu [content]="content" #menu1 id="menu1">
+  <ion-menu [content]="content" #menu1 id="menu1" width="150px">
     <ion-header >
       <ion-toolbar>
-        <ion-title class="connectionStatus">Pages</ion-title>
+        <ion-title >{{menuTitle}}</ion-title>
       </ion-toolbar>
     </ion-header>
   <ion-content>
       <ion-list>
-        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-          {{p.title}} ++
+          <ion-item>
+              <h2>{{user['last_name']+' '+user['username']}}</h2>
+              <p>{{user['email']}}</p>
+              <ion-thumbnail item-end>
+                <img src="../../assets/img/ian-avatar.png">
+              </ion-thumbnail>
+            </ion-item>
+                  <button block menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" icon-left detail-push>
+            <ion-icon [name]="p.icon" color="primary" ></ion-icon>
+            {{p.title}}
         </button>
       </ion-list>
     </ion-content>
   </ion-menu>
   <ion-fab right bottom style="bottom: 10%;opacity: 0.7;" #fab1>
-    <button ion-fab color="primary" (click)="fabCloseAfterTime(fab1)"><ion-icon name="arrow-dropleft"></ion-icon></button>
+    <button ion-fab color="primary" ><ion-icon name="arrow-dropleft"></ion-icon></button>
     <ion-fab-list side="left">
-      <button ion-fab (click)="openSocial('facebook', fab2)"><ion-icon name="logo-facebook"></ion-icon></button>
-      <button ion-fab (click)="menuToggleWidth(menu1)"><ion-icon name="ios-podium-outline"></ion-icon></button>
+      <button ion-fab (click)="goHome()"><ion-icon name="home" color="primary" ></ion-icon></button>
+      <button ion-fab (click)="fabClose(fab1)"><ion-icon name="ios-podium-outline"></ion-icon></button>
       <button ion-fab (click)="menuToggle(menu1)"><ion-icon name="ios-menu-outline"></ion-icon></button>
       <button ion-fab (click)="doReload()"><ion-icon name="ios-refresh-outline"></ion-icon></button>
     </ion-fab-list>
@@ -29,5 +37,5 @@
     </ion-fab-list>
   </ion-fab>
 
-  <ion-nav #content main [root]="rootPage" swipeBackEnabled="false"></ion-nav>
+  <ion-nav #content main [root]="rootPage" (click)="fabClose(fab1)" swipeBackEnabled="true"></ion-nav>
 </ion-split-pane>

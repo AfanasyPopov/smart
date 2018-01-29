@@ -45,7 +45,11 @@
   "CARDS_TITLE": "Социальный",
 
   "SEARCH_TITLE": "Поиск",
+  "SEARCH_PLACEHOLDER": "Поиск элементов, например \"Donald Duck\"",
   "RELOAD_BUTTON_TEXT": "Перезагрузить",
   "IS_AUTOLOGIN_CHECKBOX": "входить автоматически",
-  "LOGOUT_BUTTON": "Выход"
+  "LOGOUT_BUTTON": "Выход",
+  "MENU_TITLE": "Меню",
+  "USERS_LIST_TITLE":"Пользователи",
+  "ADMIN_TITLE":"Администратор"
 }

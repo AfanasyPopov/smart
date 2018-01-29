@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController, Nav, MenuController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import {Md5} from 'ts-md5/dist/md5';
+import { Md5 } from 'ts-md5/dist/md5';
 
 import { User } from '../../providers/providers';
 import { MainPage, FirstRunPage } from '../pages';
 import { isTrueProperty } from 'ionic-angular/util/util';
-
+import { MyApp} from '../../app/app.component';
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -28,6 +28,7 @@ export class LoginPage {
   private loginErrorString: string;
 
   constructor(
+    public myapp: MyApp,
     public menuCtrl: MenuController,
     public storage: Storage,
     public navCtrl: NavController,
@@ -71,6 +72,7 @@ export class LoginPage {
 
     } 
     this.user.login(this.account).subscribe((res) => {
+      console.log('LoginePage:');
       console.log(res);
       if (res.active) {
         this.storage.set('connectionStatus',true);
@@ -86,6 +88,7 @@ export class LoginPage {
         });
         toast.present();  
         this.account.isLogedIn=true;
+        this.myapp.user = res;
       } else if (res.active == undefined){  
         let  toast = this.toastCtrl.create({
           message: 'Ошибка авторизации: '+res,
@@ -103,8 +106,10 @@ export class LoginPage {
   // Logout from Application Service 185.63.32.215:8801
   logout(){
     this.account.isLogedIn=false;   
-    this.menuCtrl.enable(false);
+    this.menuCtrl.enable(false,'menu1');
     this.account.password = '';
-    this.navCtrl.push(FirstRunPage);
+    this.storage.set ('account', this.account).then (val=>{
+      this.navCtrl.push(FirstRunPage);
+    })
   }
 }

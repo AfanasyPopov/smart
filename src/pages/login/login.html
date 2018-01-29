@@ -38,7 +38,7 @@
           <ion-checkbox block [(ngModel)]="account.isautologin" name="isautologin"></ion-checkbox>
         </ion-item>
           <div padding>
-            <button ion-button color="primary" (click)="logout()" [disabled]="!account.isLogedIn" block>{{ 'LOGOUT_BUTTON' | translate }}</button>
+            <button ion-button color="primary" (click)="logout()" [disabled]="!account.isLogedIn" block small clear>{{ 'LOGOUT_BUTTON' | translate }}</button>
           </div>      
     </ion-list>
 

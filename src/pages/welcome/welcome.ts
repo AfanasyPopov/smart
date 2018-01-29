@@ -7,6 +7,7 @@ import { User } from '../../providers/providers';
 import { Md5 } from 'ts-md5/dist/md5';
 import { MainPage } from '../pages';
 import { TranslateService } from '@ngx-translate/core';
+import { MyApp} from '../../app/app.component';
 
 /**
  * The Welcome Page is a splash page that quickly describes the app,
@@ -32,6 +33,7 @@ export class WelcomePage {
   private loginErrorString: string;
 
   constructor(
+    public myapp: MyApp,
     public menuCtrl: MenuController,
     public storage: Storage,
     public navCtrl: NavController,
@@ -45,15 +47,13 @@ export class WelcomePage {
   }
   
   ionViewWillEnter() {
-    //alert('ionViewWillEnter')
-    //this.nav.swipeBackEnabled = true;
     this.storage.get('account').then((val) => {
       if (val) {
         this.account.email = val.email;
         this.account.password = val.password;
         this.account.isautologin = val.isautologin;
         this.account.isLogedIn=val.isLogedIn;
-        if (this.account.isautologin) {
+        if (this.account.isautologin && this.account.password != "" ) {
           this.doAutoLogin();
         }    
       } else {
@@ -89,9 +89,10 @@ export class WelcomePage {
 
     } 
     this.user.login(this.account).subscribe((res) => {
+      console.log('WelcomePage:');
       console.log(res);
       if (res.active) {
-        this.storage.set('connectionStatus',true);
+        //this.storage.set('connectionStatus',true);
         this.menuCtrl.enable(true, 'menu1');
         this.navCtrl.push(MainPage);
         let  toast = this.toastCtrl.create({
@@ -104,6 +105,8 @@ export class WelcomePage {
         });
         toast.present(); 
         this.account.isLogedIn= true;
+        this.myapp.user = res;
+        
       } else if (res.active == undefined){  
         let  toast = this.toastCtrl.create({
           message: 'Ошибка авторизации: '+res,

@@ -2,48 +2,62 @@ import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
-import {  Config, Nav, Platform, FabContainer, Menu, ToastController} from 'ionic-angular';
+import { Config, Nav, Platform, FabContainer, Menu, ToastController} from 'ionic-angular';
 
 import { FirstRunPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
 import { MenuController } from 'ionic-angular/components/app/menu-controller';
-import {Storage} from '@ionic/storage';
+import { Storage } from '@ionic/storage';
 import { Socket } from 'ng-socket-io';
-
+import { User } from '../providers/user/user';
 @Component({
   selector:'page-menu',
   templateUrl:'../pages/menu/menu.html',
 })
 export class MyApp {
-  //storage: any;
+  user: any =[];
   rootPage = FirstRunPage;
   @ViewChild(Nav) nav: Nav;
   pages: any[] = [
-   // { title: 'Tutorial', component: 'TutorialPage' },
-   // { title: 'Welcome', component: 'WelcomePage' },
-    { title: 'Tabs', component: 'TabsPage' },
-   // { title: 'Cards', component: 'CardsPage' },
-   // { title: 'Content', component: 'ContentPage' },
-    { title: 'Login', component: 'LoginPage' },
+    { title: 'Поиск', component: 'SearchPage', icon:'ios-search-outline' },
+    // { title: 'Tutorial', component: 'TutorialPage', icon:'albums' },
+    // { title: 'Welcome', component: 'WelcomePage' , icon:'albums'},
+    { title: 'Проекты', component: 'TabsPage' , icon:'ios-albums-outline'},
+   // { title: 'Cards', component: 'CardsPage' , icon:'albums'},
+   // { title: 'Content', component: 'ContentPage', icon:'albums' },
+    { title: 'Авторизация', component: 'LoginPage' , icon:'ios-contact-outline'},
    //{ title: 'Signup', component: 'SignupPage' },
     //{ title: 'Master Detail', component: 'ListMasterPage' },
     //{ title: 'Menu', component: 'MenuPage' },
-    { title: 'Settings', component: 'SettingsPage' },
-    { title: 'Search', component: 'SearchPage' }
-  ];
+    { title: 'Настройки', component: 'SettingsPage', icon:'ios-settings-outline' },
+    { title: 'Администратор', component: 'AdminPage' , icon:'ios-construct-outline'},
 
-  constructor(public socket: Socket, public storage:Storage, private menuCtrl: MenuController , private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen,     public toastCtrl: ToastController  ) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-      this.ionViewDidEnter();
-    });
-    this.initTranslate(); 
-    this.storage.set('connectionStatus',false);
-    this.addSocket (this);
-    
+  ];
+  menuTitle="";
+
+  constructor(public translateService: TranslateService ,
+    public socket: Socket, public storage:Storage, 
+    public menuCtrl: MenuController , 
+    private translate: TranslateService, 
+    public platform: Platform, 
+    public settings: Settings, 
+    private config: Config, 
+    private statusBar: StatusBar, 
+    private splashScreen: SplashScreen,     
+    public toastCtrl: ToastController  ) {
+      platform.ready().then(() => {
+        // Okay, so the platform is ready and our plugins are available.
+        // Here you can do any higher level native things you might need.
+        this.statusBar.styleDefault();
+        this.splashScreen.hide();
+        this.ionViewDidEnter();
+      });
+      this.initTranslate(); 
+      this.storage.set('connectionStatus',false);
+      this.addSocket (this);
+      translateService.get(['MENU_TITLE']).subscribe(values => {
+        this.menuTitle = values['MENU_TITLE'];
+      });
   }
   
   initTranslate() {
@@ -76,7 +90,7 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
-    console.log(page.component+";"+page.title);
+    console.log(page.component+"; "+page.title);
   }
   openHttp(){
     console.log ('http try to do');
@@ -114,6 +128,9 @@ export class MyApp {
     // the root left menu should be disabled on the tutorial page
     console.log ('ionViewDidEnter');
     this.menuCtrl.enable(false);
+    console.log ("App.Comp.user:")
+    console.log (this.user)
+
   }
   ionViewWillLeave() {
     console.log("Looks like I'm about to leave :(");
@@ -136,16 +153,14 @@ export class MyApp {
     });
   }
   getSelector(sText) { 
-    //for (var len=0; len< document.stylesheets.length;len++){
-      
       var s = document.styleSheets[0]; 
       var rules = s['rules']||s['cssRules'] // IE || others 
       for(var r=0;r<rules.length;r++) 
         if(rules[r].selectorText==sText) 
           return rules[r]['style'] 
-      var s = document.styleSheets[1]; 
-      var rules = s['rules']||s['cssRules'] // IE || others 
-      for(var r=0;r<rules.length;r++) 
+      s = document.styleSheets[1]; 
+      rules = s['rules']||s['cssRules'] // IE || others 
+      for(r=0;r<rules.length;r++) 
         if(rules[r].selectorText==sText) 
           return rules[r]['style'] 
        // }
@@ -165,5 +180,7 @@ export class MyApp {
       }
     },err=>{    });
   }
-
+goHome(){
+  this.nav.setRoot(FirstRunPage);
+}
 } 

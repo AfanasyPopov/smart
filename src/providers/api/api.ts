@@ -25,31 +25,6 @@ export class Api {
       headers: headers,
       params: new HttpParams().set('id', '3'),
     })
-    /*
-    .subscribe(res => {
-      console.log("Response: ");
-      console.log(res);
-
-      let  toast = this.toastCtrl.create({
-        message: 'POST request done successfull.',
-        duration: 3000,
-        position: 'bottom',
-        cssClass:'success'
-      });
-      toast.present();
-      return res;
-    }, (err) => {
-      console.log(err);
-      let  toast = this.toastCtrl.create({
-        message: 'POST request done ERROR.',
-        duration: 3000,
-        position: 'bottom',
-        cssClass:'error'
-      });
-      toast.present();
-    });
-    */
-    //return null;
   }
   get(endpoint: string, params?: any, reqOpts?: any) {
     if (!reqOpts) {
