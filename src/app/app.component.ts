@@ -19,15 +19,15 @@ export class MyApp {
   rootPage = FirstRunPage;
   @ViewChild(Nav) nav: Nav;
   pages: any[] = [
-    { title: 'Tutorial', component: 'TutorialPage' },
-    { title: 'Welcome', component: 'WelcomePage' },
+   // { title: 'Tutorial', component: 'TutorialPage' },
+   // { title: 'Welcome', component: 'WelcomePage' },
     { title: 'Tabs', component: 'TabsPage' },
-    { title: 'Cards', component: 'CardsPage' },
-    { title: 'Content', component: 'ContentPage' },
+   // { title: 'Cards', component: 'CardsPage' },
+   // { title: 'Content', component: 'ContentPage' },
     { title: 'Login', component: 'LoginPage' },
-    { title: 'Signup', component: 'SignupPage' },
-    { title: 'Master Detail', component: 'ListMasterPage' },
-    { title: 'Menu', component: 'MenuPage' },
+   //{ title: 'Signup', component: 'SignupPage' },
+    //{ title: 'Master Detail', component: 'ListMasterPage' },
+    //{ title: 'Menu', component: 'MenuPage' },
     { title: 'Settings', component: 'SettingsPage' },
     { title: 'Search', component: 'SearchPage' }
   ];
@@ -137,7 +137,7 @@ export class MyApp {
   }
   getSelector(sText) { 
     var s = document.styleSheets[1]; 
-    var rules = s['rules']||s['cssRules'] // IE || others 
+    var rules = /*s['rules']||*/s['cssRules'] // IE || others 
     for(var r=0;r<rules.length;r++) 
     if(rules[r].selectorText==sText) 
     return rules[r]['style'] 
