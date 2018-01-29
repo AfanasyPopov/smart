@@ -136,11 +136,19 @@ export class MyApp {
     });
   }
   getSelector(sText) { 
-    var s = document.styleSheets[1]; 
-    var rules = /*s['rules']||*/s['cssRules'] // IE || others 
-    for(var r=0;r<rules.length;r++) 
-    if(rules[r].selectorText==sText) 
-    return rules[r]['style'] 
+    //for (var len=0; len< document.stylesheets.length;len++){
+      
+      var s = document.styleSheets[0]; 
+      var rules = s['rules']||s['cssRules'] // IE || others 
+      for(var r=0;r<rules.length;r++) 
+        if(rules[r].selectorText==sText) 
+          return rules[r]['style'] 
+      var s = document.styleSheets[1]; 
+      var rules = s['rules']||s['cssRules'] // IE || others 
+      for(var r=0;r<rules.length;r++) 
+        if(rules[r].selectorText==sText) 
+          return rules[r]['style'] 
+       // }
     return null; 
   }
   setBackgroundColor() {

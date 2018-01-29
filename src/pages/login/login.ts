@@ -5,7 +5,7 @@ import { Storage } from '@ionic/storage';
 import {Md5} from 'ts-md5/dist/md5';
 
 import { User } from '../../providers/providers';
-import { MainPage } from '../pages';
+import { MainPage, FirstRunPage } from '../pages';
 import { isTrueProperty } from 'ionic-angular/util/util';
 
 @IonicPage()
@@ -105,5 +105,6 @@ export class LoginPage {
     this.account.isLogedIn=false;   
     this.menuCtrl.enable(false);
     this.account.password = '';
+    this.navCtrl.push(FirstRunPage);
   }
 }
