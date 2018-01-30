@@ -51,10 +51,10 @@ export class MyApp {
         this.statusBar.styleDefault();
         this.splashScreen.hide();
         this.ionViewDidEnter();
+        this.addSocket (this);
       });
       this.initTranslate(); 
       this.storage.set('connectionStatus',false);
-      this.addSocket (this);
       translateService.get(['MENU_TITLE']).subscribe(values => {
         this.menuTitle = values['MENU_TITLE'];
       });
