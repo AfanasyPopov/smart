@@ -1,15 +1,15 @@
 webpackJsonp([10],{
 
-/***/ 379:
+/***/ 382:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ItemDetailPageModule", function() { return ItemDetailPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuPageModule", function() { return MenuPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__item_detail__ = __webpack_require__(395);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__menu__ = __webpack_require__(400);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,38 +20,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ItemDetailPageModule = (function () {
-    function ItemDetailPageModule() {
+var MenuPageModule = (function () {
+    function MenuPageModule() {
     }
-    ItemDetailPageModule = __decorate([
+    MenuPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__item_detail__["a" /* ItemDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_3__menu__["a" /* MenuPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__item_detail__["a" /* ItemDetailPage */]),
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__menu__["a" /* MenuPage */]),
                 __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_3__item_detail__["a" /* ItemDetailPage */]
+                __WEBPACK_IMPORTED_MODULE_3__menu__["a" /* MenuPage */]
             ]
         })
-    ], ItemDetailPageModule);
-    return ItemDetailPageModule;
+    ], MenuPageModule);
+    return MenuPageModule;
 }());
 
-//# sourceMappingURL=item-detail.module.js.map
+//# sourceMappingURL=menu.module.js.map
 
 /***/ }),
 
-/***/ 395:
+/***/ 400:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ItemDetailPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenuPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(46);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,22 +62,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-var ItemDetailPage = (function () {
-    function ItemDetailPage(navCtrl, navParams, items) {
+var MenuPage = (function () {
+    function MenuPage(navCtrl) {
         this.navCtrl = navCtrl;
-        this.item = navParams.get('item') || items.defaultItem;
+        this.rootPage = 'ContentPage';
+        // used for an example of ngFor and navigation
+        this.pages = [
+            { title: 'Sign in', component: 'LoginPage' },
+            { title: 'Signup', component: 'SignupPage' }
+        ];
     }
-    ItemDetailPage = __decorate([
+    MenuPage.prototype.ionViewDidLoad = function () {
+        console.log('Hello MenuPage Page');
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */])
+    ], MenuPage.prototype, "nav", void 0);
+    MenuPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-item-detail',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/item-detail/item-detail.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{ item.name }}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <div class="item-profile" text-center #profilePic [style.background-image]="\'url(\' + item.profilePic + \')\'">\n  </div>\n\n  <div class="item-detail" padding>\n    <h2>{{item.name}}</h2>\n    <p>{{item.about}}</p>\n  </div>\n</ion-content>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/item-detail/item-detail.html"*/
+            selector: 'page-menu',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/menu/menu.html"*/'<ion-split-pane when="lg">\n  <ion-menu [content]="content" #menu1 id="menu1" width="150px" (click)="fabClose(fab1)">\n    <ion-header >\n      <ion-toolbar>\n        <ion-title >{{menuTitle}}</ion-title>\n      </ion-toolbar>\n    </ion-header>\n  <ion-content>\n      <ion-list>\n          <button menuClose ion-item (click)="openPage(authPage[0])"  > \n              <ion-thumbnail item-start >\n                  <img id="userImage" src="../assets/img/ian-avatar.png">\n                </ion-thumbnail>\n                <h2>{{user[\'last_name\']+\' \'+user[\'username\']}}</h2>\n              <p>{{user[\'email\']}}</p>\n            </button>\n        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" >\n            <ion-icon [name]="p.icon" item-start color="primary"></ion-icon>\n            <ion-label>{{p.title}}</ion-label>\n            <ion-note item-end>info</ion-note>\n            <ion-note item-end>info</ion-note>\n          </button>\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  <ion-fab right bottom style="bottom: 10%;opacity: 0.7;" #fab1>\n    <button ion-fab color="primary" ><ion-icon name="arrow-dropleft"></ion-icon></button>\n    <ion-fab-list side="left">\n      <button ion-fab (click)="goHome()"><ion-icon name="home" color="primary" ></ion-icon></button>\n      <button ion-fab (click)="fabClose(fab1)"><ion-icon name="ios-podium-outline"></ion-icon></button>\n      <button ion-fab (click)="menuToggle(menu1)"><ion-icon name="ios-menu-outline"></ion-icon></button>\n      <button ion-fab (click)="doReload()"><ion-icon name="ios-refresh-outline"></ion-icon></button>\n    </ion-fab-list>\n    <ion-fab-list side="top">\n      <button ion-fab (click)="openSocial(\'facebook\', fab2)"><ion-icon name="logo-facebook"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'twitter\', fab2)"><ion-icon name="logo-twitter"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'vimeo\', fab2)"><ion-icon name="logo-vimeo"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'googleplus\', fab2)"><ion-icon name="logo-googleplus"></ion-icon></button>\n    </ion-fab-list>\n  </ion-fab>\n\n  <ion-nav #content main [root]="rootPage" (click)="fabClose(fab1)" swipeBackEnabled="true"></ion-nav>\n</ion-split-pane>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/menu/menu.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* Items */]])
-    ], ItemDetailPage);
-    return ItemDetailPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]])
+    ], MenuPage);
+    return MenuPage;
 }());
 
-//# sourceMappingURL=item-detail.js.map
+//# sourceMappingURL=menu.js.map
 
 /***/ })
 

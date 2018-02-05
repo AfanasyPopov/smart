@@ -49,7 +49,8 @@
   "RELOAD_BUTTON_TEXT": "Перезагрузить",
   "IS_AUTOLOGIN_CHECKBOX": "входить автоматически",
   "LOGOUT_BUTTON": "Выход",
-  "MENU_TITLE": "Меню",
+  "MENU_TITLE": "Smart DAS",
   "USERS_LIST_TITLE":"Пользователи",
-  "ADMIN_TITLE":"Администратор"
+  "ADMIN_TITLE":"Администратор",
+  "DELETE_BUTTON": "Удалить"
 }

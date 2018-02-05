@@ -91,8 +91,8 @@ export class WelcomePage {
     this.user.login(this.account).subscribe((res) => {
       console.log('WelcomePage:');
       console.log(res);
+      console.log(this.account);
       if (res.active) {
-        //this.storage.set('connectionStatus',true);
         this.menuCtrl.enable(true, 'menu1');
         this.navCtrl.push(MainPage);
         let  toast = this.toastCtrl.create({
@@ -105,8 +105,13 @@ export class WelcomePage {
         });
         toast.present(); 
         this.account.isLogedIn= true;
+        this.storage.set('connectionStatus', true).then(res=>{
+          this.myapp.setBackgroundColor();
+        })
         this.myapp.user = res;
-        
+        if (res.role_name =='root' && this.myapp.pages[this.myapp.pages.length-1].title!='Администратор'){
+          this.myapp.pages.push({ title: 'Администратор', component: 'AdminPage' , icon:'ios-construct-outline'});
+        }
       } else if (res.active == undefined){  
         let  toast = this.toastCtrl.create({
           message: 'Ошибка авторизации: '+res,

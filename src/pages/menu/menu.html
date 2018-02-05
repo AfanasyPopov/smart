@@ -1,5 +1,5 @@
 <ion-split-pane when="lg">
-  <ion-menu [content]="content" #menu1 id="menu1" width="150px">
+  <ion-menu [content]="content" #menu1 id="menu1" width="150px" (click)="fabClose(fab1)">
     <ion-header >
       <ion-toolbar>
         <ion-title >{{menuTitle}}</ion-title>
@@ -7,17 +7,19 @@
     </ion-header>
   <ion-content>
       <ion-list>
-          <ion-item>
-              <h2>{{user['last_name']+' '+user['username']}}</h2>
+          <button menuClose ion-item (click)="openPage(authPage[0])"  > 
+              <ion-thumbnail item-start >
+                  <img id="userImage" src="../assets/img/ian-avatar.png">
+                </ion-thumbnail>
+                <h2>{{user['last_name']+' '+user['username']}}</h2>
               <p>{{user['email']}}</p>
-              <ion-thumbnail item-end>
-                <img id="userImage" src="../www/assets/img/ian-avatar.png">
-              </ion-thumbnail>
-            </ion-item>
-                  <button block menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" icon-left detail-push>
-            <ion-icon [name]="p.icon" color="primary" ></ion-icon>
-            {{p.title}}
-        </button>
+            </button>
+        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" >
+            <ion-icon [name]="p.icon" item-start color="primary"></ion-icon>
+            <ion-label>{{p.title}}</ion-label>
+            <ion-note item-end>info</ion-note>
+            <ion-note item-end>info</ion-note>
+          </button>
       </ion-list>
     </ion-content>
   </ion-menu>

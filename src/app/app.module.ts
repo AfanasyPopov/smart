@@ -8,13 +8,15 @@ import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
+import { PipeTransform } from '@angular/core';
 import { Items } from '../mocks/providers/items';
 import { Settings } from '../providers/providers';
 import { User } from '../providers/providers';
 import { Api } from '../providers/providers';
 import { MyApp } from './app.component';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+import { PipesModule } from '../pipes/pipes.module';
+
 const config: SocketIoConfig = { url: 'http://185.63.32.215:8080', options: {} };
 
 // The translate loader needs to know where to load i18n files
@@ -40,7 +42,7 @@ export function provideSettings(storage: Storage) {
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,7 @@ export function provideSettings(storage: Storage) {
     }),
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

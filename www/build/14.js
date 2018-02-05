@@ -1,14 +1,15 @@
 webpackJsonp([14],{
 
-/***/ 375:
+/***/ 377:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminPageModule", function() { return AdminPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ContentPageModule", function() { return ContentPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__admin__ = __webpack_require__(391);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__content__ = __webpack_require__(395);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,34 +19,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AdminPageModule = (function () {
-    function AdminPageModule() {
+
+var ContentPageModule = (function () {
+    function ContentPageModule() {
     }
-    AdminPageModule = __decorate([
+    ContentPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__admin__["a" /* AdminPage */],
+                __WEBPACK_IMPORTED_MODULE_3__content__["a" /* ContentPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__admin__["a" /* AdminPage */]),
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__content__["a" /* ContentPage */]),
+                __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ],
+            exports: [
+                __WEBPACK_IMPORTED_MODULE_3__content__["a" /* ContentPage */]
+            ]
         })
-    ], AdminPageModule);
-    return AdminPageModule;
+    ], ContentPageModule);
+    return ContentPageModule;
 }());
 
-//# sourceMappingURL=admin.module.js.map
+//# sourceMappingURL=content.module.js.map
 
 /***/ }),
 
-/***/ 391:
+/***/ 395:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContentPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(125);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57,37 +62,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-/**
- * Generated class for the AdminPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var AdminPage = (function () {
-    function AdminPage(translateService, navCtrl, navParams) {
-        var _this = this;
-        this.translateService = translateService;
+var ContentPage = (function () {
+    function ContentPage(navCtrl) {
         this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.adminTitle = "";
-        translateService.get(['ADMIN_TITLE']).subscribe(function (values) {
-            _this.adminTitle = values['ADMIN_TITLE'];
-        });
     }
-    AdminPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad AdminPage');
-    };
-    AdminPage = __decorate([
+    ContentPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-admin',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/admin/admin.html"*/'<!--\n  Generated template for the AdminPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{adminTitle}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/afpopov/smart/src/pages/admin/admin.html"*/,
+            selector: 'page-content',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/content/content.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Content\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <p>\n    This is a perfect starting point for a page with primarily text content. The body is padded nicely and ready for prose.\n  </p>\n</ion-content>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/content/content.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
-    ], AdminPage);
-    return AdminPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]])
+    ], ContentPage);
+    return ContentPage;
 }());
 
-//# sourceMappingURL=admin.js.map
+//# sourceMappingURL=content.js.map
 
 /***/ })
 

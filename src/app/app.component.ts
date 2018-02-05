@@ -18,21 +18,22 @@ export class MyApp {
   user: any =[];
   rootPage = FirstRunPage;
   @ViewChild(Nav) nav: Nav;
+
   pages: any[] = [
     { title: 'Поиск', component: 'SearchPage', icon:'ios-search-outline' },
     // { title: 'Tutorial', component: 'TutorialPage', icon:'albums' },
     // { title: 'Welcome', component: 'WelcomePage' , icon:'albums'},
     { title: 'Проекты', component: 'TabsPage' , icon:'ios-albums-outline'},
-   // { title: 'Cards', component: 'CardsPage' , icon:'albums'},
+   { title: 'Cards', component: 'CardsPage' , icon:'albums'},
    // { title: 'Content', component: 'ContentPage', icon:'albums' },
-    { title: 'Авторизация', component: 'LoginPage' , icon:'ios-contact-outline'},
+  //{ title: 'Авторизация', component: 'LoginPage' , icon:'ios-contact-outline'},
    //{ title: 'Signup', component: 'SignupPage' },
     //{ title: 'Master Detail', component: 'ListMasterPage' },
     //{ title: 'Menu', component: 'MenuPage' },
     { title: 'Настройки', component: 'SettingsPage', icon:'ios-settings-outline' },
-    { title: 'Администратор', component: 'AdminPage' , icon:'ios-construct-outline'},
-
+    //{ title: 'Администратор', component: 'AdminPage' , icon:'ios-construct-outline'},
   ];
+  authPage: any[] = [{ title: 'Авторизация', component: 'LoginPage' , icon:'ios-contact-outline'}];
   menuTitle="";
 
   constructor(public translateService: TranslateService ,
@@ -130,7 +131,7 @@ export class MyApp {
     this.menuCtrl.enable(false);
     console.log ("App.Comp.user:")
     console.log (this.user)
-
+    this.storage.get('')
   }
   ionViewWillLeave() {
     console.log("Looks like I'm about to leave :(");
@@ -141,7 +142,13 @@ export class MyApp {
         thisapp.setBackgroundColor();
       })
     });
+    
     thisapp.socket.on('disconnected', function(msg){
+      thisapp.storage.set('connectionStatus', false).then(res=>{
+        thisapp.setBackgroundColor();
+      })
+    });
+    thisapp.socket.on('reconnect', function(msg){
       thisapp.storage.set('connectionStatus', false).then(res=>{
         thisapp.setBackgroundColor();
       })

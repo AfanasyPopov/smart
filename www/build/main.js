@@ -1,109 +1,11 @@
-webpackJsonp([15],{
+webpackJsonp([16],{
 
-/***/ 140:
-/***/ (function(module, exports) {
-
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncatched exception popping up in devtools
-	return Promise.resolve().then(function() {
-		throw new Error("Cannot find module '" + req + "'.");
-	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 140;
-
-/***/ }),
-
-/***/ 191:
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"../pages/admin/admin.module": [
-		375,
-		14
-	],
-	"../pages/cards/cards.module": [
-		376,
-		13
-	],
-	"../pages/content/content.module": [
-		377,
-		12
-	],
-	"../pages/item-create/item-create.module": [
-		378,
-		11
-	],
-	"../pages/item-detail/item-detail.module": [
-		379,
-		10
-	],
-	"../pages/list-master/list-master.module": [
-		381,
-		9
-	],
-	"../pages/login/login.module": [
-		380,
-		1
-	],
-	"../pages/menu/menu.module": [
-		382,
-		8
-	],
-	"../pages/search/search.module": [
-		383,
-		7
-	],
-	"../pages/settings/settings.module": [
-		384,
-		6
-	],
-	"../pages/signup/signup.module": [
-		385,
-		5
-	],
-	"../pages/tabs/tabs.module": [
-		386,
-		4
-	],
-	"../pages/tutorial/tutorial.module": [
-		387,
-		3
-	],
-	"../pages/users-list/users-list.module": [
-		388,
-		2
-	],
-	"../pages/welcome/welcome.module": [
-		389,
-		0
-	]
-};
-function webpackAsyncContext(req) {
-	var ids = map[req];
-	if(!ids)
-		return Promise.reject(new Error("Cannot find module '" + req + "'."));
-	return __webpack_require__.e(ids[1]).then(function() {
-		return __webpack_require__(ids[0]);
-	});
-};
-webpackAsyncContext.keys = function webpackAsyncContextKeys() {
-	return Object.keys(map);
-};
-webpackAsyncContext.id = 191;
-module.exports = webpackAsyncContext;
-
-/***/ }),
-
-/***/ 192:
+/***/ 126:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Api; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(142);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -206,6 +108,108 @@ var Api = (function () {
 }());
 
 //# sourceMappingURL=api.js.map
+
+/***/ }),
+
+/***/ 141:
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 141;
+
+/***/ }),
+
+/***/ 192:
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"../pages/admin/admin.module": [
+		375,
+		2
+	],
+	"../pages/cards/cards.module": [
+		376,
+		15
+	],
+	"../pages/content/content.module": [
+		377,
+		14
+	],
+	"../pages/item-create/item-create.module": [
+		378,
+		13
+	],
+	"../pages/item-detail/item-detail.module": [
+		379,
+		12
+	],
+	"../pages/list-master/list-master.module": [
+		380,
+		11
+	],
+	"../pages/login/login.module": [
+		381,
+		1
+	],
+	"../pages/menu/menu.module": [
+		382,
+		10
+	],
+	"../pages/search/search.module": [
+		383,
+		9
+	],
+	"../pages/settings/settings.module": [
+		384,
+		8
+	],
+	"../pages/signup/signup.module": [
+		385,
+		7
+	],
+	"../pages/tabs/tabs.module": [
+		386,
+		6
+	],
+	"../pages/tutorial/tutorial.module": [
+		387,
+		5
+	],
+	"../pages/user-item/user-item.module": [
+		389,
+		4
+	],
+	"../pages/users-list/users-list.module": [
+		388,
+		3
+	],
+	"../pages/welcome/welcome.module": [
+		390,
+		0
+	]
+};
+function webpackAsyncContext(req) {
+	var ids = map[req];
+	if(!ids)
+		return Promise.reject(new Error("Cannot find module '" + req + "'."));
+	return __webpack_require__.e(ids[1]).then(function() {
+		return __webpack_require__(ids[0]);
+	});
+};
+webpackAsyncContext.keys = function webpackAsyncContextKeys() {
+	return Object.keys(map);
+};
+webpackAsyncContext.id = 192;
+module.exports = webpackAsyncContext;
 
 /***/ }),
 
@@ -341,8 +345,8 @@ var Tab3Root = 'SettingsPage';
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__ = __webpack_require__(143);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_pages__ = __webpack_require__(247);
@@ -391,15 +395,15 @@ var MyApp = (function () {
             // { title: 'Tutorial', component: 'TutorialPage', icon:'albums' },
             // { title: 'Welcome', component: 'WelcomePage' , icon:'albums'},
             { title: 'Проекты', component: 'TabsPage', icon: 'ios-albums-outline' },
-            // { title: 'Cards', component: 'CardsPage' , icon:'albums'},
+            { title: 'Cards', component: 'CardsPage', icon: 'albums' },
             // { title: 'Content', component: 'ContentPage', icon:'albums' },
-            { title: 'Авторизация', component: 'LoginPage', icon: 'ios-contact-outline' },
+            //{ title: 'Авторизация', component: 'LoginPage' , icon:'ios-contact-outline'},
             //{ title: 'Signup', component: 'SignupPage' },
             //{ title: 'Master Detail', component: 'ListMasterPage' },
             //{ title: 'Menu', component: 'MenuPage' },
             { title: 'Настройки', component: 'SettingsPage', icon: 'ios-settings-outline' },
-            { title: 'Администратор', component: 'AdminPage', icon: 'ios-construct-outline' },
         ];
+        this.authPage = [{ title: 'Авторизация', component: 'LoginPage', icon: 'ios-contact-outline' }];
         this.menuTitle = "";
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
@@ -483,6 +487,7 @@ var MyApp = (function () {
         this.menuCtrl.enable(false);
         console.log("App.Comp.user:");
         console.log(this.user);
+        this.storage.get('');
     };
     MyApp.prototype.ionViewWillLeave = function () {
         console.log("Looks like I'm about to leave :(");
@@ -494,6 +499,11 @@ var MyApp = (function () {
             });
         });
         thisapp.socket.on('disconnected', function (msg) {
+            thisapp.storage.set('connectionStatus', false).then(function (res) {
+                thisapp.setBackgroundColor();
+            });
+        });
+        thisapp.socket.on('reconnect', function (msg) {
             thisapp.storage.set('connectionStatus', false).then(function (res) {
                 thisapp.setBackgroundColor();
             });
@@ -542,7 +552,7 @@ var MyApp = (function () {
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-menu',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/menu/menu.html"*/'<ion-split-pane when="lg">\n  <ion-menu [content]="content" #menu1 id="menu1" width="150px">\n    <ion-header >\n      <ion-toolbar>\n        <ion-title >{{menuTitle}}</ion-title>\n      </ion-toolbar>\n    </ion-header>\n  <ion-content>\n      <ion-list>\n          <ion-item>\n              <h2>{{user[\'last_name\']+\' \'+user[\'username\']}}</h2>\n              <p>{{user[\'email\']}}</p>\n              <ion-thumbnail item-end>\n                <img id="userImage" src="../www/assets/img/ian-avatar.png">\n              </ion-thumbnail>\n            </ion-item>\n                  <button block menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" icon-left detail-push>\n            <ion-icon [name]="p.icon" color="primary" ></ion-icon>\n            {{p.title}}\n        </button>\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  <ion-fab right bottom style="bottom: 10%;opacity: 0.7;" #fab1>\n    <button ion-fab color="primary" ><ion-icon name="arrow-dropleft"></ion-icon></button>\n    <ion-fab-list side="left">\n      <button ion-fab (click)="goHome()"><ion-icon name="home" color="primary" ></ion-icon></button>\n      <button ion-fab (click)="fabClose(fab1)"><ion-icon name="ios-podium-outline"></ion-icon></button>\n      <button ion-fab (click)="menuToggle(menu1)"><ion-icon name="ios-menu-outline"></ion-icon></button>\n      <button ion-fab (click)="doReload()"><ion-icon name="ios-refresh-outline"></ion-icon></button>\n    </ion-fab-list>\n    <ion-fab-list side="top">\n      <button ion-fab (click)="openSocial(\'facebook\', fab2)"><ion-icon name="logo-facebook"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'twitter\', fab2)"><ion-icon name="logo-twitter"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'vimeo\', fab2)"><ion-icon name="logo-vimeo"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'googleplus\', fab2)"><ion-icon name="logo-googleplus"></ion-icon></button>\n    </ion-fab-list>\n  </ion-fab>\n\n  <ion-nav #content main [root]="rootPage" (click)="fabClose(fab1)" swipeBackEnabled="true"></ion-nav>\n</ion-split-pane>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/menu/menu.html"*/,
+            selector: 'page-menu',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/menu/menu.html"*/'<ion-split-pane when="lg">\n  <ion-menu [content]="content" #menu1 id="menu1" width="150px" (click)="fabClose(fab1)">\n    <ion-header >\n      <ion-toolbar>\n        <ion-title >{{menuTitle}}</ion-title>\n      </ion-toolbar>\n    </ion-header>\n  <ion-content>\n      <ion-list>\n          <button menuClose ion-item (click)="openPage(authPage[0])"  > \n              <ion-thumbnail item-start >\n                  <img id="userImage" src="../assets/img/ian-avatar.png">\n                </ion-thumbnail>\n                <h2>{{user[\'last_name\']+\' \'+user[\'username\']}}</h2>\n              <p>{{user[\'email\']}}</p>\n            </button>\n        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" >\n            <ion-icon [name]="p.icon" item-start color="primary"></ion-icon>\n            <ion-label>{{p.title}}</ion-label>\n            <ion-note item-end>info</ion-note>\n            <ion-note item-end>info</ion-note>\n          </button>\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  <ion-fab right bottom style="bottom: 10%;opacity: 0.7;" #fab1>\n    <button ion-fab color="primary" ><ion-icon name="arrow-dropleft"></ion-icon></button>\n    <ion-fab-list side="left">\n      <button ion-fab (click)="goHome()"><ion-icon name="home" color="primary" ></ion-icon></button>\n      <button ion-fab (click)="fabClose(fab1)"><ion-icon name="ios-podium-outline"></ion-icon></button>\n      <button ion-fab (click)="menuToggle(menu1)"><ion-icon name="ios-menu-outline"></ion-icon></button>\n      <button ion-fab (click)="doReload()"><ion-icon name="ios-refresh-outline"></ion-icon></button>\n    </ion-fab-list>\n    <ion-fab-list side="top">\n      <button ion-fab (click)="openSocial(\'facebook\', fab2)"><ion-icon name="logo-facebook"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'twitter\', fab2)"><ion-icon name="logo-twitter"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'vimeo\', fab2)"><ion-icon name="logo-vimeo"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'googleplus\', fab2)"><ion-icon name="logo-googleplus"></ion-icon></button>\n    </ion-fab-list>\n  </ion-fab>\n\n  <ion-nav #content main [root]="rootPage" (click)="fabClose(fab1)" swipeBackEnabled="true"></ion-nav>\n</ion-split-pane>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/menu/menu.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */],
             __WEBPACK_IMPORTED_MODULE_9_ng_socket_io__["Socket"], __WEBPACK_IMPORTED_MODULE_8__ionic_storage__["b" /* Storage */],
@@ -583,12 +593,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* unused harmony export createTranslateLoader */
 /* unused harmony export provideSettings */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(142);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(143);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ngx_translate_core__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ngx_translate_http_loader__ = __webpack_require__(308);
@@ -646,7 +656,7 @@ var AppModule = (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* MyApp */]
+                __WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* MyApp */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
@@ -665,8 +675,8 @@ var AppModule = (function () {
                         { loadChildren: '../pages/content/content.module#ContentPageModule', name: 'ContentPage', segment: 'content', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/item-create/item-create.module#ItemCreatePageModule', name: 'ItemCreatePage', segment: 'item-create', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/item-detail/item-detail.module#ItemDetailPageModule', name: 'ItemDetailPage', segment: 'item-detail', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/list-master/list-master.module#ListMasterPageModule', name: 'ListMasterPage', segment: 'list-master', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
@@ -674,11 +684,12 @@ var AppModule = (function () {
                         { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tutorial/tutorial.module#TutorialPageModule', name: 'TutorialPage', segment: 'tutorial', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/users-list/users-list.module#UsersListPageModule', name: 'UsersListPage', segment: 'users-list', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/user-item/user-item.module#UserItemPageModule', name: 'UserItemPage', segment: 'user-item', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["a" /* IonicStorageModule */].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_13_ng_socket_io__["SocketIoModule"].forRoot(config)
+                __WEBPACK_IMPORTED_MODULE_13_ng_socket_io__["SocketIoModule"].forRoot(config),
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_9_ionic_angular__["b" /* IonicApp */]],
             entryComponents: [
@@ -830,7 +841,7 @@ var Settings = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_toPromise__ = __webpack_require__(335);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_toPromise__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_api__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_api__ = __webpack_require__(126);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -932,7 +943,7 @@ var User = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mocks_providers_items__ = __webpack_require__(193);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__settings_settings__ = __webpack_require__(333);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_user__ = __webpack_require__(334);
