@@ -21,15 +21,13 @@ export class AdminPage {
   adminTitle="";
   searchtxtUser ="";
   delButtonTitle ="";
-  adminUserCardItems=[{name:"Пользователи",count_active:5,count:5, list:[] }]
-
-   adminDirCardItems =[{name:"Справочникки",count_active:5,count:5, list:[
+  adminUserCardItems=[{name:"Пользователи",count_active:5,count:5, list:[], dir:[] }]
+  adminDirCardItems =[{name:"Справочникки",count_active:5,count:5, list:[
       {name:'Справочник 1'},
       {name:'Справочник 2'},
       {name:'Справочник 3'},
       {name:'Справочник 4'}
-    ] }
-  ];
+    ], dir:[] }];
   constructor(
     public api: Api, 
     public translateService: TranslateService,
@@ -42,11 +40,11 @@ export class AdminPage {
       this.delButtonTitle = values['DELETE_BUTTON'];
     });
     this.storage.get('account').then((val) => {
-      this.getUserList (val).subscribe (res=>{
-        this.adminUserCardItems[0].list=res[0].users;
+      this.getUserList(val).subscribe (res=>{
+        this.adminUserCardItems[0].list=res.users;
+        this.adminUserCardItems[0].dir=res.dir;
         console.log ("adminPage.adminUserCardItems:");
         console.log (this.adminUserCardItems);
-  
       }) ;
   });
 }
@@ -67,7 +65,8 @@ ionViewDidLoad() {
  }
  openItem(item: any) {
   this.navCtrl.push('UserItemPage', {
-    item: item
+    item: item, 
+    dir: this.adminUserCardItems[0].dir
   });
 }
   deleteChip(chip: Element) {

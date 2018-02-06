@@ -185,11 +185,11 @@ var map = {
 		5
 	],
 	"../pages/user-item/user-item.module": [
-		389,
+		388,
 		4
 	],
 	"../pages/users-list/users-list.module": [
-		388,
+		389,
 		3
 	],
 	"../pages/welcome/welcome.module": [
@@ -683,8 +683,8 @@ var AppModule = (function () {
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tutorial/tutorial.module#TutorialPageModule', name: 'TutorialPage', segment: 'tutorial', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/users-list/users-list.module#UsersListPageModule', name: 'UsersListPage', segment: 'users-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/user-item/user-item.module#UserItemPageModule', name: 'UserItemPage', segment: 'user-item', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/users-list/users-list.module#UsersListPageModule', name: 'UsersListPage', segment: 'users-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'WelcomePage', segment: 'welcome', priority: 'low', defaultHistory: [] }
                     ]
                 }),

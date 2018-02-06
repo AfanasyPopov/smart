@@ -13,6 +13,70 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <ion-card>
+    <ion-card-header no-padding>
+      <ion-row style="align-items: center;">
+      <ion-col>
+        {{item.last_name+' '+item.username}}
+      </ion-col>
+      <ion-col>
+          <ion-item>
+              <ion-note item-end>Активный</ion-note><ion-toggle [(ngModel)]="item.active" checked="{{item.active}}"></ion-toggle>
+          </ion-item>
+      </ion-col>      
+      </ion-row>
+    </ion-card-header>
+  
+    <ion-list> 
+      <ion-item>
+        <button>      
+              <ion-thumbnail small item-start >
+          <img id="userImage" src="../assets/img/ian-avatar.png">
+        </ion-thumbnail>
+        </button>
+      </ion-item>
+      <ion-item disabled="true">
+          <ion-label stacked color="primary" >Имя</ion-label>
+            <ion-input disabled="{{!item.active}}"  type="text" [(ngModel)]="item.username"></ion-input>
+      </ion-item>  
+      <ion-item>
+          <ion-label stacked color="primary" >Фамилия:</ion-label>
+          <ion-input  disabled="{{!item.active}}" type="text" [(ngModel)]="item.last_name"></ion-input>
+    </ion-item>  
+    <ion-item>
+        <ion-label stacked color="primary" >e-mail:</ion-label>
+        <ion-input  disabled="{{!item.active}}" type="email" [(ngModel)]="item.email"></ion-input>
+  </ion-item>  
+  <ion-item>
+      <ion-label stacked color="primary" >Пароль:</ion-label>
+      <ion-input disabled="{{!item.active}}"  type="password" [(ngModel)]="item.user_pass"></ion-input>
+</ion-item>  
+<button ion-item>
+        <ion-icon name="medical" item-start></ion-icon>
+        Hospital
+      </button>
+  
+      <button ion-item>
+        <ion-icon name="cafe" item-start></ion-icon>
+        Cafe
+      </button>
+  
+      <button ion-item>
+        <ion-icon name="paw" item-start></ion-icon>
+        Dog Park
+      </button>
+  
+      <button ion-item>
+        <ion-icon name="beer" item-start></ion-icon>
+        Pub
+      </button>
+  
+      <button ion-item>
+        <ion-icon name="planet" item-start></ion-icon>
+        Space
+      </button>
+  
+    </ion-list>
+  </ion-card>
 </ion-content>
