@@ -52,5 +52,6 @@
   "MENU_TITLE": "Smart DAS",
   "USERS_LIST_TITLE":"Пользователи",
   "ADMIN_TITLE":"Администратор",
-  "DELETE_BUTTON": "Удалить"
+  "DELETE_BUTTON": "Удалить",
+  "BACK_BUTTON_TEXT": "Назад",
 }

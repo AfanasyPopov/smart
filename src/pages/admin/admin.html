@@ -14,21 +14,22 @@
 
 
 <ion-content >
-    <ion-card *ngFor="let item of adminUserCardItems">
-        <ion-card-header no-padding >
+<!-- <ion-card>
+        <ion-card-header >
               <ion-row>
-                  <ion-col><h2>{{item.name}}</h2></ion-col> 
+                  <ion-col><h2>{{adminUserCardItems.name}}</h2></ion-col> 
               </ion-row> 
         </ion-card-header>  
-
-        <ion-list height="100px">
-          <ion-item *ngFor="let item of item.list | filter : query"    >
-                  <ion-icon item-start name="person" color="primary" disabled="true"  (click)='openItem(item)'></ion-icon>
-                  <ion-label (click)='openItem(item)'><h5>{{item.last_name+' '+item.username}}</h5></ion-label>
-                  <ion-label small><p>{{item.organization}}</p></ion-label>
-                  <ion-label small><p>{{item.role_name}}</p></ion-label>
-                  <ion-toggle checked="{{item.active}}" item-end></ion-toggle>
-          </ion-item>
+      -->
+        <ion-list >
+            <ion-item-group>
+                <ion-item-divider color="light">{{adminUserCardItems.name}}</ion-item-divider>
+                <button ion-item *ngFor="let item of adminUserCardItems.list | filter : query"  (click)='openItem(item)' >
+                        <ion-label><h5>{{item.last_name+' '+item.username}}</h5></ion-label>
+                        <ion-label><p>{{item.role_in_project}}</p></ion-label>
+                        <ion-toggle item-end checked="{{item.active}}"></ion-toggle>
+                </button>
+          </ion-item-group>
         </ion-list>  
       <ion-grid no-padding>
         <ion-row>
@@ -56,58 +57,5 @@
             </ion-col> 
          </ion-row>
       </ion-grid>
-    </ion-card>
-
-
-    <ion-card *ngFor="let item of adminDirCardItems">
-        <ion-card-header no-padding>
-              <ion-row>
-                  <ion-col><h2>{{item.name}}</h2></ion-col> 
-              </ion-row> 
-        </ion-card-header>   
-        <ion-list max-height="100" no-padding>
-          <ion-item *ngFor="let item of item.list | filter : query">
-              <ion-icon item-start name="person-add" color="primary" disabled="true"  (click)='openItem(item)'></ion-icon>
-              <button item-start>
-                <ion-grid no-padding left-align>
-                  <ion-row responsive-sm>
-                    <ion-col>
-                        <h5>{{item.name}}</h5>
-                    </ion-col>
-                  </ion-row>
-                  <ion-row >
-                    <ion-col >
-                        <font style="color:#aaaaaa">{{item.org}}</font>
-                    </ion-col>
-                  </ion-row>
-                </ion-grid> 
-              </button>  
-              <ion-toggle checked="{{item.status}}" item-end></ion-toggle>
-       
-              </ion-item>
-        </ion-list>  
-        <ion-note small>
-            <ion-searchbar small [(ngModel)]="query" placeholder="поиск"></ion-searchbar>
-          </ion-note>
-
-        <ion-row>
-          <ion-col>
-            <button ion-button color="primary" clear small icon-start>
-                <ion-icon name='thumbs-up'></ion-icon>
-                12 Likes
-              </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button color="primary" clear small icon-start>
-                <ion-icon name='text'></ion-icon>
-                4 Comments
-              </button>
-          </ion-col>
-          <ion-col center text-center>
-            <ion-note>
-              11h ago
-            </ion-note>
-          </ion-col>
-        </ion-row>
-    </ion-card>
+ <!--  </ion-card>-->
 </ion-content>

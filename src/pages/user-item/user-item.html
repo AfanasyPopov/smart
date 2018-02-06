@@ -14,7 +14,7 @@
 
 
 <ion-content>
-  <ion-card>
+ <!-- <ion-card>
     <ion-card-header no-padding>
       <ion-row style="align-items: center;">
       <ion-col>
@@ -27,12 +27,25 @@
       </ion-col>      
       </ion-row>
     </ion-card-header>
-  
-    <ion-list> 
+  -->
+    <ion-list  > 
+        <ion-item-group no-padding>
+            <ion-item-divider >
+                <ion-row style="align-items: center;">
+                    <ion-col>
+                      {{item.last_name+' '+item.username}}
+                    </ion-col>
+                    <ion-col>
+                        <ion-item style="background-color: transparent;">
+                            <ion-note item-end small>Активный</ion-note><ion-toggle [(ngModel)]="item.active" checked="{{item.active}}"></ion-toggle>
+                        </ion-item>
+                    </ion-col>      
+                </ion-row>              
+            </ion-item-divider>
       <ion-item>
         <button>      
-              <ion-thumbnail small item-start >
-          <img id="userImage" src="../assets/img/ian-avatar.png">
+              <ion-thumbnail item-start >
+          <img id="userImage" src="http://185.63.32.215:3000/Codiad/workspace/smart/www/assets/img/ian-avatar.png">
         </ion-thumbnail>
         </button>
       </ion-item>
@@ -43,40 +56,49 @@
       <ion-item>
           <ion-label stacked color="primary" >Фамилия:</ion-label>
           <ion-input  disabled="{{!item.active}}" type="text" [(ngModel)]="item.last_name"></ion-input>
-    </ion-item>  
-    <ion-item>
-        <ion-label stacked color="primary" >e-mail:</ion-label>
-        <ion-input  disabled="{{!item.active}}" type="email" [(ngModel)]="item.email"></ion-input>
-  </ion-item>  
-  <ion-item>
-      <ion-label stacked color="primary" >Пароль:</ion-label>
-      <ion-input disabled="{{!item.active}}"  type="password" [(ngModel)]="item.user_pass"></ion-input>
-</ion-item>  
-<button ion-item>
-        <ion-icon name="medical" item-start></ion-icon>
-        Hospital
-      </button>
-  
-      <button ion-item>
-        <ion-icon name="cafe" item-start></ion-icon>
-        Cafe
-      </button>
-  
-      <button ion-item>
-        <ion-icon name="paw" item-start></ion-icon>
-        Dog Park
-      </button>
-  
-      <button ion-item>
-        <ion-icon name="beer" item-start></ion-icon>
-        Pub
-      </button>
-  
-      <button ion-item>
-        <ion-icon name="planet" item-start></ion-icon>
-        Space
-      </button>
-  
+      </ion-item>  
+      <ion-item>
+          <ion-label stacked color="primary" >e-mail:</ion-label>
+          <ion-input  disabled="{{!item.active}}" type="email" [(ngModel)]="item.email"></ion-input>
+      </ion-item>  
+      <ion-item>
+          <ion-label stacked color="primary" >Пароль:</ion-label>
+          <ion-input disabled="{{!item.active}}"  type="password" style="font-size:10px" [(ngModel)]="item.user_pass"></ion-input>
+      </ion-item>  
+      <ion-item>
+          <ion-label stacked color="primary" >Организация:</ion-label>
+          <ion-input  disabled="{{!item.active}}" type="text" [(ngModel)]="item.organization"></ion-input>
+      </ion-item>  
+      <ion-item>
+          <ion-label stacked color="primary"  >Описание краткое:</ion-label>
+          <ion-input  disabled="{{!item.active}}" type="text-aria" [(ngModel)]="item.description"></ion-input>
+      </ion-item>  
+      <ion-item>
+          <ion-label stacked color="primary">Роль в проекте:</ion-label>
+          <ion-select disabled="{{!item.active}}" [(ngModel)]="item.role_in_project" interface="popover" >
+            <ion-option *ngFor="let option of dir.role_in_project" value="{{option.value}}">{{option.label}}</ion-option>
+          </ion-select>
+      </ion-item> 
+      <ion-item>
+          <ion-label stacked color="primary">Статус в проекте:</ion-label>
+          <ion-select disabled="{{!item.active}}" [(ngModel)]="item.status" interface="popover" >
+            <ion-option *ngFor="let option of dir.status" value="{{option.value}}">{{option.label}}</ion-option>
+          </ion-select>
+      </ion-item> 
+      <ion-item>
+          <ion-label stacked color="primary" >Флаг-контрагент:</ion-label>
+          <ion-toggle disabled="{{!item.active}}"  [(ngModel)]="item.contragent_flag"></ion-toggle>
+      </ion-item>  
+      <ion-item>
+          <ion-label stacked color="primary" >Флаг-группа:</ion-label>
+          <ion-toggle  disabled="{{!item.active}}" [(ngModel)]="item.group_flag"></ion-toggle>
+      </ion-item>  
+      <ion-item>
+          <ion-label stacked color="primary" >Флаг-пользователь:</ion-label>
+          <ion-toggle  disabled="{{!item.active}}" [(ngModel)]="item.user_flag"></ion-toggle>
+      </ion-item>  
+      </ion-item-group>
+      <button ion-button block [disabled]="!item.active">Принять</button>
     </ion-list>
-  </ion-card>
+ <!-- </ion-card>-->
 </ion-content>

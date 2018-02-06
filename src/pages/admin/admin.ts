@@ -21,13 +21,8 @@ export class AdminPage {
   adminTitle="";
   searchtxtUser ="";
   delButtonTitle ="";
-  adminUserCardItems=[{name:"Пользователи",count_active:5,count:5, list:[], dir:[] }]
-  adminDirCardItems =[{name:"Справочникки",count_active:5,count:5, list:[
-      {name:'Справочник 1'},
-      {name:'Справочник 2'},
-      {name:'Справочник 3'},
-      {name:'Справочник 4'}
-    ], dir:[] }];
+  adminUserCardItems={name:"Пользователи",count_active:5,count:5, list:[], dir:[] };
+  adminDirCardItems =[{name:"Справочникки",count_active:5,count:5, list:[], dir:[] }];
   constructor(
     public api: Api, 
     public translateService: TranslateService,
@@ -41,8 +36,8 @@ export class AdminPage {
     });
     this.storage.get('account').then((val) => {
       this.getUserList(val).subscribe (res=>{
-        this.adminUserCardItems[0].list=res.users;
-        this.adminUserCardItems[0].dir=res.dir;
+        this.adminUserCardItems.list=res.users;
+        this.adminUserCardItems.dir=res.dir;
         console.log ("adminPage.adminUserCardItems:");
         console.log (this.adminUserCardItems);
       }) ;
@@ -53,20 +48,12 @@ ionViewDidLoad() {
     console.log('ionViewDidLoad AdminPage');
   }
   getUserList (accountInfo: any):any  {
-    return this.api.postData('getUserList', accountInfo)/*.subscribe (res=>{
-      if (res) {
-        console.log ("adminPage.getUserList.res:");
-        console.log (res);
-        return res;
-      } else {
-      }
- 
-     })*/
+    return this.api.postData('getUserList', accountInfo)
  }
  openItem(item: any) {
   this.navCtrl.push('UserItemPage', {
     item: item, 
-    dir: this.adminUserCardItems[0].dir
+    dir: this.adminUserCardItems.dir
   });
 }
   deleteChip(chip: Element) {
