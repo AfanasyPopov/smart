@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Storage } from '@ionic/storage';
+import { ToastController } from 'ionic-angular/components/toast/toast-controller';
+import { Api } from '../../providers/api/api';
 /**
  * Generated class for the UserItemPage page.
  *
@@ -18,17 +21,43 @@ item: any[];
 dir: any[];
 UserPageItemList: any[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    private camera: Camera,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public storage: Storage,
+    public toastCtrl: ToastController,
+    public api: Api,
+  ) {
     this.item = navParams.get('item');
     this.dir =navParams.get('dir');
+  
   }
 
+    updateUser(item: any)  {
+      this.storage.get('account').then(accountInfo => {
+        accountInfo['item'] = item;
+        this.api.postData('updateUser', accountInfo).subscribe (res=>{
+          let  toast = this.toastCtrl.create({
+            message: 'Обновление данных прошло: '+res,
+            duration: 3000,
+            position: 'bottom',
+            cssClass:'success',
+            showCloseButton:true,
+            closeButtonText:'OK'
+          });
+          toast.present(); 
+          }) ;
 
+      });
+      this.navCtrl.pop();
+   }
+  
   ionViewDidLoad() {
-    this.setValuesInSelectItems(this.dir, this.item);
+   this.setValuesInSelectItems(this.dir, this.item);
   }
-  ionViewWillLeave(){
-    this.setLabelsInSelectedItems(this.dir, this.item);
+  ionViewDidLeave(){
+   this.setLabelsInSelectedItems(this.dir, this.item);
   }
   setValuesInSelectItems(dir:any, item:any) {
     Object.keys(dir).forEach(function(dir_item,i,arr){

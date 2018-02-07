@@ -4,7 +4,7 @@ import { FilterPipe} from '../../pipes/filter/filter';
 import { TranslateService } from '@ngx-translate/core';
 import { Api } from '../../providers/api/api';
 import {Storage} from '@ionic/storage';
-
+import { ApplicationRef } from '@angular/core'
 /**
  * Generated class for the AdminPage page.
  *
@@ -24,6 +24,7 @@ export class AdminPage {
   adminUserCardItems={name:"Пользователи",count_active:5,count:5, list:[], dir:[] };
   adminDirCardItems =[{name:"Справочникки",count_active:5,count:5, list:[], dir:[] }];
   constructor(
+    private applicationRef : ApplicationRef,
     public api: Api, 
     public translateService: TranslateService,
     public navCtrl: NavController,
@@ -38,10 +39,11 @@ export class AdminPage {
       this.getUserList(val).subscribe (res=>{
         this.adminUserCardItems.list=res.users;
         this.adminUserCardItems.dir=res.dir;
+        this.applicationRef.tick();  
         console.log ("adminPage.adminUserCardItems:");
         console.log (this.adminUserCardItems);
       }) ;
-  });
+    });
 }
 
 ionViewDidLoad() {
