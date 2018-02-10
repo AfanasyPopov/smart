@@ -27,7 +27,7 @@
                 <button ion-item *ngFor="let item of adminUserCardItems.list | filter : query"  (click)='openItem(item)' >
                         <ion-label><h5>{{item.last_name+' '+item.username}}</h5></ion-label>
                         <ion-label><p>{{item.role_in_project}}</p></ion-label>
-                        <ion-toggle item-end [checked]="item.active"></ion-toggle>
+                        <ion-toggle item-end  [(ngModel)]='item.active' (ionChange)='toggleUserActive($event, item)' ></ion-toggle>
                 </button>
           </ion-item-group>
         </ion-list>  

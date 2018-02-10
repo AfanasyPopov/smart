@@ -1,3 +1,11 @@
 page-admin {
 
+    .ion-toast.success .toast-wrapper {
+        background: green;
+        opacity: 0.90;
+    }
+    .ion-toast.error .toast-wrapper {
+        background: rgb(209, 71, 71);
+        opacity: 0.90;
+    }
 }

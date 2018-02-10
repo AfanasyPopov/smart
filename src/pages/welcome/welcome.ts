@@ -111,6 +111,10 @@ export class WelcomePage {
         this.myapp.user = res;
         if (res.role_name =='root' && this.myapp.pages[this.myapp.pages.length-1].title!='Администратор'){
           this.myapp.pages.push({ title: 'Администратор', component: 'AdminPage' , icon:'ios-construct-outline'});
+        } else { 
+          if (this.myapp.pages[this.myapp.pages.length-1].title==='Администратор') {
+            this.myapp.pages.pop();
+          }
         }
       } else if (res.active == undefined){  
         let  toast = this.toastCtrl.create({

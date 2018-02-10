@@ -460,7 +460,7 @@ if (Md5.hashStr('hello') !== '5d41402abc4b2a76b9719d911017c592') {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WelcomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular_components_toast_toast_controller__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular_components_toast_toast_controller__ = __webpack_require__(126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_providers__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ts_md5_dist_md5__ = __webpack_require__(391);
@@ -579,6 +579,11 @@ var WelcomePage = (function () {
                 _this.myapp.user = res;
                 if (res.role_name == 'root' && _this.myapp.pages[_this.myapp.pages.length - 1].title != 'Администратор') {
                     _this.myapp.pages.push({ title: 'Администратор', component: 'AdminPage', icon: 'ios-construct-outline' });
+                }
+                else {
+                    if (_this.myapp.pages[_this.myapp.pages.length - 1].title === 'Администратор') {
+                        _this.myapp.pages.pop();
+                    }
                 }
             }
             else if (res.active == undefined) {

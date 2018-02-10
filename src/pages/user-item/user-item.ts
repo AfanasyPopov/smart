@@ -20,6 +20,7 @@ export class UserItemPage {
 item: any[]; 
 dir: any[];
 UserPageItemList: any[];
+dummy_pass:any;
 
   constructor(
     private camera: Camera,
@@ -31,15 +32,15 @@ UserPageItemList: any[];
   ) {
     this.item = navParams.get('item');
     this.dir =navParams.get('dir');
-  
+    this.dummy_pass= 'xxxxxxxxxxxxxx';
   }
 
-    updateUser(item: any)  {
+  updateUser(item: any)  {
       this.storage.get('account').then(accountInfo => {
         accountInfo['item'] = item;
         this.api.postData('updateUser', accountInfo).subscribe (res=>{
           let  toast = this.toastCtrl.create({
-            message: 'Обновление данных прошло: '+res,
+            message: 'Обновление данных прошло: '+JSON.stringify(res),
             duration: 3000,
             position: 'bottom',
             cssClass:'success',
@@ -48,7 +49,6 @@ UserPageItemList: any[];
           });
           toast.present(); 
           }) ;
-
       });
       this.navCtrl.pop();
    }

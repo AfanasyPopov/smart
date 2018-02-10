@@ -30540,6 +30540,16 @@ ion-navbar.toolbar {
   opacity: 0.90;
 }
 
+page-admin .ion-toast.success .toast-wrapper {
+  background: green;
+  opacity: 0.90;
+}
+
+page-admin .ion-toast.error .toast-wrapper {
+  background: #d14747;
+  opacity: 0.90;
+}
+
 page-item-create .profile-image-wrapper {
   text-align: center;
   margin: 20px 0;

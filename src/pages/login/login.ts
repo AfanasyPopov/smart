@@ -95,19 +95,23 @@ export class LoginPage {
         this.myapp.user = res;
         if (res.role_name =='root' && this.myapp.pages[this.myapp.pages.length-1].title!='Администратор'){
           this.myapp.pages.push({ title: 'Администратор', component: 'AdminPage' , icon:'ios-construct-outline'});
+        } else { 
+          if (this.myapp.pages[this.myapp.pages.length-1].title==='Администратор') {
+            this.myapp.pages.pop();
+          }
         }
-      } else if (res.active == undefined){  
-        let  toast = this.toastCtrl.create({
-          message: 'Ошибка авторизации: '+res,
-          duration: 3000,
-          position: 'bottom',
-          cssClass:'error'
-        });
-        toast.present();  
-        this.menuCtrl.enable(false);
-        this.account.isLogedIn=false;
-
-      }
+      } else {if (res.active == undefined){  
+              let  toast = this.toastCtrl.create({
+                message: 'Ошибка авторизации: '+res,
+                duration: 3000,
+                position: 'bottom',
+                cssClass:'error'
+              });
+              toast.present();  
+              this.menuCtrl.enable(false);
+              this.account.isLogedIn=false;
+            }
+    }
     })
   }
   // Logout from Application Service 185.63.32.215:8801
