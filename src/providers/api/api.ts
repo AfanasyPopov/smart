@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams, HttpRequest, HttpEvent, HttpEventType ,HttpErrorResponse,} from '@angular/common/http';
 import { ToastController } from 'ionic-angular';
 import { Injectable } from '@angular/core';
+import { bodyparser } from '../../../node_modules/body-parser'
 /**
  * Api is a generic REST Api handler. Set your API url first.
  */
@@ -21,11 +22,13 @@ export class Api {
     headers.append('Access-Control-Allow-Headers', "X-Requested-With, Content-Type, Origin, Accept");
     headers.append('Access-Control-Allow-Credentials', 'true');*/
     console.log(headers);
-    return this.httpCli.post(this.url + '/' + endpoint, data, {
-      headers: headers,
-      params: new HttpParams().set('id', '3'),
-    })
+    return this.httpCli.post(
+      this.url + '/' + endpoint,
+       data, 
+       { headers: headers, params: new HttpParams().set('id', '3'),reportProgress: true}
+      )
   }
+
   get(endpoint: string, params?: any, reqOpts?: any) {
     if (!reqOpts) {
       reqOpts = {
@@ -45,47 +48,40 @@ export class Api {
     return this.httpCli.get(this.url + '/' + endpoint, reqOpts);
   }
   addUser(endpoint: string, data:any) {
-    this.httpCli.post(this.url + '/' + endpoint,
-    {
-      "name": "morpheus",
-      "job": "leader"
-    })
+    this.httpCli.post(this.url + '/' + endpoint, data,{reportProgress:true})
     .subscribe(
         (val) => {
-            console.log("POST call successful value returned in body", 
-                        val);
+            console.log("POST call successful value returned in body", val);
         },
         response => {
             console.log("POST call in error", response);
         },
         () => {
             console.log("The POST observable is now completed.");
-        });
+        }
+      );
   }
-  longRequest() {
+  addUserLongRequest(endpoint: string, data:any) {
 
     const request = new HttpRequest(
-        "POST", "/api/test-request", {}, 
-         {reportProgress: true});
-
-    this.httpCli.request(request)
-        .subscribe(
-            event => {
-
-                if (event.type === HttpEventType.DownloadProgress) {
-                    console.log("Download progress event", event);
-                }
-
-                if (event.type === HttpEventType.UploadProgress) {
-                    console.log("Upload progress event", event);
-                }
-
-                if (event.type === HttpEventType.Response) {
-                    console.log("response received...", event.body);
-                }
-
-            }
+        "POST", 
+        this.url + '/' + endpoint, 
+        data, 
+        {reportProgress: true}
         );
+
+   return this.httpCli.request(request)
+} 
+ delUser(endpoint: string, data:any) {
+
+  const request = new HttpRequest(
+      "POST", 
+      this.url + '/' + endpoint, 
+      data, 
+      {reportProgress: true}
+      );
+
+ return this.httpCli.request(request)
 }
 
 

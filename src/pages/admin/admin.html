@@ -23,12 +23,27 @@
       -->
         <ion-list >
             <ion-item-group>
-                <ion-item-divider color="light">{{adminUserCardItems.name}}</ion-item-divider>
-                <button ion-item *ngFor="let item of adminUserCardItems.list | filter : query"  (click)='openItem(item)' >
+                <ion-item-divider color="light">
+                  <ion-label item-start>{{adminUserCardItems.name}}</ion-label>
+                    <ion-buttons item-end>
+                        <button ion-button clear small icon-only (click)="addUser()">
+                          <ion-icon name="add"></ion-icon>
+                        </button>
+                      </ion-buttons>                  
+                </ion-item-divider>
+                <ion-item-sliding  *ngFor="let item of adminUserCardItems.list | filter : query" >
+                <button ion-item (click)='openItem(item)' >
                         <ion-label><h5>{{item.last_name+' '+item.username}}</h5></ion-label>
                         <ion-label><p>{{item.role_in_project}}</p></ion-label>
                         <ion-toggle item-end  [(ngModel)]='item.active' (ionChange)='toggleUserActive($event, item)' ></ion-toggle>
                 </button>
+                <ion-item-options>
+                    <button ion-button color="danger" (click)="delUser(item)">
+                      {{delButtonTitle}}
+                    </button>
+                  </ion-item-options>
+        
+              </ion-item-sliding>
           </ion-item-group>
         </ion-list>  
       <ion-grid no-padding>
@@ -39,7 +54,7 @@
                   </ion-note>
           </ion-col>   
           <ion-col>
-            <button ion-button color="primary" clear  icon-start small>
+            <button ion-button color="primary" clear  icon-start small (click)="addUser()">
                 <ion-icon name='person-add'></ion-icon>
                 Добавить
             </button>

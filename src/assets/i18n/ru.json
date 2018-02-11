@@ -54,4 +54,9 @@
   "ADMIN_TITLE":"Администратор",
   "DELETE_BUTTON": "Удалить",
   "BACK_BUTTON_TEXT": "Назад",
+  "ITEM_NAME_PLACEHOLDER": "Фамилия Имя",
+  "ITEM_ABOUT_PLACEHOLDER": "Описание",
+  "DONE_BUTTON":"Завершить",
+  "CANCEL_BUTTON":"Отменить"
+  
 }
