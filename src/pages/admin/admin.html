@@ -38,7 +38,7 @@
                         <ion-toggle item-end  [(ngModel)]='item.active' (ionChange)='toggleUserActive($event, item)' ></ion-toggle>
                 </button>
                 <ion-item-options>
-                    <button ion-button color="danger" (click)="delUser(item)">
+                    <button ion-button color="danger" (click)="delUserConfirmation(item)">
                       {{delButtonTitle}}
                     </button>
                   </ion-item-options>

@@ -29,7 +29,7 @@ var MenuPageModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_3__menu__["a" /* MenuPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__menu__["a" /* MenuPage */]),
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__menu__["a" /* MenuPage */]),
                 __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ],
             exports: [
@@ -76,14 +76,14 @@ var MenuPage = (function () {
         console.log('Hello MenuPage Page');
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */])
     ], MenuPage.prototype, "nav", void 0);
     MenuPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-menu',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/menu/menu.html"*/'<ion-split-pane when="lg">\n  <ion-menu [content]="content" #menu1 id="menu1" width="150px" (click)="fabClose(fab1)">\n    <ion-header >\n      <ion-toolbar>\n        <ion-title >{{menuTitle}}</ion-title>\n      </ion-toolbar>\n    </ion-header>\n  <ion-content>\n      <ion-list>\n          <button menuClose ion-item (click)="openPage(authPage[0])"> \n              <ion-thumbnail item-start >\n                  <img id="userImage" src="../assets/img/ian-avatar.png">\n                </ion-thumbnail>\n                <h2>{{user[\'last_name\']+\' \'+user[\'username\']}}</h2>\n              <p>{{user[\'email\']}}</p>\n            </button>\n        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" >\n            <ion-icon [name]="p.icon" item-start color="primary"></ion-icon>\n            <ion-label>{{p.title}}</ion-label>\n            <ion-note item-end>info</ion-note>\n            <ion-note item-end>info</ion-note>\n          </button>\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  <ion-fab  right bottom  style="bottom: 10%;opacity: 0.7;" #fab1>\n    <button ion-fab mini color="primary" ><ion-icon  name="arrow-dropleft"></ion-icon></button>\n    <ion-fab-list side="left">\n      <button ion-fab (click)="goHome()"><ion-icon name="home" color="primary" ></ion-icon></button>\n      <button ion-fab (click)="fabClose(fab1)"><ion-icon name="ios-podium-outline"></ion-icon></button>\n      <button ion-fab (click)="menuToggle(menu1)"><ion-icon name="ios-menu-outline"></ion-icon></button>\n      <button ion-fab (click)="doReload()"><ion-icon name="ios-refresh-outline"></ion-icon></button>\n    </ion-fab-list>\n    <ion-fab-list side="top">\n      <button ion-fab (click)="openSocial(\'facebook\', fab2)"><ion-icon name="logo-facebook"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'twitter\', fab2)"><ion-icon name="logo-twitter"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'vimeo\', fab2)"><ion-icon name="logo-vimeo"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'googleplus\', fab2)"><ion-icon name="logo-googleplus"></ion-icon></button>\n    </ion-fab-list>\n  </ion-fab>\n  <ion-nav #content main [root]="rootPage" swipeBackEnabled="true" (click)="fabClose(fab1)"></ion-nav>\n</ion-split-pane>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/menu/menu.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]])
     ], MenuPage);
     return MenuPage;
 }());

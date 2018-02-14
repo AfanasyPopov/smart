@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams, HttpRequest, HttpEvent, HttpEventType ,HttpErrorResponse,} from '@angular/common/http';
 import { ToastController } from 'ionic-angular';
 import { Injectable } from '@angular/core';
-import { bodyparser } from '../../../node_modules/body-parser'
+//import { bodyparser } from '../../../node_modules/body-parser'
 /**
  * Api is a generic REST Api handler. Set your API url first.
  */

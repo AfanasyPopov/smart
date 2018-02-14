@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { FilterPipe} from '../../pipes/filter/filter';
 import { TranslateService } from '@ngx-translate/core';
 import { Api } from '../../providers/api/api';
@@ -7,6 +7,7 @@ import {Storage} from '@ionic/storage';
 import { ApplicationRef } from '@angular/core'
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 import { HttpClient, HttpHeaders, HttpParams, HttpRequest, HttpEvent, HttpEventType ,HttpErrorResponse,} from '@angular/common/http';
+import { MyApp } from '../../app/app.component';
 /**
  * Generated class for the AdminPage page.
  *
@@ -23,10 +24,13 @@ export class AdminPage {
   adminTitle="";
   searchtxtUser ="";
   delButtonTitle ="";
+  showConfirmForUserDelTitle='';
+  showConfirmForUserDelSubTitle='';
   adminUserCardItems={name:"Пользователи",count_active:5,count:5, list:[], dir:[] };
   adminDirCardItems =[{name:"Справочникки",count_active:5,count:5, list:[], dir:[] }];
   ionChangeFlag = true;
   constructor(
+    public alertCtrl: AlertController,
     public modalCtrl: ModalController,
     private applicationRef : ApplicationRef,
     public api: Api, 
@@ -35,19 +39,15 @@ export class AdminPage {
     public navParams: NavParams,
     public storage: Storage,
     public toastCtrl: ToastController,
+    public myApp: MyApp,
     ) {
-    translateService.get(['ADMIN_TITLE','DELETE_BUTTON']).subscribe(values => {
+    translateService.get(['ADMIN_TITLE','DELETE_BUTTON','SHOW_CONFIRM_FOR_USER_DEL_TITLE']).subscribe(values => {
       this.adminTitle = values['ADMIN_TITLE'];
       this.delButtonTitle = values['DELETE_BUTTON'];
+      this.showConfirmForUserDelTitle = values['SHOW_CONFIRM_FOR_USER_DEL_TITLE']
     });
     this.storage.get('account').then((val) => {
-      this.getUserList(val)/*.subscribe (res=>{
-        this.adminUserCardItems.list=res.users;
-        this.adminUserCardItems.dir=res.dir;
-        this.applicationRef.tick();  
-        console.log ("adminPage.adminUserCardItems:");
-        console.log (this.adminUserCardItems);
-      }) ;*/
+      this.getUserList(val)
     });
 }  
 toggleUserActive(event:any, item:any):void  {
@@ -97,6 +97,16 @@ toggleUserActive(event:any, item:any):void  {
       
   
 }
+
+toastLongRequest = this.toastCtrl.create({
+  message: 'Данные загружаются... ',
+  duration: 0,
+  position: 'top',
+  cssClass:'success',
+  showCloseButton:true,
+  closeButtonText:'OK'
+});
+
   /**
    * Prompt the user to add a new item. This shows our ItemCreatePage in a
    * modal and then adds the new item to our data source if the user created one.
@@ -115,15 +125,7 @@ toggleUserActive(event:any, item:any):void  {
               item.name=' ';
             }
             accountInfo.item=item;
-            let  toastLongRequest = this.toastCtrl.create({
-              message: 'Данные загружаются... ',
-              duration: 1000,
-              position: 'top',
-              cssClass:'success',
-              showCloseButton:true,
-              closeButtonText:'OK'
-            });
-            toastLongRequest.present(); 
+            this.toastLongRequest.present(); 
 
             this.api.addUserLongRequest('addUser', accountInfo)
             .subscribe(
@@ -134,16 +136,25 @@ toggleUserActive(event:any, item:any):void  {
 
                   if (event.type === HttpEventType.UploadProgress) {
                       console.log("Upload progress event", event);
-                      //toastLongRequest.data.message = JSON.stringify(event);
+                      this.toastLongRequest.data.message = ('Данные загружаются... '+event.loaded+'/'+event.total);
                   }
 
                   if (event.type === HttpEventType.Response) {
                     console.log("Данные загружены УСПЕШНО..............", JSON.stringify(event.body));
                     console.log("Пользователь создан..............");
-                    toastLongRequest.setMessage(/*data.message =*/'Данные загружены УСПЕШНО. \n Пользователь содзан.');
-                      this.storage.get('account').then((val) => {
+                    this.toastLongRequest.dismiss()
+                    let  toastLongRequest = this.toastCtrl.create({
+                      message: 'Данные загружены УСПЕШНО. \n Пользователь содзан.',
+                      duration: 3000,
+                      position: 'top',
+                      cssClass:'success',
+                      showCloseButton:true,
+                      closeButtonText:'OK'
+                    });
+                    toastLongRequest.present(); 
+                    this.storage.get('account').then((val) => {
                         this.getUserList(val)
-                      });
+                    });
 
                   }
 
@@ -154,12 +165,15 @@ toggleUserActive(event:any, item:any):void  {
     })
     addModal.present();
   }
-  delUser(item) {
+delUserConfirmation (item){
+  this.showConfirmForDelUser(this.showConfirmForUserDelTitle, item)
+}
+delUser(item) {
         this.storage.get('account').then(accountInfo => {
             accountInfo.item=item;
             let  toastLongRequest = this.toastCtrl.create({
               message: 'Запрос на УДАЛЕНИЕ отправлен. ',
-              duration: 4000,
+              duration: 3000,
               position: 'top',
               cssClass:'success',
               showCloseButton:true,
@@ -181,7 +195,7 @@ toggleUserActive(event:any, item:any):void  {
 
                   if (event.type === HttpEventType.Response) {
                       console.log("Пользователь УДАЛЕН...", JSON.stringify(event.body));
-                      toastLongRequest.setMessage(/*data.message = */'Пользователь УДАЛЕН: '+JSON.stringify(event.body['uuid_key']));
+                      toastLongRequest.setMessage('УДАЛЕН Пользователь: '+event.body[0].last_name+' '+event.body[0].username)//+JSON.stringify(event.body));
                       this.storage.get('account').then((val) => {
                         this.getUserList(val)
                       });
@@ -190,27 +204,57 @@ toggleUserActive(event:any, item:any):void  {
               }
             );
         })
-  }
+    
+}
 
 ionViewDidLoad() {
     console.log('ionViewDidLoad AdminPage');
   }
-  getUserList (accountInfo: any):any  {
+getUserList (accountInfo: any):any  {
     return this.api.postData('getUserList', accountInfo).subscribe (res=>{
       this.adminUserCardItems.list=res['users'];
       this.adminUserCardItems.dir=res['dir'];
-      this.applicationRef.tick();  
+     // this.applicationRef.tick(); 
+     for (let i in this.adminUserCardItems.list) {
+      this.adminUserCardItems.list[i].url=this.myApp.file_db_root+this.adminUserCardItems.list[i].url
+     }
       console.log ("adminPage.adminUserCardItems:");
       console.log (this.adminUserCardItems);
     }) ;
  }
- openItem(item: any) {
+openItem(item: any) {
   this.navCtrl.push('UserItemPage', {
     item: item, 
     dir: this.adminUserCardItems.dir
   });
 }
-  deleteChip(chip: Element) {
+deleteChip(chip: Element) {
     chip.remove();
   }
+  showConfirmForDelUser(title:string,item:any) {
+    var confirmStatus = false;
+    let confirm = this.alertCtrl.create({
+      title:title,
+      message: item.last_name+" "+item.username,
+      buttons: [
+        {
+          text: 'Отмена',
+          handler: () => {
+            console.log('Disagree clicked');
+            //confirm.dismiss();
+            //confirmStatus =false;
+          }
+        },
+        {
+          text: 'Согласен',
+          handler: () => {
+            console.log('Agree clicked');
+            this.delUser(item);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
 }
+

@@ -57,6 +57,6 @@
   "ITEM_NAME_PLACEHOLDER": "Фамилия Имя",
   "ITEM_ABOUT_PLACEHOLDER": "Описание",
   "DONE_BUTTON":"Завершить",
-  "CANCEL_BUTTON":"Отменить"
-  
+  "CANCEL_BUTTON":"Отменить",
+  "SHOW_CONFIRM_FOR_USER_DEL_TITLE": "Удалить пользователя ?:"
 }

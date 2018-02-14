@@ -18,7 +18,7 @@ export class MyApp {
   user: any =[];
   rootPage = FirstRunPage;
   @ViewChild(Nav) nav: Nav;
-
+  public file_db_root='http://185.63.32.215:3000/Codiad/workspace/files_db/'
   pages: any[] = [
     { title: 'Поиск', component: 'SearchPage', icon:'ios-search-outline' },
     // { title: 'Tutorial', component: 'TutorialPage', icon:'albums' },
@@ -36,7 +36,8 @@ export class MyApp {
   authPage: any[] = [{ title: 'Авторизация', component: 'LoginPage' , icon:'ios-contact-outline'}];
   menuTitle="";
 
-  constructor(public translateService: TranslateService ,
+  constructor(
+    public translateService: TranslateService ,
     public socket: Socket, public storage:Storage, 
     public menuCtrl: MenuController , 
     private translate: TranslateService, 
@@ -45,7 +46,8 @@ export class MyApp {
     private config: Config, 
     private statusBar: StatusBar, 
     private splashScreen: SplashScreen,     
-    public toastCtrl: ToastController  ) {
+    public toastCtrl: ToastController ,
+  ) {
       platform.ready().then(() => {
         // Okay, so the platform is ready and our plugins are available.
         // Here you can do any higher level native things you might need.
@@ -93,13 +95,9 @@ export class MyApp {
     this.nav.setRoot(page.component);
     console.log(page.component+"; "+page.title);
   }
-  openHttp(){
-    console.log ('http try to do');
-    alert('openPage(page)try to do...........');
-  }
+
   doReload(){
     location.reload();
-    
   }
   menuToggle(menu: Menu ){
     menu.enable(!menu.enabled);

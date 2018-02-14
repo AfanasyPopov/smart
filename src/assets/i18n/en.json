@@ -69,7 +69,7 @@
   "LOGOUT_BUTTON": "Logout",
   "MENU_TITLE": "Menu",
   "USERS_LIST_TITLE":"Users",
-  "ADMIN_TITLE":"Administrator"
-
+  "ADMIN_TITLE":"Administrator",
+  "SHOW_CONFIRM_FOR_USER_DEL_TITLE": "Delete User ?: "
 
 }

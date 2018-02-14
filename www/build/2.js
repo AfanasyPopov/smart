@@ -30,7 +30,7 @@ var AdminPageModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_3__pipes_filter_filter__["a" /* FilterPipe */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__admin__["a" /* AdminPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__admin__["a" /* AdminPage */]),
             ],
         })
     ], AdminPageModule);
@@ -49,10 +49,11 @@ var AdminPageModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_api_api__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_api_api__ = __webpack_require__(128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular_components_toast_toast_controller__ = __webpack_require__(126);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common_http__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common_http__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_app_component__ = __webpack_require__(248);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -70,6 +71,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
  * Generated class for the AdminPage page.
  *
@@ -77,8 +79,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var AdminPage = (function () {
-    function AdminPage(modalCtrl, applicationRef, api, translateService, navCtrl, navParams, storage, toastCtrl) {
+    function AdminPage(alertCtrl, modalCtrl, applicationRef, api, translateService, navCtrl, navParams, storage, toastCtrl, myApp) {
         var _this = this;
+        this.alertCtrl = alertCtrl;
         this.modalCtrl = modalCtrl;
         this.applicationRef = applicationRef;
         this.api = api;
@@ -87,24 +90,30 @@ var AdminPage = (function () {
         this.navParams = navParams;
         this.storage = storage;
         this.toastCtrl = toastCtrl;
+        this.myApp = myApp;
         this.adminTitle = "";
         this.searchtxtUser = "";
         this.delButtonTitle = "";
+        this.showConfirmForUserDelTitle = '';
+        this.showConfirmForUserDelSubTitle = '';
         this.adminUserCardItems = { name: "Пользователи", count_active: 5, count: 5, list: [], dir: [] };
         this.adminDirCardItems = [{ name: "Справочникки", count_active: 5, count: 5, list: [], dir: [] }];
         this.ionChangeFlag = true;
-        translateService.get(['ADMIN_TITLE', 'DELETE_BUTTON']).subscribe(function (values) {
+        this.toastLongRequest = this.toastCtrl.create({
+            message: 'Данные загружаются... ',
+            duration: 0,
+            position: 'top',
+            cssClass: 'success',
+            showCloseButton: true,
+            closeButtonText: 'OK'
+        });
+        translateService.get(['ADMIN_TITLE', 'DELETE_BUTTON', 'SHOW_CONFIRM_FOR_USER_DEL_TITLE']).subscribe(function (values) {
             _this.adminTitle = values['ADMIN_TITLE'];
             _this.delButtonTitle = values['DELETE_BUTTON'];
+            _this.showConfirmForUserDelTitle = values['SHOW_CONFIRM_FOR_USER_DEL_TITLE'];
         });
         this.storage.get('account').then(function (val) {
-            _this.getUserList(val); /*.subscribe (res=>{
-              this.adminUserCardItems.list=res.users;
-              this.adminUserCardItems.dir=res.dir;
-              this.applicationRef.tick();
-              console.log ("adminPage.adminUserCardItems:");
-              console.log (this.adminUserCardItems);
-            }) ;*/
+            _this.getUserList(val);
         });
     }
     AdminPage.prototype.toggleUserActive = function (event, item) {
@@ -171,15 +180,7 @@ var AdminPage = (function () {
                         item.name = ' ';
                     }
                     accountInfo.item = item;
-                    var toastLongRequest = _this.toastCtrl.create({
-                        message: 'Данные загружаются... ',
-                        duration: 1000,
-                        position: 'top',
-                        cssClass: 'success',
-                        showCloseButton: true,
-                        closeButtonText: 'OK'
-                    });
-                    toastLongRequest.present();
+                    _this.toastLongRequest.present();
                     _this.api.addUserLongRequest('addUser', accountInfo)
                         .subscribe(function (event) {
                         if (event.type === __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["c" /* HttpEventType */].DownloadProgress) {
@@ -187,12 +188,21 @@ var AdminPage = (function () {
                         }
                         if (event.type === __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["c" /* HttpEventType */].UploadProgress) {
                             console.log("Upload progress event", event);
-                            //toastLongRequest.data.message = JSON.stringify(event);
+                            _this.toastLongRequest.data.message = ('Данные загружаются... ' + event.loaded + '/' + event.total);
                         }
                         if (event.type === __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["c" /* HttpEventType */].Response) {
                             console.log("Данные загружены УСПЕШНО..............", JSON.stringify(event.body));
                             console.log("Пользователь создан..............");
-                            toastLongRequest.setMessage(/*data.message =*/ 'Данные загружены УСПЕШНО. \n Пользователь содзан.');
+                            _this.toastLongRequest.dismiss();
+                            var toastLongRequest = _this.toastCtrl.create({
+                                message: 'Данные загружены УСПЕШНО. \n Пользователь содзан.',
+                                duration: 3000,
+                                position: 'top',
+                                cssClass: 'success',
+                                showCloseButton: true,
+                                closeButtonText: 'OK'
+                            });
+                            toastLongRequest.present();
                             _this.storage.get('account').then(function (val) {
                                 _this.getUserList(val);
                             });
@@ -203,13 +213,16 @@ var AdminPage = (function () {
         });
         addModal.present();
     };
+    AdminPage.prototype.delUserConfirmation = function (item) {
+        this.showConfirmForDelUser(this.showConfirmForUserDelTitle, item);
+    };
     AdminPage.prototype.delUser = function (item) {
         var _this = this;
         this.storage.get('account').then(function (accountInfo) {
             accountInfo.item = item;
             var toastLongRequest = _this.toastCtrl.create({
                 message: 'Запрос на УДАЛЕНИЕ отправлен. ',
-                duration: 4000,
+                duration: 3000,
                 position: 'top',
                 cssClass: 'success',
                 showCloseButton: true,
@@ -227,7 +240,7 @@ var AdminPage = (function () {
                 }
                 if (event.type === __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["c" /* HttpEventType */].Response) {
                     console.log("Пользователь УДАЛЕН...", JSON.stringify(event.body));
-                    toastLongRequest.setMessage(/*data.message = */ 'Пользователь УДАЛЕН: ' + JSON.stringify(event.body['uuid_key']));
+                    toastLongRequest.setMessage('УДАЛЕН Пользователь: ' + event.body[0].last_name + ' ' + event.body[0].username); //+JSON.stringify(event.body));
                     _this.storage.get('account').then(function (val) {
                         _this.getUserList(val);
                     });
@@ -243,7 +256,10 @@ var AdminPage = (function () {
         return this.api.postData('getUserList', accountInfo).subscribe(function (res) {
             _this.adminUserCardItems.list = res['users'];
             _this.adminUserCardItems.dir = res['dir'];
-            _this.applicationRef.tick();
+            // this.applicationRef.tick(); 
+            for (var i in _this.adminUserCardItems.list) {
+                _this.adminUserCardItems.list[i].url = _this.myApp.file_db_root + _this.adminUserCardItems.list[i].url;
+            }
             console.log("adminPage.adminUserCardItems:");
             console.log(_this.adminUserCardItems);
         });
@@ -257,18 +273,46 @@ var AdminPage = (function () {
     AdminPage.prototype.deleteChip = function (chip) {
         chip.remove();
     };
+    AdminPage.prototype.showConfirmForDelUser = function (title, item) {
+        var _this = this;
+        var confirmStatus = false;
+        var confirm = this.alertCtrl.create({
+            title: title,
+            message: item.last_name + " " + item.username,
+            buttons: [
+                {
+                    text: 'Отмена',
+                    handler: function () {
+                        console.log('Disagree clicked');
+                        //confirm.dismiss();
+                        //confirmStatus =false;
+                    }
+                },
+                {
+                    text: 'Согласен',
+                    handler: function () {
+                        console.log('Agree clicked');
+                        _this.delUser(item);
+                    }
+                }
+            ]
+        });
+        confirm.present();
+    };
     AdminPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-admin',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/admin/admin.html"*/'<!--\n  Generated template for the AdminPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{adminTitle}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content >\n<!-- <ion-card>\n        <ion-card-header >\n              <ion-row>\n                  <ion-col><h2>{{adminUserCardItems.name}}</h2></ion-col> \n              </ion-row> \n        </ion-card-header>  \n      -->\n        <ion-list >\n            <ion-item-group>\n                <ion-item-divider color="light">\n                  <ion-label item-start>{{adminUserCardItems.name}}</ion-label>\n                    <ion-buttons item-end>\n                        <button ion-button clear small icon-only (click)="addUser()">\n                          <ion-icon name="add"></ion-icon>\n                        </button>\n                      </ion-buttons>                  \n                </ion-item-divider>\n                <ion-item-sliding  *ngFor="let item of adminUserCardItems.list | filter : query" >\n                <button ion-item (click)=\'openItem(item)\' >\n                        <ion-label><h5>{{item.last_name+\' \'+item.username}}</h5></ion-label>\n                        <ion-label><p>{{item.role_in_project}}</p></ion-label>\n                        <ion-toggle item-end  [(ngModel)]=\'item.active\' (ionChange)=\'toggleUserActive($event, item)\' ></ion-toggle>\n                </button>\n                <ion-item-options>\n                    <button ion-button color="danger" (click)="delUser(item)">\n                      {{delButtonTitle}}\n                    </button>\n                  </ion-item-options>\n        \n              </ion-item-sliding>\n          </ion-item-group>\n        </ion-list>  \n      <ion-grid no-padding>\n        <ion-row>\n          <ion-col col-12 center>\n                <ion-note small>\n                    <ion-searchbar small [(ngModel)]="query" placeholder="поиск"></ion-searchbar>\n                  </ion-note>\n          </ion-col>   \n          <ion-col>\n            <button ion-button color="primary" clear  icon-start small (click)="addUser()">\n                <ion-icon name=\'person-add\'></ion-icon>\n                Добавить\n            </button>\n          </ion-col>\n          <ion-col>\n              <ion-chip #chip1>\n                <ion-avatar>\n                  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">\n                </ion-avatar>\n                <ion-label>With Avatar</ion-label>\n                <button ion-button clear color="dark" (click)="deleteChip(chip1)">\n                  <ion-icon name="close-circle"></ion-icon>\n                </button>\n              </ion-chip>\n            </ion-col> \n         </ion-row>\n      </ion-grid>\n <!--  </ion-card>-->\n</ion-content>\n'/*ion-inline-end:"/Users/afpopov/smart/src/pages/admin/admin.html"*/,
+            selector: 'page-admin',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/admin/admin.html"*/'<!--\n  Generated template for the AdminPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{adminTitle}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content >\n<!-- <ion-card>\n        <ion-card-header >\n              <ion-row>\n                  <ion-col><h2>{{adminUserCardItems.name}}</h2></ion-col> \n              </ion-row> \n        </ion-card-header>  \n      -->\n        <ion-list >\n            <ion-item-group>\n                <ion-item-divider color="light">\n                  <ion-label item-start>{{adminUserCardItems.name}}</ion-label>\n                    <ion-buttons item-end>\n                        <button ion-button clear small icon-only (click)="addUser()">\n                          <ion-icon name="add"></ion-icon>\n                        </button>\n                      </ion-buttons>                  \n                </ion-item-divider>\n                <ion-item-sliding  *ngFor="let item of adminUserCardItems.list | filter : query" >\n                <button ion-item (click)=\'openItem(item)\' >\n                        <ion-label><h5>{{item.last_name+\' \'+item.username}}</h5></ion-label>\n                        <ion-label><p>{{item.role_in_project}}</p></ion-label>\n                        <ion-toggle item-end  [(ngModel)]=\'item.active\' (ionChange)=\'toggleUserActive($event, item)\' ></ion-toggle>\n                </button>\n                <ion-item-options>\n                    <button ion-button color="danger" (click)="delUserConfirmation(item)">\n                      {{delButtonTitle}}\n                    </button>\n                  </ion-item-options>\n        \n              </ion-item-sliding>\n          </ion-item-group>\n        </ion-list>  \n      <ion-grid no-padding>\n        <ion-row>\n          <ion-col col-12 center>\n                <ion-note small>\n                    <ion-searchbar small [(ngModel)]="query" placeholder="поиск"></ion-searchbar>\n                  </ion-note>\n          </ion-col>   \n          <ion-col>\n            <button ion-button color="primary" clear  icon-start small (click)="addUser()">\n                <ion-icon name=\'person-add\'></ion-icon>\n                Добавить\n            </button>\n          </ion-col>\n          <ion-col>\n              <ion-chip #chip1>\n                <ion-avatar>\n                  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">\n                </ion-avatar>\n                <ion-label>With Avatar</ion-label>\n                <button ion-button clear color="dark" (click)="deleteChip(chip1)">\n                  <ion-icon name="close-circle"></ion-icon>\n                </button>\n              </ion-chip>\n            </ion-col> \n         </ion-row>\n      </ion-grid>\n <!--  </ion-card>-->\n</ion-content>\n'/*ion-inline-end:"/Users/afpopov/smart/src/pages/admin/admin.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_0__angular_core__["ApplicationRef"],
             __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* Api */],
             __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_5_ionic_angular_components_toast_toast_controller__["a" /* ToastController */]])
+            __WEBPACK_IMPORTED_MODULE_5_ionic_angular_components_toast_toast_controller__["a" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_7__app_app_component__["a" /* MyApp */]])
     ], AdminPage);
     return AdminPage;
 }());

@@ -29,7 +29,7 @@ var WelcomePageModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_3__welcome__["a" /* WelcomePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__welcome__["a" /* WelcomePage */]),
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__welcome__["a" /* WelcomePage */]),
                 __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ],
             exports: [
@@ -467,7 +467,7 @@ if (Md5.hashStr('hello') !== '5d41402abc4b2a76b9719d911017c592') {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ts_md5_dist_md5___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_ts_md5_dist_md5__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages__ = __webpack_require__(247);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ngx_translate_core__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_app_component__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_app_component__ = __webpack_require__(248);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -605,13 +605,13 @@ var WelcomePage = (function () {
             selector: 'page-welcome',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/welcome/welcome.html"*/'<ion-content scroll="false">\n  <div class="splash-bg"></div>\n  <div class="splash-info">\n    <div class="splash-logo"></div>\n    <div class="splash-intro">\n      {{ \'WELCOME_INTRO\' | translate }}\n    </div>\n  </div>\n  <div padding>\n    <button ion-button block (click)="signup()">{{ \'SIGNUP\' | translate }}</button>\n    <button ion-button block (click)="login()" class="login">{{ \'LOGIN\' | translate }}</button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/afpopov/smart/src/pages/welcome/welcome.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_8__app_app_component__["a" /* MyApp */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* MenuController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* MenuController */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_4__providers_providers__["d" /* User */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular_components_toast_toast_controller__["a" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_7__ngx_translate_core__["c" /* TranslateService */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */]])
     ], WelcomePage);
     return WelcomePage;
 }());
