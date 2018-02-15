@@ -188,4 +188,8 @@ export class MyApp {
 goHome(){
   this.nav.setRoot(FirstRunPage);
 }
+getProfileImageStyle() {
+  return 'url(' + this.file_db_root+this.user.img_id+'.'+this.user.extention + ')'
+}
+
 } 

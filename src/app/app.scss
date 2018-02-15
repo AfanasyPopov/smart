@@ -23,3 +23,15 @@
 	background: rgb(209, 71, 71);
     opacity: 0.90;
 }
+
+.profile-image {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+
+    display: inline-block;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }

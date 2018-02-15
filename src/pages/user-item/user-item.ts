@@ -97,7 +97,9 @@ file_db_root:string;
                       closeButtonText:'OK'
                     });
                     toastLongRequest.present(); 
-                  this.item['url'] =this.file_db_root+event.body[0].img_id+'.'+event.body[0].ext
+                    if (this.form.value.profilePic) {
+                      this.item['url'] =this.file_db_root+event.body[0].img_id+'.'+event.body[0].ext
+                    }
                   }
 
               }

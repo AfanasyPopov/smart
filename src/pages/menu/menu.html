@@ -9,8 +9,8 @@
       <ion-list>
           <button menuClose ion-item (click)="openPage(authPage[0])"> 
               <ion-thumbnail item-start >
-                  <img id="userImage" src="../assets/img/ian-avatar.png">
-                </ion-thumbnail>
+                  <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" ></div>
+              </ion-thumbnail>
                 <h2>{{user['last_name']+' '+user['username']}}</h2>
               <p>{{user['email']}}</p>
             </button>

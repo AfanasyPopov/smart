@@ -56,6 +56,7 @@
   "BACK_BUTTON_TEXT": "Назад",
   "ITEM_NAME_PLACEHOLDER": "Фамилия Имя",
   "ITEM_ABOUT_PLACEHOLDER": "Описание",
+  "ITEM_EMAIL_PLACEHOLDER": "E-mail",
   "DONE_BUTTON":"Завершить",
   "CANCEL_BUTTON":"Отменить",
   "SHOW_CONFIRM_FOR_USER_DEL_TITLE": "Удалить пользователя ?:"
