@@ -62,5 +62,11 @@
   "DONE_BUTTON":"Завершить",
   "CANCEL_BUTTON":"Отменить",
   "SHOW_CONFIRM_FOR_USER_DEL_TITLE": "Удалить пользователя ?:",
-  "PASS_REPAIR_TITLE": "Восстановление пароля"
+  "PASS_REPAIR_TITLE": "Восстановление пароля",
+  "PROJECTS_TITLE":"Проекты",
+  "PROJECT_CREATE_TITLE":"Проект создать",
+  "PROJECT_NAME_PLACEHOLDER":"Название проекта",
+  "PROJECT_DESCRIPTION_PLACEHOLDER":"Описание/шифр проекта(ов)",
+  "PROJECT_MANAGER_PLACEHOLDER": "Проектный менеджер"
+
 }

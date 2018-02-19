@@ -1,4 +1,4 @@
-webpackJsonp([17],{
+webpackJsonp([19],{
 
 /***/ 128:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -130,66 +130,74 @@ var map = {
 	],
 	"../pages/cards/cards.module": [
 		376,
-		16
+		18
 	],
 	"../pages/content/content.module": [
 		377,
-		15
+		17
 	],
 	"../pages/item-create/item-create.module": [
 		378,
-		14
+		16
 	],
 	"../pages/item-detail/item-detail.module": [
 		379,
-		13
+		15
 	],
 	"../pages/list-master/list-master.module": [
-		380,
-		12
+		381,
+		14
 	],
 	"../pages/login/login.module": [
-		381,
+		380,
 		2
 	],
 	"../pages/menu/menu.module": [
 		382,
-		11
+		13
 	],
 	"../pages/pass-repair/pass-repair.module": [
 		383,
 		1
 	],
-	"../pages/search/search.module": [
+	"../pages/project-create/project-create.module": [
 		384,
+		12
+	],
+	"../pages/projects/projects.module": [
+		385,
+		11
+	],
+	"../pages/search/search.module": [
+		386,
 		10
 	],
 	"../pages/settings/settings.module": [
-		385,
+		387,
 		9
 	],
 	"../pages/signup/signup.module": [
-		386,
+		388,
 		8
 	],
 	"../pages/tabs/tabs.module": [
-		387,
+		389,
 		7
 	],
 	"../pages/tutorial/tutorial.module": [
-		388,
+		390,
 		6
 	],
 	"../pages/user-item/user-item.module": [
-		389,
+		391,
 		4
 	],
 	"../pages/users-list/users-list.module": [
-		390,
+		392,
 		5
 	],
 	"../pages/welcome/welcome.module": [
-		391,
+		393,
 		0
 	]
 };
@@ -328,7 +336,7 @@ var FirstRunPage = 'WelcomePage';
 // Change this if not using tabs
 var MainPage = 'TabsPage';
 // The initial root pages for our tabs (remove if not using tabs)
-var Tab1Root = 'ListMasterPage';
+var Tab1Root = 'ProjectsPage';
 var Tab2Root = 'SearchPage';
 var Tab3Root = 'SettingsPage';
 //# sourceMappingURL=pages.js.map
@@ -392,7 +400,7 @@ var MyApp = (function () {
             // { title: 'Tutorial', component: 'TutorialPage', icon:'albums' },
             // { title: 'Welcome', component: 'WelcomePage' , icon:'albums'},
             { title: 'Проекты', component: 'TabsPage', icon: 'ios-albums-outline' },
-            //{ title: 'Cards', component: 'CardsPage' , icon:'albums'},
+            { title: 'Cards', component: 'CardsPage', icon: 'albums' },
             // { title: 'Content', component: 'ContentPage', icon:'albums' },
             //{ title: 'Авторизация', component: 'LoginPage' , icon:'ios-contact-outline'},
             //{ title: 'Signup', component: 'SignupPage' },
@@ -402,6 +410,10 @@ var MyApp = (function () {
         ];
         this.authPage = [{ title: 'Авторизация', component: 'LoginPage', icon: 'ios-contact-outline' }];
         this.menuTitle = "";
+        if (this.platform.is('ios') || this.platform.is('android')) {
+            var viewport = document.querySelector("meta[name=viewport]");
+            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
+        }
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
@@ -674,10 +686,12 @@ var AppModule = (function () {
                         { loadChildren: '../pages/content/content.module#ContentPageModule', name: 'ContentPage', segment: 'content', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/item-create/item-create.module#ItemCreatePageModule', name: 'ItemCreatePage', segment: 'item-create', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/item-detail/item-detail.module#ItemDetailPageModule', name: 'ItemDetailPage', segment: 'item-detail', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/list-master/list-master.module#ListMasterPageModule', name: 'ListMasterPage', segment: 'list-master', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/list-master/list-master.module#ListMasterPageModule', name: 'ListMasterPage', segment: 'list-master', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pass-repair/pass-repair.module#PassRepairPageModule', name: 'PassRepairPage', segment: 'pass-repair/:str', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/project-create/project-create.module#ProjectCreatePageModule', name: 'ProjectCreatePage', segment: 'project-create', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/projects/projects.module#ProjectsPageModule', name: 'ProjectsPage', segment: 'projects', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },

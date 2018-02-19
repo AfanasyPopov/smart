@@ -74,7 +74,11 @@
   "USERS_LIST_TITLE":"Users",
   "ADMIN_TITLE":"Administrator",
   "SHOW_CONFIRM_FOR_USER_DEL_TITLE": "Delete User ?: ",
-  "PASS_REPAIR_TITLE": "Password repair"
-
+  "PASS_REPAIR_TITLE": "Password repair",
+  "PROJECTS_TITLE":"Projects",
+  "PROJECT_CREATE_TITLE":"Project create",
+  "PROJECT_NAME_PLACEHOLDER":"Project Name",
+  "PROJECT_DESCRIPTION_PLACEHOLDER":"Project description",
+  "PROJECT_MANAGER_PLACEHOLDER": "Project Manager"
 
 }

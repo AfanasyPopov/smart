@@ -1,15 +1,15 @@
 webpackJsonp([11],{
 
-/***/ 382:
+/***/ 385:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuPageModule", function() { return MenuPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProjectsPageModule", function() { return ProjectsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__menu__ = __webpack_require__(402);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__projects__ = __webpack_require__(407);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(125);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,37 +20,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MenuPageModule = (function () {
-    function MenuPageModule() {
+var ProjectsPageModule = (function () {
+    function ProjectsPageModule() {
     }
-    MenuPageModule = __decorate([
+    ProjectsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__menu__["a" /* MenuPage */],
+                __WEBPACK_IMPORTED_MODULE_2__projects__["a" /* ProjectsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__menu__["a" /* MenuPage */]),
-                __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["b" /* TranslateModule */].forChild()
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__projects__["a" /* ProjectsPage */]),
+                __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ],
-            exports: [
-                __WEBPACK_IMPORTED_MODULE_3__menu__["a" /* MenuPage */]
-            ]
         })
-    ], MenuPageModule);
-    return MenuPageModule;
+    ], ProjectsPageModule);
+    return ProjectsPageModule;
 }());
 
-//# sourceMappingURL=menu.module.js.map
+//# sourceMappingURL=projects.module.js.map
 
 /***/ }),
 
-/***/ 402:
+/***/ 407:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenuPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProjectsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_component__ = __webpack_require__(248);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -62,33 +60,56 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var MenuPage = (function () {
-    function MenuPage(navCtrl) {
+
+/**
+ * Generated class for the ProjectsPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ProjectsPage = (function () {
+    function ProjectsPage(navCtrl, navParams, modalCtrl, myApp) {
         this.navCtrl = navCtrl;
-        this.rootPage = 'ContentPage';
-        // used for an example of ngFor and navigation
-        this.pages = [
-            { title: 'Sign in', component: 'LoginPage' },
-            { title: 'Signup', component: 'SignupPage' }
+        this.navParams = navParams;
+        this.modalCtrl = modalCtrl;
+        this.myApp = myApp;
+        this.projectsList = [
+            { projectId: 0, projectName: 'gthdsq', projectOwner: 'Попов Афанасий', projectDescription: 'Descrption Descrption Descrption Descrption', show: false },
+            { projectId: 1, projectName: 'gthdsq', projectOwner: 'Попов Афанасий', projectDescription: 'Descrption Descrption Descrption Descrption', show: false },
+            { projectId: 2, projectName: 'gthdsq', projectOwner: 'Попов Афанасий', projectDescription: 'Descrption Descrption Descrption Descrption', show: false },
+            { projectId: 3, projectName: 'gthdsq', projectOwner: 'Попов Афанасий', projectDescription: 'Descrption Descrption Descrption Descrption', show: false },
+            { projectId: 4, projectName: 'gthdsq', projectOwner: 'Попов Афанасий', projectDescription: 'Descrption Descrption Descrption Descrption', show: false },
+            { projectId: 5, projectName: 'gthdsq', projectOwner: 'Попов Афанасий', projectDescription: 'Descrption Descrption Descrption Descrption', show: false },
+            { projectId: 6, projectName: 'gthdsq', projectOwner: 'Попов Афанасий', projectDescription: 'Descrption Descrption Descrption Descrption', show: false },
+            { projectId: 7, projectName: 'gthdsq', projectOwner: 'Попов Афанасий', projectDescription: 'Descrption Descrption Descrption Descrption', show: false },
+            { projectId: 8, projectName: 'gthdsq', projectOwner: 'Попов Афанасий', projectDescription: 'Descrption Descrption Descrption Descrption', show: false }
         ];
     }
-    MenuPage.prototype.ionViewDidLoad = function () {
-        console.log('Hello MenuPage Page');
+    ProjectsPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ProjectsPage');
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */])
-    ], MenuPage.prototype, "nav", void 0);
-    MenuPage = __decorate([
+    ProjectsPage.prototype.openProject = function (projectId) {
+        this.navCtrl.push('CardsPage');
+    };
+    ProjectsPage.prototype.addProject = function () {
+        var addModal = this.modalCtrl.create('ProjectCreatePage', { file_db_root: this.myApp.file_db_root });
+        addModal.onDidDismiss(function (item) {
+        });
+        addModal.present();
+    };
+    ProjectsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-menu',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/menu/menu.html"*/'<ion-split-pane when="lg">\n  <ion-menu [content]="content" #menu1 id="menu1" (click)="fabClose(fab1)">\n    <ion-header >\n      <ion-toolbar>\n        <ion-title >{{menuTitle}}</ion-title>\n      </ion-toolbar>\n    </ion-header>\n  <ion-content>\n      <ion-list>\n          <button menuClose ion-item (click)="openPage(authPage[0])"> \n              <ion-thumbnail item-start >\n                  <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" ></div>\n              </ion-thumbnail>\n                <h2>{{user[\'last_name\']+\' \'+user[\'username\']}}</h2>\n              <p>{{user[\'email\']}}</p>\n            </button>\n        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" >\n            <ion-icon [name]="p.icon" item-start color="primary"></ion-icon>\n            <ion-label>{{p.title}}</ion-label>\n            <ion-note item-end>info</ion-note>\n            <ion-note item-end>info</ion-note>\n          </button>\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  <ion-fab  right bottom  style="bottom: 10%;opacity: 0.7;" #fab1>\n    <button ion-fab mini color="primary" ><ion-icon  name="arrow-dropleft"></ion-icon></button>\n    <ion-fab-list side="left">\n      <button ion-fab (click)="goHome()"><ion-icon name="home" color="primary" ></ion-icon></button>\n      <button ion-fab (click)="passRep()"><a href="/#/pass-repair/afanasy.popov%40gmail.com">pass</a></button>\n      <button ion-fab (click)="menuToggle(menu1)"><ion-icon name="ios-menu-outline"></ion-icon></button>\n      <button ion-fab (click)="doReload()"><ion-icon name="ios-refresh-outline"></ion-icon></button>\n    </ion-fab-list>\n    <ion-fab-list side="top">\n      <button ion-fab (click)="openSocial(\'facebook\', fab2)"><ion-icon name="logo-facebook"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'twitter\', fab2)"><ion-icon name="logo-twitter"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'vimeo\', fab2)"><ion-icon name="logo-vimeo"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'googleplus\', fab2)"><ion-icon name="logo-googleplus"></ion-icon></button>\n    </ion-fab-list>\n  </ion-fab>\n  <ion-nav #content main [root]="rootPage" swipeBackEnabled="true" (click)="fabClose(fab1)"></ion-nav>\n</ion-split-pane>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/menu/menu.html"*/
+            selector: 'page-projects',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/projects/projects.html"*/'<!--\n  Generated template for the ProjectsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{ \'PROJECTS_TITLE\' | translate }}</ion-title>\n    \n    <ion-buttons end>\n      <button ion-button icon-only (click)="addProject()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content no-padding>\n  <ion-list>\n    <ion-card *ngFor="let project of projectsList"  >\n      <ion-item no-padding>\n        <ion-avatar item-start>\n          <!--<img [src]="item.user.avatar">-->\n        </ion-avatar>\n        <h2 (click)=\'openProject(project.projectId)\'>{{project.projectName}}</h2>\n        <p (click)=\'openProject(project.projectId)\'>{{project.projectOwner}}</p>\n        <button item-end ion-button color="primary" clear (click)=\'project.show=!project.show\'>\n          <ion-icon name="arrow-down"></ion-icon>\n        </button>\n      </ion-item>\n  \n      <!--<img [src]="item.image">-->\n  \n      <ion-card-content *ngIf=\'project.show\'>\n        <p (click)=\'openProject(project.projectId)\'>{{project.projectDescription}}</p>\n      </ion-card-content>\n  \n      <ion-row *ngIf=\'project.show\'>\n        <ion-col>\n          <button ion-button color="primary" clear small icon-start >\n              <ion-icon name=\'thumbs-up\'></ion-icon>\n              12 Likes\n            </button>\n        </ion-col>\n        <ion-col>\n          <button ion-button color="primary" clear small icon-start>\n              <ion-icon name=\'text\'></ion-icon>\n              4 Comments\n            </button>\n        </ion-col>\n        <ion-col center text-center>\n          <ion-note>\n            11h ago\n          </ion-note>\n        </ion-col>\n      </ion-row>\n      </ion-card>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/afpopov/smart/src/pages/projects/projects.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]])
-    ], MenuPage);
-    return MenuPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_2__app_app_component__["a" /* MyApp */]])
+    ], ProjectsPage);
+    return ProjectsPage;
 }());
 
-//# sourceMappingURL=menu.js.map
+//# sourceMappingURL=projects.js.map
 
 /***/ })
 
