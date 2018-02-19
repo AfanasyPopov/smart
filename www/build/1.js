@@ -1,15 +1,15 @@
 webpackJsonp([1],{
 
-/***/ 381:
+/***/ 383:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PassRepairPageModule", function() { return PassRepairPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login__ = __webpack_require__(399);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pass_repair__ = __webpack_require__(403);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(125);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,31 +20,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var LoginPageModule = (function () {
-    function LoginPageModule() {
+var PassRepairPageModule = (function () {
+    function PassRepairPageModule() {
     }
-    LoginPageModule = __decorate([
+    PassRepairPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__login__["a" /* LoginPage */],
+                __WEBPACK_IMPORTED_MODULE_2__pass_repair__["a" /* PassRepairPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__login__["a" /* LoginPage */]),
-                __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["b" /* TranslateModule */].forChild()
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__pass_repair__["a" /* PassRepairPage */]),
+                __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_3__login__["a" /* LoginPage */]
+                __WEBPACK_IMPORTED_MODULE_2__pass_repair__["a" /* PassRepairPage */]
             ]
         })
-    ], LoginPageModule);
-    return LoginPageModule;
+    ], PassRepairPageModule);
+    return PassRepairPageModule;
 }());
 
-//# sourceMappingURL=login.module.js.map
+//# sourceMappingURL=pass-repair.module.js.map
 
 /***/ }),
 
-/***/ 391:
+/***/ 392:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -453,20 +453,20 @@ if (Md5.hashStr('hello') !== '5d41402abc4b2a76b9719d911017c592') {
 
 /***/ }),
 
-/***/ 399:
+/***/ 403:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PassRepairPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5__ = __webpack_require__(391);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_providers__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages__ = __webpack_require__(247);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_app_component__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_providers__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular_components_toast_toast_controller__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ts_md5_dist_md5__ = __webpack_require__(392);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ts_md5_dist_md5___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_ts_md5_dist_md5__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages__ = __webpack_require__(247);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -484,134 +484,120 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var LoginPage = (function () {
-    function LoginPage(myapp, menuCtrl, storage, navCtrl, user, toastCtrl, translateService, nav) {
-        var _this = this;
-        this.myapp = myapp;
-        this.menuCtrl = menuCtrl;
-        this.storage = storage;
-        this.navCtrl = navCtrl;
-        this.user = user;
+/**
+ * Generated class for the PassRepairPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var PassRepairPage = (function () {
+    function PassRepairPage(toastCtrl, api, navCtrl, navParams, translateService) {
         this.toastCtrl = toastCtrl;
+        this.api = api;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
         this.translateService = translateService;
-        this.nav = nav;
-        // The account fields for the login form.
-        // If you're using the username field with or without email, make
-        // sure to add it to the type
+        //passRepairTitle: any;
         this.account = {
+            name: '',
             email: '',
             password: '',
-            isautologin: true,
-            isLogedIn: false
+            passwordCheck: '',
+            secretStr: ''
         };
         this.pass = '';
-        this.translateService.get('LOGIN_ERROR').subscribe(function (value) {
-            _this.loginErrorString = value;
-        });
     }
-    LoginPage.prototype.ionViewWillEnter = function () {
-        var _this = this;
-        //alert('ionViewWillEnter')
-        this.nav.swipeBackEnabled = true;
-        this.storage.get('account').then(function (val) {
-            if (val) {
-                _this.account.email = val.email;
-                _this.account.password = val.password;
-                _this.account.isautologin = val.isautologin;
-                _this.account.isLogedIn = val.isLogedIn;
-            }
-            else {
-                _this.storage.get('account').then(function (val) {
-                    _this.storage.set('account', _this.account);
-                });
-            }
-        });
+    PassRepairPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad PassRepairPage');
+        this.account.secretStr = this.navParams.data.str;
+        console.log('ionViewDidLoad PassRepairPage this.navParams.data.str: ', this.navParams.data.str);
+        this.getAccountValues();
     };
-    LoginPage.prototype.ionViewWillLeave = function () {
-        //alert('ionViewWillLeave');
-        this.nav.swipeBackEnabled = true;
-        this.storage.set('account', this.account);
-    };
-    // Attempt to login in through our User service
-    LoginPage.prototype.doLogin = function () {
+    PassRepairPage.prototype.getAccountValues = function () {
         var _this = this;
-        if (this.account.password.length != 32) {
-            this.pass = __WEBPACK_IMPORTED_MODULE_4_ts_md5_dist_md5__["Md5"].hashStr(this.account.password);
-            this.account.password = this.pass;
-            console.log(this.account.password);
-        }
-        this.user.login(this.account).subscribe(function (res) {
-            console.log('LoginePage:');
-            console.log(res);
-            if (res.active) {
-                _this.storage.set('connectionStatus', true);
-                _this.menuCtrl.enable(true, 'menu1');
-                _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__pages__["b" /* MainPage */]);
+        console.log('passRepGetData getAccountValues this.account: ', JSON.stringify(this.account));
+        this.api.passRep('passRepGetData', this.account)
+            .subscribe(function (event) {
+            if (event.type === __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["c" /* HttpEventType */].DownloadProgress) {
+                console.log("Download progress event", event);
+            }
+            if (event.type === __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["c" /* HttpEventType */].UploadProgress) {
+                console.log("Upload progress event", event);
+            }
+            if (event.type === __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["c" /* HttpEventType */].Response) {
+                console.log("Данные пользователя получены...", JSON.stringify(event.body));
+                _this.account.email = event.body[0].email;
+                _this.account.name = event.body[0].last_name + ' ' + event.body[0].username;
                 var toast = _this.toastCtrl.create({
-                    message: 'Вы вошли в аккаунт: ' + res.last_name + ' ' + res.username,
+                    message: 'Ссылка поодтверждена. Придумайте пароль.',
                     duration: 3000,
-                    position: 'bottom',
+                    position: 'top',
                     cssClass: 'success',
                     showCloseButton: true,
                     closeButtonText: 'OK'
                 });
                 toast.present();
-                _this.account.isLogedIn = true;
-                _this.storage.set('connectionStatus', true).then(function (res) {
-                    _this.myapp.setBackgroundColor();
-                });
-                _this.myapp.user = res;
-                if (res.role_name == 'root' && _this.myapp.pages[_this.myapp.pages.length - 1].title != 'Администратор') {
-                    _this.myapp.pages.push({ title: 'Администратор', component: 'AdminPage', icon: 'ios-construct-outline' });
-                }
-                else {
-                    if (_this.myapp.pages[_this.myapp.pages.length - 1].title === 'Администратор') {
-                        _this.myapp.pages.pop();
-                    }
-                }
             }
-            else {
-                if (res.active == undefined) {
+        });
+    };
+    PassRepairPage.prototype.setUserPass = function () {
+        var _this = this;
+        if (this.account.passwordCheck != this.account.password) {
+            var toast = this.toastCtrl.create({
+                message: 'Пароли не совпадают!!\n Проверьете поле "Пароль повторно".',
+                duration: 3000,
+                position: 'top',
+                cssClass: 'success',
+                showCloseButton: true,
+                closeButtonText: 'OK'
+            });
+            toast.present();
+        }
+        else {
+            this.pass = __WEBPACK_IMPORTED_MODULE_6_ts_md5_dist_md5__["Md5"].hashStr(this.account.password);
+            this.account.password = this.pass;
+            this.account.passwordCheck = this.pass;
+            console.log('setUserPass this.account: ', JSON.stringify(this.account));
+            this.api.passRep('passRepSetPass', this.account)
+                .subscribe(function (event) {
+                if (event.type === __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["c" /* HttpEventType */].DownloadProgress) {
+                    console.log("Download progress event", event);
+                }
+                if (event.type === __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["c" /* HttpEventType */].UploadProgress) {
+                    console.log("Upload progress event", event);
+                }
+                if (event.type === __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["c" /* HttpEventType */].Response) {
+                    console.log("Пароль обновлен УСПЕШНО.", JSON.stringify(event.body));
                     var toast = _this.toastCtrl.create({
-                        message: 'Ошибка авторизации: ' + res,
+                        message: 'Пароль обновлен ' + event.body[0]['mess'],
                         duration: 3000,
-                        position: 'bottom',
-                        cssClass: 'error'
+                        position: 'top',
+                        cssClass: 'success',
+                        showCloseButton: true,
+                        closeButtonText: 'OK'
                     });
                     toast.present();
-                    _this.menuCtrl.enable(false);
-                    _this.account.isLogedIn = false;
+                    if (event.body[0]['mess'] === 'УСПЕШНО') {
+                        _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_7__pages__["a" /* FirstRunPage */]);
+                    }
                 }
-            }
-        });
+            });
+        }
     };
-    // Logout from Application Service 185.63.32.215:8801
-    LoginPage.prototype.logout = function () {
-        var _this = this;
-        this.account.isLogedIn = false;
-        this.menuCtrl.enable(false, 'menu1');
-        this.account.password = '';
-        this.storage.set('account', this.account).then(function (val) {
-            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__pages__["a" /* FirstRunPage */]);
-        });
-    };
-    LoginPage = __decorate([
+    PassRepairPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-login',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/login/login.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title class="connectionStatus">{{ \'LOGIN_TITLE\' | translate }}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content> \n  <form (submit)="doLogin()" class="login-content" vertical-align>\n    <ion-list >\n\n      <ion-item>\n        <ion-label  >{{ \'EMAIL\' | translate }}</ion-label>\n        <ion-input  type="email" [(ngModel)]="account.email" name="email" #inputemail></ion-input>\n      </ion-item>\n\n      <!--\n      Want to use a Username instead of an Email? Here you go:\n\n      <ion-item>\n        <ion-label floating>{{ \'USERNAME\' | translate }}</ion-label>\n        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>\n      </ion-item>\n      -->\n\n      <ion-item style="width:350px important;"> \n        <ion-label >{{ \'PASSWORD\' | translate }}</ion-label>\n        <ion-input type="password" [(ngModel)]="account.password" style="font-size:10px" name="password"></ion-input>\n      </ion-item>\n\n      <div padding>\n        <button ion-button color="primary"  block>{{ \'LOGIN_BUTTON\' | translate }}</button>\n      </div>\n      <ion-item >\n          <ion-label>{{ \'IS_AUTOLOGIN_CHECKBOX\' | translate }}</ion-label>\n          <ion-checkbox block [(ngModel)]="account.isautologin" name="isautologin"></ion-checkbox>\n        </ion-item>\n          <div padding>\n            <button ion-button color="primary" (click)="logout()" [disabled]="!account.isLogedIn" block small clear>{{ \'LOGOUT_BUTTON\' | translate }}</button>\n          </div>      \n    </ion-list>\n\n  </form>\n  \n</ion-content>\n'/*ion-inline-end:"/Users/afpopov/smart/src/pages/login/login.html"*/
+            selector: 'page-pass-repair',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/pass-repair/pass-repair.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{ \'PASS_REPAIR_TITLE\' | translate }}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <form (submit)="setUserPass()">\n    <ion-list>\n\n      <ion-item>\n        <ion-label stacked>{{ \'NAME\' | translate }}</ion-label>\n        <ion-input  [disabled]="true" type="text" [(ngModel)]="account.name" name="name"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label stacked>{{ \'EMAIL\' | translate }}</ion-label>\n        <ion-input [disabled]="true" type="email" [(ngModel)]="account.email" name="email"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label stacked>{{ \'PASSWORD\' | translate }}</ion-label>\n        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label stacked>{{ \'PASSWORD_CHECK\' | translate }}</ion-label>\n        <ion-input type="password" [(ngModel)]="account.passwordCheck" name="password"></ion-input>\n      </ion-item>\n\n      <div padding>\n        <button ion-button color="primary" block>{{ \'SEND\' | translate }}</button>\n      </div>\n\n    </ion-list>\n  </form>\n</ion-content>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/pass-repair/pass-repair.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_7__app_app_component__["a" /* MyApp */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* MenuController */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular_components_toast_toast_controller__["a" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_providers__["a" /* Api */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_providers__["d" /* User */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* Nav */]])
-    ], LoginPage);
-    return LoginPage;
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */]])
+    ], PassRepairPage);
+    return PassRepairPage;
 }());
 
-//# sourceMappingURL=login.js.map
+//# sourceMappingURL=pass-repair.js.map
 
 /***/ })
 

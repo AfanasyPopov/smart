@@ -30530,17 +30530,21 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
-.ion-toast.success .toast-wrapper {
+page-menu .ion-toast.success .toast-wrapper {
   background: green;
   opacity: 0.90;
 }
 
-.ion-toast.error .toast-wrapper {
+page-menu .ion-toast.error .toast-wrapper {
   background: #d14747;
   opacity: 0.90;
 }
 
-.profile-image {
+page-menu .split-pane-md.split-pane-visible > .split-pane-side {
+  max-width: 15% !important;
+}
+
+page-menu .profile-image {
   width: 96px;
   height: 96px;
   border-radius: 50%;

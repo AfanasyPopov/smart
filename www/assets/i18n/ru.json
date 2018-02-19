@@ -1,9 +1,11 @@
 {
   "NAME": "Имя",
   "PASSWORD": "Пароль",
+  "PASSWORD_CHECK": "Пароль повторно",
   "EMAIL": "Email",
   "LOGIN": "Вход",
   "SIGNUP": "Регистрация",
+  "SEND": "Отправить",
 
   "TAB1_TITLE": "Список",
   "TAB2_TITLE": "Поиск",
@@ -59,5 +61,6 @@
   "ITEM_EMAIL_PLACEHOLDER": "E-mail",
   "DONE_BUTTON":"Завершить",
   "CANCEL_BUTTON":"Отменить",
-  "SHOW_CONFIRM_FOR_USER_DEL_TITLE": "Удалить пользователя ?:"
+  "SHOW_CONFIRM_FOR_USER_DEL_TITLE": "Удалить пользователя ?:",
+  "PASS_REPAIR_TITLE": "Восстановление пароля"
 }

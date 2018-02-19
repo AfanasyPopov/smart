@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonicPageModule } from 'ionic-angular';
+import { Clipboard } from '@ionic-native/clipboard';
 
 import { UserItemPage } from './user-item';
 
@@ -15,6 +16,7 @@ import { UserItemPage } from './user-item';
   ],
   exports:[
     UserItemPage
-  ]
+  ],
+  providers:[Clipboard]
 })
 export class UserItemPageModule {}

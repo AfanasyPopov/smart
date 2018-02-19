@@ -48,6 +48,10 @@ export class MyApp {
     private splashScreen: SplashScreen,     
     public toastCtrl: ToastController ,
   ) {
+      if (this.platform.is('ios') || this.platform.is('android')) {
+        var viewport = document.querySelector("meta[name=viewport]");
+        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
+      }
       platform.ready().then(() => {
         // Okay, so the platform is ready and our plugins are available.
         // Here you can do any higher level native things you might need.
@@ -187,6 +191,9 @@ export class MyApp {
   }
 goHome(){
   this.nav.setRoot(FirstRunPage);
+}
+passRep(){
+  //this.nav.push('PassRepairPage')
 }
 getProfileImageStyle() {
   return 'url(' + this.file_db_root+this.user.img_id+'.'+this.user.extention + ')'

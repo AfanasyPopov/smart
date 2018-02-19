@@ -14,24 +14,31 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+page-menu {
 
-.ion-toast.success .toast-wrapper {
-    background: green;
-    opacity: 0.90;
+    .ion-toast.success .toast-wrapper {
+        background: green;
+        opacity: 0.90;
+    }
+    .ion-toast.error .toast-wrapper {
+        background: rgb(209, 71, 71);
+        opacity: 0.90;
+    }
+    .split-pane-md.split-pane-visible > .split-pane-side {  
+        max-width: 15%!important;
+    } 
+    .profile-image {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+    
+        display: inline-block;
+    
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+    
 }
-.ion-toast.error .toast-wrapper {
-	background: rgb(209, 71, 71);
-    opacity: 0.90;
-}
 
-.profile-image {
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-
-    display: inline-block;
-
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
+  

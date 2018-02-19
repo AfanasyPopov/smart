@@ -15,15 +15,16 @@ export class SignupPage {
   // If you're using the username field with or without email, make
   // sure to add it to the type
   account: { name: string, email: string, password: string } = {
-    name: 'Test Human',
-    email: 'test@example.com',
-    password: 'test'
+    name: '',
+    email: '',
+    password: ''
   };
 
   // Our translated text strings
   private signupErrorString: string;
 
-  constructor(public navCtrl: NavController,
+  constructor(
+    public navCtrl: NavController,
     public user: User,
     public toastCtrl: ToastController,
     public translateService: TranslateService) {

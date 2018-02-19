@@ -5,8 +5,10 @@
   "EMAIL": "Email",
   "USERNAME": "Username",
   "PASSWORD": "Password",
+  "PASSWORD_CHECK": "Password check",
   "LOGIN": "Sign in",
   "SIGNUP": "Sign up",
+  "SEND": "Send",
 
   "TAB1_TITLE": "Items",
   "TAB2_TITLE": "Search",
@@ -71,6 +73,8 @@
   "MENU_TITLE": "Menu",
   "USERS_LIST_TITLE":"Users",
   "ADMIN_TITLE":"Administrator",
-  "SHOW_CONFIRM_FOR_USER_DEL_TITLE": "Delete User ?: "
+  "SHOW_CONFIRM_FOR_USER_DEL_TITLE": "Delete User ?: ",
+  "PASS_REPAIR_TITLE": "Password repair"
+
 
 }

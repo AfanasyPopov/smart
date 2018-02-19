@@ -1,5 +1,5 @@
 <ion-split-pane when="lg">
-  <ion-menu [content]="content" #menu1 id="menu1" width="150px" (click)="fabClose(fab1)">
+  <ion-menu [content]="content" #menu1 id="menu1" (click)="fabClose(fab1)">
     <ion-header >
       <ion-toolbar>
         <ion-title >{{menuTitle}}</ion-title>
@@ -27,7 +27,7 @@
     <button ion-fab mini color="primary" ><ion-icon  name="arrow-dropleft"></ion-icon></button>
     <ion-fab-list side="left">
       <button ion-fab (click)="goHome()"><ion-icon name="home" color="primary" ></ion-icon></button>
-      <button ion-fab (click)="fabClose(fab1)"><ion-icon name="ios-podium-outline"></ion-icon></button>
+      <button ion-fab (click)="passRep()"><a href="/#/pass-repair/afanasy.popov%40gmail.com">pass</a></button>
       <button ion-fab (click)="menuToggle(menu1)"><ion-icon name="ios-menu-outline"></ion-icon></button>
       <button ion-fab (click)="doReload()"><ion-icon name="ios-refresh-outline"></ion-icon></button>
     </ion-fab-list>

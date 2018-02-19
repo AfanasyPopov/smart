@@ -55,7 +55,7 @@
           <ion-item>
               <ion-label stacked color="primary" >Пароль:</ion-label>
               <ion-input [disabled]="true"  type="password" style="font-size:10px" [(ngModel)]="dummy_pass"></ion-input>
-              <button ion-button item-end color="light" [disabled]="!item.active">reset</button>
+              <button ion-button item-end color="light" [disabled]="!item.active" (click)="getResetLink(item.uuid_key)">reset</button>
           </ion-item>  
           <ion-item>
               <ion-label stacked color="primary" >Организация:</ion-label>

@@ -1,15 +1,15 @@
 webpackJsonp([11],{
 
-/***/ 380:
+/***/ 382:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListMasterPageModule", function() { return ListMasterPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuPageModule", function() { return MenuPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__list_master__ = __webpack_require__(398);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__menu__ = __webpack_require__(402);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,38 +20,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ListMasterPageModule = (function () {
-    function ListMasterPageModule() {
+var MenuPageModule = (function () {
+    function MenuPageModule() {
     }
-    ListMasterPageModule = __decorate([
+    MenuPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__list_master__["a" /* ListMasterPage */],
+                __WEBPACK_IMPORTED_MODULE_3__menu__["a" /* MenuPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__list_master__["a" /* ListMasterPage */]),
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__menu__["a" /* MenuPage */]),
                 __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_3__list_master__["a" /* ListMasterPage */]
+                __WEBPACK_IMPORTED_MODULE_3__menu__["a" /* MenuPage */]
             ]
         })
-    ], ListMasterPageModule);
-    return ListMasterPageModule;
+    ], MenuPageModule);
+    return MenuPageModule;
 }());
 
-//# sourceMappingURL=list-master.module.js.map
+//# sourceMappingURL=menu.module.js.map
 
 /***/ }),
 
-/***/ 398:
+/***/ 402:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListMasterPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenuPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_providers__ = __webpack_require__(46);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,57 +62,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-var ListMasterPage = (function () {
-    function ListMasterPage(navCtrl, items, modalCtrl) {
+var MenuPage = (function () {
+    function MenuPage(navCtrl) {
         this.navCtrl = navCtrl;
-        this.items = items;
-        this.modalCtrl = modalCtrl;
-        this.currentItems = this.items.query();
+        this.rootPage = 'ContentPage';
+        // used for an example of ngFor and navigation
+        this.pages = [
+            { title: 'Sign in', component: 'LoginPage' },
+            { title: 'Signup', component: 'SignupPage' }
+        ];
     }
-    /**
-     * The view loaded, let's query our items for the list
-     */
-    ListMasterPage.prototype.ionViewDidLoad = function () {
+    MenuPage.prototype.ionViewDidLoad = function () {
+        console.log('Hello MenuPage Page');
     };
-    /**
-     * Prompt the user to add a new item. This shows our ItemCreatePage in a
-     * modal and then adds the new item to our data source if the user created one.
-     */
-    ListMasterPage.prototype.addItem = function () {
-        var _this = this;
-        var addModal = this.modalCtrl.create('ItemCreatePage');
-        addModal.onDidDismiss(function (item) {
-            if (item) {
-                _this.items.add(item);
-            }
-        });
-        addModal.present();
-    };
-    /**
-     * Delete an item from the list of items.
-     */
-    ListMasterPage.prototype.deleteItem = function (item) {
-        this.items.delete(item);
-    };
-    /**
-     * Navigate to the detail page for this item.
-     */
-    ListMasterPage.prototype.openItem = function (item) {
-        this.navCtrl.push('ItemDetailPage', {
-            item: item
-        });
-    };
-    ListMasterPage = __decorate([
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Nav */])
+    ], MenuPage.prototype, "nav", void 0);
+    MenuPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-list-master',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/list-master/list-master.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{ \'LIST_MASTER_TITLE\' | translate }}</ion-title>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="addItem()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <ion-list>\n      <ion-item-sliding *ngFor="let item of currentItems">\n          <button ion-item (click)="openItem(item)">\n            <ion-avatar item-start>\n              <img [src]="item.profilePic" />\n            </ion-avatar>\n            <h2>{{item.name}}</h2>\n            <p>{{item.about}}</p>\n            <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>\n          </button>\n    \n          <ion-item-options>\n            <button ion-button color="danger" (click)="deleteItem(item)">\n              {{ \'DELETE_BUTTON\' | translate }}\n            </button>\n          </ion-item-options>\n        </ion-item-sliding>\n  </ion-list>\n</ion-content>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/list-master/list-master.html"*/
+            selector: 'page-menu',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/menu/menu.html"*/'<ion-split-pane when="lg">\n  <ion-menu [content]="content" #menu1 id="menu1" (click)="fabClose(fab1)">\n    <ion-header >\n      <ion-toolbar>\n        <ion-title >{{menuTitle}}</ion-title>\n      </ion-toolbar>\n    </ion-header>\n  <ion-content>\n      <ion-list>\n          <button menuClose ion-item (click)="openPage(authPage[0])"> \n              <ion-thumbnail item-start >\n                  <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" ></div>\n              </ion-thumbnail>\n                <h2>{{user[\'last_name\']+\' \'+user[\'username\']}}</h2>\n              <p>{{user[\'email\']}}</p>\n            </button>\n        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" >\n            <ion-icon [name]="p.icon" item-start color="primary"></ion-icon>\n            <ion-label>{{p.title}}</ion-label>\n            <ion-note item-end>info</ion-note>\n            <ion-note item-end>info</ion-note>\n          </button>\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  <ion-fab  right bottom  style="bottom: 10%;opacity: 0.7;" #fab1>\n    <button ion-fab mini color="primary" ><ion-icon  name="arrow-dropleft"></ion-icon></button>\n    <ion-fab-list side="left">\n      <button ion-fab (click)="goHome()"><ion-icon name="home" color="primary" ></ion-icon></button>\n      <button ion-fab (click)="passRep()"><a href="/#/pass-repair/afanasy.popov%40gmail.com">pass</a></button>\n      <button ion-fab (click)="menuToggle(menu1)"><ion-icon name="ios-menu-outline"></ion-icon></button>\n      <button ion-fab (click)="doReload()"><ion-icon name="ios-refresh-outline"></ion-icon></button>\n    </ion-fab-list>\n    <ion-fab-list side="top">\n      <button ion-fab (click)="openSocial(\'facebook\', fab2)"><ion-icon name="logo-facebook"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'twitter\', fab2)"><ion-icon name="logo-twitter"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'vimeo\', fab2)"><ion-icon name="logo-vimeo"></ion-icon></button>\n      <button ion-fab (click)="openSocial(\'googleplus\', fab2)"><ion-icon name="logo-googleplus"></ion-icon></button>\n    </ion-fab-list>\n  </ion-fab>\n  <ion-nav #content main [root]="rootPage" swipeBackEnabled="true" (click)="fabClose(fab1)"></ion-nav>\n</ion-split-pane>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/menu/menu.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* Items */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]])
-    ], ListMasterPage);
-    return ListMasterPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]])
+    ], MenuPage);
+    return MenuPage;
 }());
 
-//# sourceMappingURL=list-master.js.map
+//# sourceMappingURL=menu.js.map
 
 /***/ })
 

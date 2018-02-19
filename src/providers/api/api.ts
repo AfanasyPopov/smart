@@ -72,7 +72,19 @@ export class Api {
 
    return this.httpCli.request(request)
 } 
- delUser(endpoint: string, data:any) {
+delUser(endpoint: string, data:any) {
+
+  const request = new HttpRequest(
+      "POST", 
+      this.url + '/' + endpoint, 
+      data, 
+      {reportProgress: true}
+      );
+
+ return this.httpCli.request(request)
+}
+
+passRep(endpoint: string, data:any) {
 
   const request = new HttpRequest(
       "POST", 
