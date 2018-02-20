@@ -169,7 +169,7 @@ public dir :{}
             var emailTo=event.body[0].email
             var emailCC= 'afanasy.popov@gmail.com'
             var emailSub='Для восстановление пароля (перейдите по ссылке)'
-            var emailBody= 'Ваш пароль был сброшен Администратором.\n Для восстановления пароля перейдите по <a href="http://192.168.88.77:8100/#/pass-repair/'+event.body[0].uuid_key+event.body[0].user_pass+'">ссылке</a> .'
+            var emailBody= 'Ваш пароль был сброшен Администратором.\n Для восстановления пароля перейдите по <a href="http://185.63.32.215:8100/#/pass-repair/'+event.body[0].uuid_key+event.body[0].user_pass+'">ссылке</a> .'
             var mailToString="mailto:"+emailTo+'?cc='+emailCC+'&subject='+emailSub+'&body='+emailBody
             window.open(mailToString); 
             console.log('mailToString: ',mailToString)

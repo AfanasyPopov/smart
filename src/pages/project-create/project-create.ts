@@ -62,7 +62,7 @@ export class ProjectCreatePage {
     return this.api.postData('getUserList', accountInfo).subscribe(res => {
       this.dir.userList = res['users'];
       for (let i in this.dir.userList) {
-        //this.dir.userList[i].url = this.myApp.file_db_root + this.dir.userList[i].url
+        this.dir.userList[i].url = this.file_db_root + this.dir.userList[i].url
       }
       console.log("ProjectCreatePage.getUserList:");
       console.log(this.dir);

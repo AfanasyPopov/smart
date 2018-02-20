@@ -30630,8 +30630,8 @@ page-project-create .profile-image-wrapper {
 }
 
 page-project-create .profile-image-wrapper .profile-image {
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 250px;
   border-radius: 3px;
   display: inline-block;
   background-repeat: no-repeat;
@@ -30642,8 +30642,8 @@ page-project-create .profile-image-wrapper .profile-image {
 page-project-create .profile-image-wrapper .profile-image-placeholder {
   display: inline-block;
   background-color: #eee;
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 250px;
   font-size: 12px;
 }
 

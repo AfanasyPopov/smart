@@ -108,7 +108,7 @@ var ProjectCreatePage = (function () {
         return this.api.postData('getUserList', accountInfo).subscribe(function (res) {
             _this.dir.userList = res['users'];
             for (var i in _this.dir.userList) {
-                //this.dir.userList[i].url = this.myApp.file_db_root + this.dir.userList[i].url
+                _this.dir.userList[i].url = _this.file_db_root + _this.dir.userList[i].url;
             }
             console.log("ProjectCreatePage.getUserList:");
             console.log(_this.dir);
