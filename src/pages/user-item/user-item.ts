@@ -63,7 +63,7 @@ public dir :{}
         last_name:'',
         email:'',
         uuid_key:'',
-        organization:'',
+        organization:0,
         description:'',
         role_in_project:0,
         status:0,
@@ -72,9 +72,10 @@ public dir :{}
         user_flag:true,
         isEmpty:true
       }
-      this.dir={
+      this.dir={//you must give names of this Dirs like whey named in this.item
         role_in_project:[{value:0,label:''},{value:0,label:''}],
-        status:[{value:0,label:''},{value:0,label:''}]
+        status:[{value:0,label:''},{value:0,label:''}],
+        organization:[{value:0,label:''},{value:0,label:''}]
       }
     }
     this.dummy_pass= 'xxxxxxxxxxxxxx';
@@ -227,9 +228,14 @@ public dir :{}
 }
   setValuesInSelectItems(dir:any, item:any) {
     Object.keys(dir).forEach(function(dir_item,i,arr){
-      item[dir_item]=dir[dir_item].findIndex(elem=> elem.label==item[dir_item]);
+      dir[dir_item].findIndex(function (elem){
+        if (elem.label==item[dir_item]){
+          item[dir_item]=elem.value;
+          return elem.value;
+        }
     })
-  }
+  })
+}
   setLabelsInSelectedItems(dir:any, item:any){
     Object.keys(dir).forEach(function(dir_item,i,arr){
       item[dir_item]=dir[dir_item][dir[dir_item].findIndex(elem=> elem.value==item[dir_item])].label;

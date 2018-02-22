@@ -67,6 +67,7 @@
   "PROJECT_CREATE_TITLE":"Проект создать",
   "PROJECT_NAME_PLACEHOLDER":"Название проекта",
   "PROJECT_DESCRIPTION_PLACEHOLDER":"Описание/шифр проекта(ов)",
-  "PROJECT_MANAGER_PLACEHOLDER": "Проектный менеджер"
-
+  "PROJECT_MANAGER_PLACEHOLDER": "Проектный менеджер",
+  "PROJECT_CONTR_OUR_PLACEHOLDER":"Наша организация",
+  "PROJECT_CONTR_COSTUMER_PLACEHOLDER":"Заказчика организация"
 }

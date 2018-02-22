@@ -1,4 +1,4 @@
-<ion-split-pane when="lg">
+<ion-split-pane when="lg" >
   <ion-menu [content]="content" #menu1 id="menu1" (click)="fabClose(fab1)">
     <ion-header >
       <ion-toolbar>
@@ -38,5 +38,5 @@
       <button ion-fab (click)="openSocial('googleplus', fab2)"><ion-icon name="logo-googleplus"></ion-icon></button>
     </ion-fab-list>
   </ion-fab>
-  <ion-nav #content main [root]="rootPage" swipeBackEnabled="true" (click)="fabClose(fab1)"></ion-nav>
+  <ion-nav #content main [root]="rootPage" swipeBackEnabled="true" (click)="fabClose(fab1)" ></ion-nav>
 </ion-split-pane>

@@ -10,7 +10,7 @@
     <ion-title>{{ 'PROJECTS_TITLE' | translate }}</ion-title>
     
     <ion-buttons end>
-      <button ion-button icon-only (click)="addProject()">
+      <button ion-button [disabled]="!isHaveAddPermission" icon-only (click)="addProject()">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
@@ -20,25 +20,53 @@
 </ion-header>
 
 
-<ion-content no-padding>
-  <ion-list>
-    <ion-card *ngFor="let project of projectsList"  >
+<ion-content no-padding >
+  <ion-list >
+    <ion-row no-padding ><ion-col  *ngFor="let project of projectsList" no-padding >
+    <ion-card style="min-width: 300px"  no-padding >
+      <ion-item-sliding #item{{project.id}}>
       <ion-item no-padding>
         <ion-avatar item-start>
           <!--<img [src]="item.user.avatar">-->
         </ion-avatar>
-        <h2 (click)='openProject(project.projectId)'>{{project.projectName}}</h2>
-        <p (click)='openProject(project.projectId)'>{{project.projectOwner}}</p>
+        <h2 (click)='openProject(project.id)'>{{project.project_name}}</h2>
+        <ion-note>{{project.description}}</ion-note>
         <button item-end ion-button color="primary" clear (click)='project.show=!project.show'>
           <ion-icon name="arrow-down"></ion-icon>
         </button>
       </ion-item>
+
+      <ion-item-options>
+          <button ion-button color="secondary" (click)="more(project.id)">
+            <ion-icon name="menu"></ion-icon>
+            More
+          </button>
+          <button ion-button color="dark" (click)="mute(project.id)">
+            <ion-icon name="volume-off"></ion-icon>
+            Mute
+          </button>
+          <button ion-button color="danger" (click)="delete(project.id)">
+            <ion-icon name="trash"></ion-icon>
+            Delete
+          </button>
+        </ion-item-options>
   
+        <ion-item-options side="left" (ionSwipe)="archive(item)">
+          <button ion-button color="primary" expandable (click)="archive(item)">
+            <ion-icon name="archive" class="expand-hide"></ion-icon>
+            <div class="expand-hide">Archive</div>
+            <ion-spinner id="archive-spinner"></ion-spinner>
+          </button>
+        </ion-item-options>
+  
+    </ion-item-sliding>
+
       <!--<img [src]="item.image">-->
   
       <ion-card-content *ngIf='project.show'>
-        <p (click)='openProject(project.projectId)'>{{project.projectDescription}}</p>
-      </ion-card-content>
+          <ion-note (click)='openProject(project.id)'>описание</ion-note>
+
+        </ion-card-content>
   
       <ion-row *ngIf='project.show'>
         <ion-col>
@@ -53,12 +81,11 @@
               4 Comments
             </button>
         </ion-col>
-        <ion-col center text-center>
-          <ion-note>
-            11h ago
-          </ion-note>
+        <ion-col style="min-width: 150px;display: flex !important;align-items: center;"  center text-center>
+          <ion-note>{{project.manager}}</ion-note>
         </ion-col>
       </ion-row>
       </ion-card>
+    </ion-col></ion-row>
   </ion-list>
 </ion-content>

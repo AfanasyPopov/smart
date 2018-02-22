@@ -59,7 +59,9 @@
           </ion-item>  
           <ion-item>
               <ion-label stacked color="primary" >Организация:</ion-label>
-              <ion-input  [disabled]="!item.active" type="text" [(ngModel)]="item.organization"></ion-input>
+              <ion-select [disabled]="!item.active" [(ngModel)]="item.organization" interface="popover" >
+                    <ion-option *ngFor="let option of dir.organization" value="{{option.value}}">{{option.label}}</ion-option>
+              </ion-select>                
           </ion-item>  
           <ion-item>
               <ion-label stacked color="primary"  >Описание краткое:</ion-label>

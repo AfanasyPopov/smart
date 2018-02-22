@@ -51,7 +51,7 @@ export class AdminPage {
     public navParams: NavParams,
     public storage: Storage,
     public toastCtrl: ToastController,
-    public myApp: MyApp,
+    public myApp: MyApp
   ) {
     translateService.get(['ADMIN_TITLE', 'DELETE_BUTTON', 'SHOW_CONFIRM_FOR_USER_DEL_TITLE']).subscribe(values => {
       this.adminTitle = values['ADMIN_TITLE'];

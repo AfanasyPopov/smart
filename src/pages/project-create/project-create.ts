@@ -39,9 +39,11 @@ export class ProjectCreatePage {
     this.file_db_root=navParams.get('file_db_root');
     this.form = formBuilder.group({
       profilePic: [''],
-      ProjectName: ['', Validators.required],
-      ProjectDescription: [''],
-      ProjectManager:['']
+      projectName: ['', Validators.required],
+      projectDescription: [''],
+      projectManager:[''],
+      contragentOur:[''],
+      contragentCostumer:['']
     });
 
     // Watch the form for changes, and

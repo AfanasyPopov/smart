@@ -24,7 +24,7 @@ export class MyApp {
     // { title: 'Tutorial', component: 'TutorialPage', icon:'albums' },
     // { title: 'Welcome', component: 'WelcomePage' , icon:'albums'},
     { title: 'Проекты', component: 'TabsPage' , icon:'ios-albums-outline'},
-   { title: 'Cards', component: 'CardsPage' , icon:'albums'},
+   //{ title: 'Cards', component: 'CardsPage' , icon:'albums'},
    // { title: 'Content', component: 'ContentPage', icon:'albums' },
   //{ title: 'Авторизация', component: 'LoginPage' , icon:'ios-contact-outline'},
    //{ title: 'Signup', component: 'SignupPage' },
