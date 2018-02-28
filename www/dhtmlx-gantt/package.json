@@ -1,0 +1,52 @@
+{
+  "_from": "dhtmlx-gantt@^5.0.5",
+  "_id": "dhtmlx-gantt@5.0.5",
+  "_inBundle": false,
+  "_integrity": "sha1-vfUA8MRTetc3DICf7PMDZgE5TeY=",
+  "_location": "/dhtmlx-gantt",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "dhtmlx-gantt@^5.0.5",
+    "name": "dhtmlx-gantt",
+    "escapedName": "dhtmlx-gantt",
+    "rawSpec": "^5.0.5",
+    "saveSpec": null,
+    "fetchSpec": "^5.0.5"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/dhtmlx-gantt/-/dhtmlx-gantt-5.0.5.tgz",
+  "_shasum": "bdf500f0c4537ad7370c809fecf3036601394de6",
+  "_spec": "dhtmlx-gantt@^5.0.5",
+  "_where": "/Users/afpopov/smart",
+  "author": {
+    "name": "DHTMLX"
+  },
+  "bugs": {
+    "url": "https://github.com/DHTMLX/gantt/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "An open source JavaScript Gantt chart that helps you illustrate a project schedule in a nice-looking chart.",
+  "homepage": "https://github.com/DHTMLX/gantt#readme",
+  "keywords": [
+    "calendar",
+    "scheduler",
+    "dhtmlx",
+    "timeline",
+    "gantt",
+    "browser"
+  ],
+  "license": "GPL-2.0",
+  "main": "codebase/dhtmlxgantt.js",
+  "name": "dhtmlx-gantt",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DHTMLX/gantt.git"
+  },
+  "version": "5.0.5"
+}

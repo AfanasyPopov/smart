@@ -69,5 +69,8 @@
   "PROJECT_DESCRIPTION_PLACEHOLDER":"Описание/шифр проекта(ов)",
   "PROJECT_MANAGER_PLACEHOLDER": "Проектный менеджер",
   "PROJECT_CONTR_OUR_PLACEHOLDER":"Наша организация",
-  "PROJECT_CONTR_COSTUMER_PLACEHOLDER":"Заказчика организация"
+  "PROJECT_CONTR_COSTUMER_PLACEHOLDER":"Заказчика организация",
+
+  "PROJECT_ITEM_TITLE":"Проект:"
+
 }

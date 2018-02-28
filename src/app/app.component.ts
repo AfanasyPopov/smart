@@ -10,6 +10,8 @@ import { MenuController } from 'ionic-angular/components/app/menu-controller';
 import { Storage } from '@ionic/storage';
 import { Socket } from 'ng-socket-io';
 import { User } from '../providers/user/user';
+import {} from '../../node_modules/dhtmlx-gantt/codebase/sources/'
+
 @Component({
   selector:'page-menu',
   templateUrl:'../pages/menu/menu.html',
@@ -59,6 +61,8 @@ export class MyApp {
         this.splashScreen.hide();
         this.ionViewDidEnter();
         this.addSocket (this);
+        this.gantt_init_dp();
+
       });
       this.initTranslate(); 
       this.storage.set('connectionStatus',false);
@@ -198,5 +202,22 @@ passRep(){
 getProfileImageStyle() {
   return 'url(' + this.file_db_root+this.user.img_id+'.'+this.user.extention + ')'
 }
-
+gantt_clearAll(){
+  gantt.clearAll();
+}
+gantt_load(){
+  //gantt.init('gantt_here');
+  gantt.load("http://185.63.32.215:8100/data");
+  //var dp = new gantt.dataProcessor("http://185.63.32.215:8100/data");
+  //dp.init(gantt);
+  //dp.setTransactionMode("REST");
+}
+gantt_refresh(){
+  gantt.refreshData();
+}
+gantt_init_dp(){
+  var dp = new gantt.dataProcessor("http://185.63.32.215:8100/data");
+  dp.init(gantt);
+  dp.setTransactionMode("REST");
+}
 } 

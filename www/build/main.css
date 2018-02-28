@@ -30654,6 +30654,29 @@ page-project-create .profile-image-wrapper .profile-image-placeholder ion-icon {
   margin-top: 10px;
 }
 
+page-project-item .slide-zoom {
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+page-project-item .slide-zoom .pointer {
+  bottom: 10px;
+  left: 20%;
+  position: absolute;
+  width: 60%;
+  height: 30px;
+  background-color: grey;
+  z-index: 10000;
+  opacity: 0.15;
+  border-radius: 15px;
+}
+
+page-project-item .slide-zoom .gantt_here.grid_cell {
+  width: 100%;
+}
+
 page-tabs .ion-fab {
   bottom: 10%;
   opacity: 0.7;

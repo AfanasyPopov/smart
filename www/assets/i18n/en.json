@@ -81,5 +81,7 @@
   "PROJECT_DESCRIPTION_PLACEHOLDER":"Project description",
   "PROJECT_MANAGER_PLACEHOLDER": "Project Manager",
   "PROJECT_CONTR_OUR_PLACEHOLDER":"Our organization",
-  "PROJECT_CONTR_COSTUMER_PLACEHOLDER":"Costumer organization"
+  "PROJECT_CONTR_COSTUMER_PLACEHOLDER":"Costumer organization",
+
+  "PROJECT_ITEM_TITLE":"Project:"
 }

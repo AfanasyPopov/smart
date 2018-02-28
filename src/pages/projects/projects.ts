@@ -45,10 +45,10 @@ export class ProjectsPage {
     this.setOrientations();
     this.onOrientationChenge ()
   }
-  openProject(projectId){
-    this.navCtrl.push('CardsPage')
+  openProject(project){
+    this.navCtrl.push('ProjectItemPage',{project:project})
   }
- addProject(){
+  addProject(){
     let addModal = this.modalCtrl.create('ProjectCreatePage',{file_db_root:this.myApp.file_db_root});
       addModal.onDidDismiss(formData => {
         formData.account_key = this.myApp.user.uuid_key
@@ -137,8 +137,7 @@ export class ProjectsPage {
         ]
       });
       confirm.present();
-    }
-
+  }
   deleteProject(item){
     var data={
       account_key : this.myApp.user.uuid_key,
