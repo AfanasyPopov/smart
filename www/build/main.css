@@ -30673,8 +30673,43 @@ page-project-item .slide-zoom .pointer {
   border-radius: 15px;
 }
 
-page-project-item .slide-zoom .gantt_here.grid_cell {
-  width: 100%;
+page-project-item .gantt_task_link.start_to_start .gantt_line_wrapper div {
+  background-color: #dd5640;
+}
+
+page-project-item .gantt_task_link.start_to_start:hover .gantt_line_wrapper div {
+  -webkit-box-shadow: 0 0 5px 0px #dd5640;
+  box-shadow: 0 0 5px 0px #dd5640;
+}
+
+page-project-item .gantt_task_link.start_to_start .gantt_link_arrow_right {
+  border-left-color: #dd5640;
+}
+
+page-project-item .gantt_task_link.finish_to_start .gantt_line_wrapper div {
+  background-color: #7576ba;
+}
+
+page-project-item .gantt_task_link.finish_to_start:hover .gantt_line_wrapper div {
+  -webkit-box-shadow: 0 0 5px 0px #7576ba;
+  box-shadow: 0 0 5px 0px #7576ba;
+}
+
+page-project-item .gantt_task_link.finish_to_start .gantt_link_arrow_right {
+  border-left-color: #7576ba;
+}
+
+page-project-item .gantt_task_link.finish_to_finish .gantt_line_wrapper div {
+  background-color: #55d822;
+}
+
+page-project-item .gantt_task_link.finish_to_finish:hover .gantt_line_wrapper div {
+  -webkit-box-shadow: 0 0 5px 0px #55d822;
+  box-shadow: 0 0 5px 0px #55d822;
+}
+
+page-project-item .gantt_task_link.finish_to_finish .gantt_link_arrow_left {
+  border-right-color: #55d822;
 }
 
 page-tabs .ion-fab {

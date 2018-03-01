@@ -17,6 +17,7 @@ import {} from '../../node_modules/dhtmlx-gantt/codebase/sources/'
   templateUrl:'../pages/menu/menu.html',
 })
 export class MyApp {
+  isGanttConfigured:boolean=false;
   user: any =[];
   rootPage = FirstRunPage;
   @ViewChild(Nav) nav: Nav;
@@ -61,7 +62,7 @@ export class MyApp {
         this.splashScreen.hide();
         this.ionViewDidEnter();
         this.addSocket (this);
-        this.gantt_init_dp();
+       // this.gantt_init_dp();
 
       });
       this.initTranslate(); 
@@ -185,7 +186,6 @@ export class MyApp {
         this.getSelector(".toolbar-background").backgroundColor = '#e4ffbf';
         this.getSelector(".toolbar-background-md").backgroundColor = '#e4ffbf';
         this.getSelector(".toolbar-background-ios").backgroundColor = '#e4ffbf';
-        
       } else {
         this.getSelector(".toolbar-background").backgroundColor = '#ffdeba'
         this.getSelector(".toolbar-background-md").backgroundColor = '#ffdeba';
@@ -216,8 +216,8 @@ gantt_refresh(){
   gantt.refreshData();
 }
 gantt_init_dp(){
-  var dp = new gantt.dataProcessor("http://185.63.32.215:8100/data");
-  dp.init(gantt);
-  dp.setTransactionMode("REST");
+  // var dp = new gantt.dataProcessor("http://185.63.32.215:8100/data");
+  // dp.init(gantt);
+  // dp.setTransactionMode("REST");
 }
 } 

@@ -10,6 +10,11 @@
 
   <ion-navbar>
     <ion-title>{{project.project_name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button  [disabled]="!isUserAdmin" color="primary" icon-only (click)="addProject()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
