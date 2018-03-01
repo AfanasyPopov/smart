@@ -77,17 +77,22 @@ export class ProjectItemPage {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProjectItemPage');
-    this.project =this.navParams.data.project;
-    this.lockSwiper();
-    this.gant_config();
-    gantt.init("gantt_here");
-    gantt.load("http://185.63.32.215:8100/data");
+    this.myApp.isPaneShouldShow=false;
+
+
     //gantt.parse(this.projects_with_milestones)
-    
+    setTimeout(()=>{
+      this.project =this.navParams.data.project;
+      this.lockSwiper();
+      this.gant_config();
+      gantt.init("gantt_here");
+      gantt.load("http://185.63.32.215:8100/data");
+    },500) 
   }
 
   ionViewWillLeave() {
     console.log("Looks like I'm about to leave :(");
+    this.myApp.isPaneShouldShow=true;
   }
   ionViewDidLeave() {
     gantt.clearAll(); 

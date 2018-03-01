@@ -17,6 +17,7 @@ import {} from '../../node_modules/dhtmlx-gantt/codebase/sources/'
   templateUrl:'../pages/menu/menu.html',
 })
 export class MyApp {
+  isPaneShouldShow: boolean=true;
   isGanttConfigured:boolean=false;
   user: any =[];
   rootPage = FirstRunPage;
@@ -108,9 +109,14 @@ export class MyApp {
   doReload(){
     location.reload();
   }
-  menuToggle(menu: Menu ){
+  menuOnOf(menu: Menu ){
     menu.enable(!menu.enabled);
     console.log ('menuToggle()');
+  }
+  menuToggle(menu){
+    //menu.close();
+    this.isPaneShouldShow=!this.isPaneShouldShow;
+    console.log('isPaneShouldShow: ', this.isPaneShouldShow)
   }
   menuToggleWidth(menu: Menu ){
     let toast = this.toastCtrl.create({

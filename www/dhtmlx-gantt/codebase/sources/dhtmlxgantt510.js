@@ -1,4 +1,4 @@
-/* I need to some trial-time . I shore - i wil buy it after a while*/
+/* I need to some trial-time . I'm shore - i wil buy it after a while*/
 !function(t) {
     function e(n) {
         if (i[n])
@@ -2018,7 +2018,7 @@
     t.exports = a
 }, function(t, e) {
     t.exports = function(t) {
-        var e = ["href", "location", "dhtmlx.com/", "indexOf", "error", "This version of Gantt is not intended for using outside of dhtmlx.com", "message", "random", "floor"];
+        /*var e = ["href", "location", "dhtmlx.com/", "indexOf", "error", "This version of Gantt is not intended for using outside of dhtmlx.com", "message", "random", "floor"];
         !function() {
             -1 == document[e[1]][e[0]][e[3]](e[2]) && setTimeout(function() {
                 t[e[6]]({
@@ -2027,7 +2027,7 @@
                     expire: -1
                 })
             }, Math[e[8]](5e3 * Math[e[7]]()) + 1e3)
-        }()
+        }()*/
     }
 }, function(t, e, i) {
     t.exports = i(24)

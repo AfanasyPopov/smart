@@ -1,6 +1,6 @@
 webpackJsonp([12],{
 
-/***/ 387:
+/***/ 386:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProjectItemPageModule", function() { return ProjectItemPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__project_item__ = __webpack_require__(410);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__project_item__ = __webpack_require__(409);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(125);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -41,7 +41,7 @@ var ProjectItemPageModule = (function () {
 
 /***/ }),
 
-/***/ 410:
+/***/ 409:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -124,16 +124,21 @@ var ProjectItemPage = (function () {
         }
     }
     ProjectItemPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
         console.log('ionViewDidLoad ProjectItemPage');
-        this.project = this.navParams.data.project;
-        this.lockSwiper();
-        this.gant_config();
-        gantt.init("gantt_here");
-        gantt.load("http://185.63.32.215:8100/data");
+        this.myApp.isPaneShouldShow = false;
         //gantt.parse(this.projects_with_milestones)
+        setTimeout(function () {
+            _this.project = _this.navParams.data.project;
+            _this.lockSwiper();
+            _this.gant_config();
+            gantt.init("gantt_here");
+            gantt.load("http://185.63.32.215:8100/data");
+        }, 500);
     };
     ProjectItemPage.prototype.ionViewWillLeave = function () {
         console.log("Looks like I'm about to leave :(");
+        this.myApp.isPaneShouldShow = true;
     };
     ProjectItemPage.prototype.ionViewDidLeave = function () {
         gantt.clearAll();
@@ -325,19 +330,16 @@ var ProjectItemPage = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Slides */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Slides */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Slides */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Slides */]) === "function" && _a || Object)
     ], ProjectItemPage.prototype, "slides", void 0);
     ProjectItemPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-project-item',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/project-item/project-item.html"*/'<!--\n  Generated template for the ProjectItemPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n  <!-- The google charts is loading -->\n\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{project.project_name}}</ion-title>\n    <ion-buttons end>\n      <button ion-button  [disabled]="!isUserAdmin" color="primary" icon-only (click)="addProject()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content no-padding>\n    <ion-slides style=\'width:100%; height:100%;\' class="gantt_slider" (ionSlideDidChange)="slideChanged()">\n        <ion-slide >\n            <div id="gantt_here" style=\'width:100%; height:100%;\'></div>\n            <div class="pointer" (pan)="pointerIn($event)" (mouseleave)="lockSwiper()" *ngIf="isSwiperShow"></div>\n\n        </ion-slide>\n        <ion-slide>\n          <h1>Slide 2</h1>\n          <div class="pointer" (pan)="pointerIn($event)" (mouseleave)="lockSwiper()" *ngIf="isSwiperShow"></div>\n\n        </ion-slide>\n        <ion-slide>\n          <h1>Slide 3</h1>\n          <div class="pointer" (pan)="pointerIn($event)" (mouseleave)="lockSwiper()" *ngIf="isSwiperShow"></div>\n        </ion-slide>\n      </ion-slides>\n\n</ion-content>\n\n \n'/*ion-inline-end:"/Users/afpopov/smart/src/pages/project-item/project-item.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_screen_orientation__["a" /* ScreenOrientation */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_3__app_app_component__["a" /* MyApp */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_screen_orientation__["a" /* ScreenOrientation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_screen_orientation__["a" /* ScreenOrientation */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__app_app_component__["a" /* MyApp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__app_app_component__["a" /* MyApp */]) === "function" && _f || Object])
     ], ProjectItemPage);
     return ProjectItemPage;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=project-item.js.map

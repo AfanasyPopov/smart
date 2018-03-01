@@ -1,4 +1,4 @@
-<ion-split-pane when="lg" >
+<ion-split-pane when="lg" [when]="isPaneShouldShow" >
   <ion-menu [content]="content" #menu1 id="menu1" (click)="fabClose(fab1)">
     <ion-header >
       <ion-toolbar>
@@ -17,8 +17,8 @@
         <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" >
             <ion-icon [name]="p.icon" item-start color="primary"></ion-icon>
             <ion-label>{{p.title}}</ion-label>
-            <ion-note item-end>info</ion-note>
-            <ion-note item-end>info</ion-note>
+           <!-- <ion-note item-end>info</ion-note>
+            <ion-note item-end>info</ion-note>-->
           </button>
       </ion-list>
     </ion-content>
@@ -28,7 +28,8 @@
     <ion-fab-list side="left">
       <button ion-fab (click)="goHome()"><ion-icon name="home" color="primary" ></ion-icon></button>
       <button ion-fab (click)="passRep()"><a href="/#/pass-repair/afanasy.popov%40gmail.com">pass</a></button>
-      <button ion-fab (click)="menuToggle(menu1)"><ion-icon name="ios-menu-outline"></ion-icon></button>
+      <button ion-fab (click)="menuOnOf(menu1)"><ion-icon name="ios-menu-outline"></ion-icon></button>
+      <button ion-fab  (click)="menuToggle(menu1)"><ion-icon name="ios-menu-outline" color="primary"></ion-icon></button>
       <button ion-fab (click)="doReload()"><ion-icon name="ios-refresh-outline"></ion-icon></button>
     </ion-fab-list>
     <ion-fab-list side="top">

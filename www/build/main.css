@@ -30541,7 +30541,10 @@ page-menu .ion-toast.error .toast-wrapper {
 }
 
 page-menu .split-pane-md.split-pane-visible > .split-pane-side {
-  max-width: 15% !important;
+  min-width: 170px;
+  max-width: 15%;
+  border-right: 1px solid #dedede;
+  border-left: 0;
 }
 
 page-menu .profile-image {
