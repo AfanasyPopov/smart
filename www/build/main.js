@@ -169,11 +169,11 @@ var map = {
 		13
 	],
 	"../pages/project-item/project-item.module": [
-		386,
+		387,
 		12
 	],
 	"../pages/projects/projects.module": [
-		387,
+		386,
 		11
 	],
 	"../pages/search/search.module": [
@@ -721,8 +721,8 @@ var AppModule = (function () {
                         { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pass-repair/pass-repair.module#PassRepairPageModule', name: 'PassRepairPage', segment: 'pass-repair/:str', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/project-create/project-create.module#ProjectCreatePageModule', name: 'ProjectCreatePage', segment: 'project-create', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/project-item/project-item.module#ProjectItemPageModule', name: 'ProjectItemPage', segment: 'project-item', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/projects/projects.module#ProjectsPageModule', name: 'ProjectsPage', segment: 'projects', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/project-item/project-item.module#ProjectItemPageModule', name: 'ProjectItemPage', segment: 'project-item', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
