@@ -30676,6 +30676,10 @@ page-project-item .slide-zoom .pointer {
   border-radius: 15px;
 }
 
+page-project-item .slide-zoom .gantt_here.grid_cell {
+  width: 100%;
+}
+
 page-project-item .gantt_task_link.start_to_start .gantt_line_wrapper div {
   background-color: #dd5640;
 }

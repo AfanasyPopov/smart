@@ -118,7 +118,6 @@ var ProjectItemPage = (function () {
                 { "id": "21", "source": "15", "target": "23", "type": "0" }
             ]
         };
-        this.isMobilePlatform = platform.is('mobile');
         if (this.myApp.user.status == 3) {
             this.isUserAdmin = true;
         }
@@ -138,7 +137,9 @@ var ProjectItemPage = (function () {
     };
     ProjectItemPage.prototype.ionViewWillLeave = function () {
         console.log("Looks like I'm about to leave :(");
-        this.myApp.isPaneShouldShow = true;
+        if (!this.myApp.isMobilePlatform) {
+            this.myApp.isPaneShouldShow = true;
+        }
     };
     ProjectItemPage.prototype.ionViewDidLeave = function () {
         gantt.clearAll();
@@ -196,7 +197,7 @@ var ProjectItemPage = (function () {
             dp.setTransactionMode("REST");
             this.myApp.isGanttConfigured = true;
         }
-        if (this.isMobilePlatform) {
+        if (this.myApp.isMobilePlatform) {
             this.gant_config_mobile();
         }
         else {

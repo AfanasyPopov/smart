@@ -20,7 +20,6 @@ export class ProjectItemPage {
   @ViewChild(Slides) slides: Slides;
   project =[]
   isSwiperShow:boolean = true;
-  isMobilePlatform:boolean;
   isUserAdmin:boolean;
   tasks = {
     data:[
@@ -70,7 +69,6 @@ export class ProjectItemPage {
     platform: Platform,
     public myApp:MyApp,
   ) {
-    this.isMobilePlatform=platform.is('mobile');
     if (this.myApp.user.status==3){ //3==owner hwo can add/del Tasks or Links
       this.isUserAdmin=true; 
     }
@@ -92,8 +90,10 @@ export class ProjectItemPage {
 
   ionViewWillLeave() {
     console.log("Looks like I'm about to leave :(");
-    this.myApp.isPaneShouldShow=true;
-  }
+    if (!this.myApp.isMobilePlatform){
+      this.myApp.isPaneShouldShow=true;
+      }
+    }
   ionViewDidLeave() {
     gantt.clearAll(); 
   }
@@ -155,7 +155,7 @@ export class ProjectItemPage {
       dp.setTransactionMode("REST");
       this.myApp.isGanttConfigured=true;
     }
-    if (this.isMobilePlatform){
+    if (this.myApp.isMobilePlatform){
       this.gant_config_mobile();
     } else {
       this.gant_config_desktop();

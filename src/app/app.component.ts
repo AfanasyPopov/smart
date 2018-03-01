@@ -19,6 +19,7 @@ import {} from '../../node_modules/dhtmlx-gantt/codebase/sources/'
 export class MyApp {
   isPaneShouldShow: boolean=true;
   isGanttConfigured:boolean=false;
+  isMobilePlatform:boolean= false;
   user: any =[];
   rootPage = FirstRunPage;
   @ViewChild(Nav) nav: Nav;
@@ -56,6 +57,13 @@ export class MyApp {
         var viewport = document.querySelector("meta[name=viewport]");
         viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
       }
+      this.isMobilePlatform=platform.is('mobile');
+      if(this.isMobilePlatform){
+        this.isPaneShouldShow=false
+      } else {
+        this.isPaneShouldShow=true
+      }
+    
       platform.ready().then(() => {
         // Okay, so the platform is ready and our plugins are available.
         // Here you can do any higher level native things you might need.
