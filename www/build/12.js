@@ -273,16 +273,15 @@ var ProjectItemPage = (function () {
             switch (link.type) {
                 case types.finish_to_start:
                     return "finish_to_start";
-                    break;
+                // break;
                 case types.start_to_start:
                     return "start_to_start";
-                    break;
+                //break;
                 case types.finish_to_finish:
                     return "finish_to_finish";
-                    break;
+                // break;
                 case types.start_to_finish:
                     return "start_to_finish";
-                    break;
             }
         };
     };
@@ -326,16 +325,19 @@ var ProjectItemPage = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Slides */]),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Slides */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Slides */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Slides */])
     ], ProjectItemPage.prototype, "slides", void 0);
     ProjectItemPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-project-item',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/project-item/project-item.html"*/'<!--\n  Generated template for the ProjectItemPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n  <!-- The google charts is loading -->\n\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{project.project_name}}</ion-title>\n    <ion-buttons end>\n      <button ion-button  [disabled]="!isUserAdmin" color="primary" icon-only (click)="addProject()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content no-padding>\n    <ion-slides style=\'width:100%; height:100%;\' class="gantt_slider" (ionSlideDidChange)="slideChanged()">\n        <ion-slide >\n            <div id="gantt_here" style=\'width:100%; height:100%;\'></div>\n            <div class="pointer" (pan)="pointerIn($event)" (mouseleave)="lockSwiper()" *ngIf="isSwiperShow"></div>\n\n        </ion-slide>\n        <ion-slide>\n          <h1>Slide 2</h1>\n          <div class="pointer" (pan)="pointerIn($event)" (mouseleave)="lockSwiper()" *ngIf="isSwiperShow"></div>\n\n        </ion-slide>\n        <ion-slide>\n          <h1>Slide 3</h1>\n          <div class="pointer" (pan)="pointerIn($event)" (mouseleave)="lockSwiper()" *ngIf="isSwiperShow"></div>\n        </ion-slide>\n      </ion-slides>\n\n</ion-content>\n\n \n'/*ion-inline-end:"/Users/afpopov/smart/src/pages/project-item/project-item.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_screen_orientation__["a" /* ScreenOrientation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_screen_orientation__["a" /* ScreenOrientation */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__app_app_component__["a" /* MyApp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__app_app_component__["a" /* MyApp */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_native_screen_orientation__["a" /* ScreenOrientation */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_3__app_app_component__["a" /* MyApp */]])
     ], ProjectItemPage);
     return ProjectItemPage;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=project-item.js.map

@@ -233,16 +233,16 @@ export class ProjectItemPage {
       switch (link.type){
           case types.finish_to_start:
               return "finish_to_start";
-              break;
+             // break;
           case types.start_to_start:
               return "start_to_start";
-              break;
+              //break;
           case types.finish_to_finish:
               return "finish_to_finish";
-              break;
+             // break;
           case types.start_to_finish:
               return "start_to_finish";
-              break;
+             // break;
       }
   };
   }
