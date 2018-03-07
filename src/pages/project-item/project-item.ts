@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { Platform } from 'ionic-angular';
 import {MyApp} from '../../app/app.component'
+import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 
 
 /**
@@ -62,6 +63,7 @@ export class ProjectItemPage {
 		{"id":"21","source":"15","target":"23","type":"0"}
 	]
 };
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -72,6 +74,25 @@ export class ProjectItemPage {
     if (this.myApp.user.status==3){ //3==owner hwo can add/del Tasks or Links
       this.isUserAdmin=true; 
     }
+    document['checkBoxToggle']= function (taskId){
+     gantt.getTask(taskId).checked=!gantt.getTask(taskId).checked
+      var checkbox = document.getElementById("gantt_greed_checkbox_id-"+taskId).classList;
+
+      if (gantt.getTask(taskId).checked){
+        checkbox.remove("gantt_unchecked");
+        checkbox.add("gantt_checked");
+        //gantt.getTask(taskId).checked
+      } else {
+        checkbox.remove("gantt_checked");
+        checkbox.add("gantt_unchecked");
+      }
+      console.log('taskId:'+taskId+' '+JSON.stringify(checkbox));
+          // gantt.message({
+          //   text: "Выделен " + gantt.getTask(taskId).text ,
+          //   expire:4000
+          // });
+        }
+  
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProjectItemPage');
@@ -84,7 +105,9 @@ export class ProjectItemPage {
       this.lockSwiper();
       this.gant_config();
       gantt.init("gantt_here");
+      gantt.clearAll();
       gantt.load("http://185.63.32.215:8100/data");
+      //this.addTasksProp(); hook on "onLoadEnd" event
     },500) 
   }
 
@@ -95,7 +118,7 @@ export class ProjectItemPage {
       }
     }
   ionViewDidLeave() {
-    gantt.clearAll(); 
+    //gantt.clearAll(); 
   }
   lockSwiper(){
     this.slides.lockSwipes(true)
@@ -149,6 +172,8 @@ export class ProjectItemPage {
     gantt.config.subscales = [
       {unit: "day", step: 1, date: "%j, %D"}
     ];
+   
+  
     if (!this.myApp.isGanttConfigured) {
       var dp = new gantt.dataProcessor("http://185.63.32.215:8100/data");
       dp.init(gantt);
@@ -217,9 +242,15 @@ export class ProjectItemPage {
       gantt.config.columns = [
         {name:"text", tree:true, width:'290', resize:true },
         {name:"buttons", width:'30', align: "center", template: function(task){
-          return '<div class="gantt_tree_icon gantt_unchecked"></div>'
+          var check_string=''
+          if (task['checked']) { 
+            check_string ='gantt_checked'
+          } else{
+            check_string ='gantt_unchecked'
+          }
+          return '<div class="gantt_tree_icon '+check_string+'" id="gantt_greed_checkbox_id-'+task.id+'" onClick="checkBoxToggle('+task.id+')"></div>'
           }},
-        {name:"duration", width:'*', align: "center" },
+        {name:"duration", width:'*', align: "center",max_width:'50' },
         {name:"add", width:'30' }
         ];
       } else {
@@ -253,30 +284,42 @@ export class ProjectItemPage {
   }
   setHandlingEvents(){
 
-  /*
-    if (!gantt.checkEvent("onTaskClick")){
-      gantt.attachEvent("onTaskClick", function(id, e) {
-        // gantt.message({
-        //   text: "<b>"+gantt.getTask(id).id+"</b> был нажат  " + gantt.getTask(id).task_text ,
-        //   expire:4000
-        // });
+    
+      if (!gantt.checkEvent("onTaskClick")){
+        gantt.attachEvent("onTaskClick", function(id, e) {
+          //gantt.getTask(id).checked=!gantt.getTask(id).checked;
+          //document.checkBoxToggle(id);
+          // gantt.message({
+          //   text: "<b>"+gantt.getTask(id).id+"</b> был нажат  " + gantt.getTask(id).task_text ,
+          //   expire:4000
+          // });
+  
+        });
+      }
+      /*
+      gantt.attachEvent("onBeforeAutoSchedule", function(){
+        gantt.message("Recalculating project schedule...");
+        return true;
       });
+      gantt.attachEvent("onAfterTaskAutoSchedule", function(task, new_date, constraint, predecessor){
+        gantt.message({
+          text: "<b>"+task.text+"</b> has been rescheduled to " + gantt.templates.task_date(new_date) + " due to <b>"+predecessor.text+"</b> constraint",
+          expire:4000
+        });
+      });
+    */
+    if(!gantt.checkEvent("onLoadEnd")){
+      gantt.attachEvent("onLoadEnd", function(){
+        var count = gantt.getTaskCount();
+        for (let index = 0; index < count; index++) {
+          gantt.getTaskByIndex(index).checked=false;    
+        }
+            });
     }
-     gantt.attachEvent("onBeforeAutoSchedule", function(){
-      gantt.message("Recalculating project schedule...");
-      return true;
-    });
-    gantt.attachEvent("onAfterTaskAutoSchedule", function(task, new_date, constraint, predecessor){
-      gantt.message({
-        text: "<b>"+task.text+"</b> has been rescheduled to " + gantt.templates.task_date(new_date) + " due to <b>"+predecessor.text+"</b> constraint",
-        expire:4000
-      });
-    });
-*/
   }
   addProject(){
-
   }
+
   getSelector(sText) { 
     var sh = document.styleSheets; 
     var res:any
@@ -290,8 +333,6 @@ export class ProjectItemPage {
       }
     });
     return res; 
+  }
+
 }
-
-
-}
-

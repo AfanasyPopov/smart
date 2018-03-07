@@ -65,15 +65,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var SearchPage = (function () {
-    function SearchPage(navCtrl, navParams, items) {
+    function SearchPage(navCtrl, navParams, items, viewCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.items = items;
+        this.viewCtrl = viewCtrl;
         this.currentItems = [];
     }
+    SearchPage.prototype.ionViewWillEnter = function () {
+        var count = gantt.getTaskCount();
+        console.log('getTaskCount:' + count);
+        this.currentItems = [];
+        for (var index = 0; index < count; index++) {
+            if (gantt.getTaskByIndex(index).checked) {
+                this.currentItems.push(gantt.getTaskByIndex(index));
+            }
+        }
+    };
     /**
-     * Perform a service for the proper items.
-     */
+   * Perform a service for the proper items.
+   */
     SearchPage.prototype.getItems = function (ev) {
         var val = ev.target.value;
         if (!val || !val.trim()) {
@@ -94,9 +105,9 @@ var SearchPage = (function () {
     };
     SearchPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-search',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/search/search.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{ \'SEARCH_TITLE\' | translate }}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-searchbar (ionInput)="getItems($event)" placeholder="{{ \'SEARCH_PLACEHOLDER\' | translate }}"></ion-searchbar>\n  <ion-list>\n    <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">\n      <ion-avatar item-start>\n        <img [src]="item.profilePic" />\n      </ion-avatar>\n      <h2>{{item.name}}</h2>\n      <p>{{item.about}}</p>\n      <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>\n    </button>\n  </ion-list>\n</ion-content>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/search/search.html"*/
+            selector: 'page-search',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/search/search.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{ \'SEARCH_TITLE\' | translate }}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n <!-- <ion-searchbar (ionInput)="getItems($event)" placeholder="{{ \'SEARCH_PLACEHOLDER\' | translate }}"></ion-searchbar>-->\n <ion-card no-padding>\n   <ion-card-content>\n  <ion-list>\n    <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">\n      <h2>{{item.text}}</h2>\n      <ion-note item-end *ngIf="item.descr">{{item.desrc}}</ion-note>\n    </button>\n  </ion-list>\n</ion-card-content>\n<button ion-button>Деньги</button>\n<button ion-button color="secondary">Материалы</button>\n<button ion-button color="danger">Акт</button>\n\n</ion-card>\n</ion-content>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/search/search.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* Items */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* Items */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */]])
     ], SearchPage);
     return SearchPage;
 }());

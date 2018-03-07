@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
@@ -13,9 +13,21 @@ export class SearchPage {
 
   currentItems: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items, public viewCtrl: ViewController) { }
 
-  /**
+  ionViewWillEnter(){
+    var count = gantt.getTaskCount();
+    console.log ('getTaskCount:'+ count)
+    this.currentItems=[];
+    for (let index = 0; index < count; index++) {
+      if (gantt.getTaskByIndex(index).checked){
+        this.currentItems.push(gantt.getTaskByIndex(index));
+      }    
+    }
+      
+
+  }    
+    /**
    * Perform a service for the proper items.
    */
   getItems(ev) {

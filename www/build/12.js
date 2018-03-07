@@ -121,6 +121,24 @@ var ProjectItemPage = (function () {
         if (this.myApp.user.status == 3) {
             this.isUserAdmin = true;
         }
+        document['checkBoxToggle'] = function (taskId) {
+            gantt.getTask(taskId).checked = !gantt.getTask(taskId).checked;
+            var checkbox = document.getElementById("gantt_greed_checkbox_id-" + taskId).classList;
+            if (gantt.getTask(taskId).checked) {
+                checkbox.remove("gantt_unchecked");
+                checkbox.add("gantt_checked");
+                //gantt.getTask(taskId).checked
+            }
+            else {
+                checkbox.remove("gantt_checked");
+                checkbox.add("gantt_unchecked");
+            }
+            console.log('taskId:' + taskId + ' ' + JSON.stringify(checkbox));
+            // gantt.message({
+            //   text: "Выделен " + gantt.getTask(taskId).text ,
+            //   expire:4000
+            // });
+        };
     }
     ProjectItemPage.prototype.ionViewDidLoad = function () {
         var _this = this;
@@ -132,7 +150,9 @@ var ProjectItemPage = (function () {
             _this.lockSwiper();
             _this.gant_config();
             gantt.init("gantt_here");
+            gantt.clearAll();
             gantt.load("http://185.63.32.215:8100/data");
+            //this.addTasksProp(); hook on "onLoadEnd" event
         }, 500);
     };
     ProjectItemPage.prototype.ionViewWillLeave = function () {
@@ -142,7 +162,7 @@ var ProjectItemPage = (function () {
         }
     };
     ProjectItemPage.prototype.ionViewDidLeave = function () {
-        gantt.clearAll();
+        //gantt.clearAll(); 
     };
     ProjectItemPage.prototype.lockSwiper = function () {
         this.slides.lockSwipes(true);
@@ -257,9 +277,16 @@ var ProjectItemPage = (function () {
             gantt.config.columns = [
                 { name: "text", tree: true, width: '290', resize: true },
                 { name: "buttons", width: '30', align: "center", template: function (task) {
-                        return '<div class="gantt_tree_icon gantt_unchecked"></div>';
+                        var check_string = '';
+                        if (task['checked']) {
+                            check_string = 'gantt_checked';
+                        }
+                        else {
+                            check_string = 'gantt_unchecked';
+                        }
+                        return '<div class="gantt_tree_icon ' + check_string + '" id="gantt_greed_checkbox_id-' + task.id + '" onClick="checkBoxToggle(' + task.id + ')"></div>';
                     } },
-                { name: "duration", width: '*', align: "center" },
+                { name: "duration", width: '*', align: "center", max_width: '50' },
                 { name: "add", width: '30' }
             ];
         }
@@ -292,26 +319,36 @@ var ProjectItemPage = (function () {
         };
     };
     ProjectItemPage.prototype.setHandlingEvents = function () {
+        if (!gantt.checkEvent("onTaskClick")) {
+            gantt.attachEvent("onTaskClick", function (id, e) {
+                //gantt.getTask(id).checked=!gantt.getTask(id).checked;
+                //document.checkBoxToggle(id);
+                // gantt.message({
+                //   text: "<b>"+gantt.getTask(id).id+"</b> был нажат  " + gantt.getTask(id).task_text ,
+                //   expire:4000
+                // });
+            });
+        }
         /*
-          if (!gantt.checkEvent("onTaskClick")){
-            gantt.attachEvent("onTaskClick", function(id, e) {
-              // gantt.message({
-              //   text: "<b>"+gantt.getTask(id).id+"</b> был нажат  " + gantt.getTask(id).task_text ,
-              //   expire:4000
-              // });
-            });
-          }
-           gantt.attachEvent("onBeforeAutoSchedule", function(){
-            gantt.message("Recalculating project schedule...");
-            return true;
+        gantt.attachEvent("onBeforeAutoSchedule", function(){
+          gantt.message("Recalculating project schedule...");
+          return true;
+        });
+        gantt.attachEvent("onAfterTaskAutoSchedule", function(task, new_date, constraint, predecessor){
+          gantt.message({
+            text: "<b>"+task.text+"</b> has been rescheduled to " + gantt.templates.task_date(new_date) + " due to <b>"+predecessor.text+"</b> constraint",
+            expire:4000
           });
-          gantt.attachEvent("onAfterTaskAutoSchedule", function(task, new_date, constraint, predecessor){
-            gantt.message({
-              text: "<b>"+task.text+"</b> has been rescheduled to " + gantt.templates.task_date(new_date) + " due to <b>"+predecessor.text+"</b> constraint",
-              expire:4000
-            });
-          });
+        });
       */
+        if (!gantt.checkEvent("onLoadEnd")) {
+            gantt.attachEvent("onLoadEnd", function () {
+                var count = gantt.getTaskCount();
+                for (var index = 0; index < count; index++) {
+                    gantt.getTaskByIndex(index).checked = false;
+                }
+            });
+        }
     };
     ProjectItemPage.prototype.addProject = function () {
     };
