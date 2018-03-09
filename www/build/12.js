@@ -319,16 +319,16 @@ var ProjectItemPage = (function () {
         };
     };
     ProjectItemPage.prototype.setHandlingEvents = function () {
-        if (!gantt.checkEvent("onTaskClick")) {
-            gantt.attachEvent("onTaskClick", function (id, e) {
-                //gantt.getTask(id).checked=!gantt.getTask(id).checked;
-                //document.checkBoxToggle(id);
-                // gantt.message({
-                //   text: "<b>"+gantt.getTask(id).id+"</b> был нажат  " + gantt.getTask(id).task_text ,
-                //   expire:4000
-                // });
-            });
-        }
+        // if (!gantt.checkEvent("onTaskClick")){
+        // gantt.attachEvent("onTaskClick", function(id, e) {
+        //gantt.getTask(id).checked=!gantt.getTask(id).checked;
+        //document.checkBoxToggle(id);
+        // gantt.message({
+        //   text: "<b>"+gantt.getTask(id).id+"</b> был нажат  " + gantt.getTask(id).task_text ,
+        //   expire:4000
+        // });
+        //   });
+        //}
         /*
         gantt.attachEvent("onBeforeAutoSchedule", function(){
           gantt.message("Recalculating project schedule...");

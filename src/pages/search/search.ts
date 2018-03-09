@@ -16,6 +16,9 @@ export class SearchPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items, public viewCtrl: ViewController) { }
 
   ionViewWillEnter(){
+      this.refreshSelectedTasks();
+  }   
+  refreshSelectedTasks(){
     var count = gantt.getTaskCount();
     console.log ('getTaskCount:'+ count)
     this.currentItems=[];
@@ -24,9 +27,8 @@ export class SearchPage {
         this.currentItems.push(gantt.getTaskByIndex(index));
       }    
     }
-      
 
-  }    
+  } 
     /**
    * Perform a service for the proper items.
    */
@@ -48,6 +50,13 @@ export class SearchPage {
     this.navCtrl.push('ItemDetailPage', {
       item: item
     });
+  }
+  deleteChip(chip: Element) {
+    var id= Number(chip.id.slice(4));
+    gantt.getTask(id).checked = false;
+    //chip.remove();
+    this.refreshSelectedTasks();
+    gantt.refreshData();
   }
 
 }

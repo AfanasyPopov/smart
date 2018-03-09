@@ -73,6 +73,9 @@ var SearchPage = (function () {
         this.currentItems = [];
     }
     SearchPage.prototype.ionViewWillEnter = function () {
+        this.refreshSelectedTasks();
+    };
+    SearchPage.prototype.refreshSelectedTasks = function () {
         var count = gantt.getTaskCount();
         console.log('getTaskCount:' + count);
         this.currentItems = [];
@@ -103,13 +106,21 @@ var SearchPage = (function () {
             item: item
         });
     };
+    SearchPage.prototype.deleteChip = function (chip) {
+        var id = Number(chip.id.slice(4));
+        gantt.getTask(id).checked = false;
+        //chip.remove();
+        this.refreshSelectedTasks();
+        gantt.refreshData();
+    };
     SearchPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-search',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/search/search.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{ \'SEARCH_TITLE\' | translate }}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n <!-- <ion-searchbar (ionInput)="getItems($event)" placeholder="{{ \'SEARCH_PLACEHOLDER\' | translate }}"></ion-searchbar>-->\n <ion-card no-padding>\n   <ion-card-content>\n  <ion-list>\n    <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">\n      <h2>{{item.text}}</h2>\n      <ion-note item-end *ngIf="item.descr">{{item.desrc}}</ion-note>\n    </button>\n  </ion-list>\n</ion-card-content>\n<button ion-button>Деньги</button>\n<button ion-button color="secondary">Материалы</button>\n<button ion-button color="danger">Акт</button>\n\n</ion-card>\n</ion-content>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/search/search.html"*/
+            selector: 'page-search',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/search/search.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{ \'SEARCH_TITLE\' | translate }}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n <!-- <ion-searchbar (ionInput)="getItems($event)" placeholder="{{ \'SEARCH_PLACEHOLDER\' | translate }}"></ion-searchbar>-->\n <ion-card >\n   <ion-card-header>\n     Создать движение:\n   </ion-card-header>\n   <ion-card-content>\n  <ion-list>\n    <!--\n      <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">\n      <h2>{{item.text}}</h2>\n      <ion-note item-end *ngIf="item.descr">{{item.desrc}}</ion-note>\n    </button>\n  -->\n    <ion-chip #chip  id="chip{{item.id}}" *ngFor="let item of currentItems">\n        <ion-avatar>\n          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">\n        </ion-avatar>\n        <ion-label>{{item.text}}</ion-label>\n        <button ion-button clear color="primary" (click)="deleteChip(chip)">\n          <ion-icon name="close-circle"></ion-icon>\n        </button>\n    </ion-chip>\n\n  </ion-list>\n</ion-card-content>\n<button ion-button  >Деньги</button>\n<button ion-button   color="secondary">Материалы</button>\n<button ion-button   color="orange">Акты</button>\n\n</ion-card>\n</ion-content>'/*ion-inline-end:"/Users/afpopov/smart/src/pages/search/search.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* Items */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* Items */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_providers__["b" /* Items */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */]) === "function" && _d || Object])
     ], SearchPage);
     return SearchPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=search.js.map

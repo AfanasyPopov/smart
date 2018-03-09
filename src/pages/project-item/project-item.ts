@@ -285,8 +285,8 @@ export class ProjectItemPage {
   setHandlingEvents(){
 
     
-      if (!gantt.checkEvent("onTaskClick")){
-        gantt.attachEvent("onTaskClick", function(id, e) {
+     // if (!gantt.checkEvent("onTaskClick")){
+       // gantt.attachEvent("onTaskClick", function(id, e) {
           //gantt.getTask(id).checked=!gantt.getTask(id).checked;
           //document.checkBoxToggle(id);
           // gantt.message({
@@ -294,8 +294,8 @@ export class ProjectItemPage {
           //   expire:4000
           // });
   
-        });
-      }
+     //   });
+      //}
       /*
       gantt.attachEvent("onBeforeAutoSchedule", function(){
         gantt.message("Recalculating project schedule...");

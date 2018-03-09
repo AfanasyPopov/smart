@@ -9,18 +9,33 @@
 
 <ion-content>
  <!-- <ion-searchbar (ionInput)="getItems($event)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>-->
- <ion-card no-padding>
+ <ion-card >
+   <ion-card-header>
+     Создать движение:
+   </ion-card-header>
    <ion-card-content>
   <ion-list>
-    <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">
+    <!--
+      <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">
       <h2>{{item.text}}</h2>
       <ion-note item-end *ngIf="item.descr">{{item.desrc}}</ion-note>
     </button>
+  -->
+    <ion-chip #chip  id="chip{{item.id}}" *ngFor="let item of currentItems">
+        <ion-avatar>
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+        </ion-avatar>
+        <ion-label>{{item.text}}</ion-label>
+        <button ion-button clear color="primary" (click)="deleteChip(chip)">
+          <ion-icon name="close-circle"></ion-icon>
+        </button>
+    </ion-chip>
+
   </ion-list>
 </ion-card-content>
-<button ion-button>Деньги</button>
-<button ion-button color="secondary">Материалы</button>
-<button ion-button color="danger">Акт</button>
+<button ion-button  >Деньги</button>
+<button ion-button   color="secondary">Материалы</button>
+<button ion-button   color="orange">Акты</button>
 
 </ion-card>
 </ion-content>
