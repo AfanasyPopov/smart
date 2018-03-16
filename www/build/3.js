@@ -1,15 +1,15 @@
 webpackJsonp([3],{
 
-/***/ 376:
+/***/ 377:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminPageModule", function() { return AdminPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__admin__ = __webpack_require__(398);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pipes_filter_filter__ = __webpack_require__(399);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__admin__ = __webpack_require__(399);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pipes_filter_filter__ = __webpack_require__(400);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -30,7 +30,7 @@ var AdminPageModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_3__pipes_filter_filter__["a" /* FilterPipe */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__admin__["a" /* AdminPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["IonicPageModule"].forChild(__WEBPACK_IMPORTED_MODULE_2__admin__["a" /* AdminPage */]),
             ],
         })
     ], AdminPageModule);
@@ -41,13 +41,13 @@ var AdminPageModule = (function () {
 
 /***/ }),
 
-/***/ 398:
+/***/ 399:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_api_api__ = __webpack_require__(128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(63);
@@ -97,7 +97,14 @@ var AdminPage = (function () {
         this.showConfirmForUserDelTitle = '';
         this.showConfirmForUserDelSubTitle = '';
         this.adminUserCardItems = {
-            name: "Пользователи",
+            name: "Пользователи:",
+            count_active: 5,
+            count: 5,
+            list: [],
+            dir: []
+        };
+        this.adminContrCardItems = {
+            name: "Контрагенты:",
             count_active: 5,
             count: 5,
             list: [],
@@ -126,6 +133,7 @@ var AdminPage = (function () {
         });
         this.storage.get('account').then(function (val) {
             _this.getUserList(val);
+            _this.getContrList(val);
         });
     }
     AdminPage.prototype.toggleUserActive = function (event, item) {
@@ -136,6 +144,50 @@ var AdminPage = (function () {
                 active: item.active
             };
             _this.api.postData('updateUser', accountInfo)
+                .subscribe(function (res) {
+                if (res == 'УСПЕШНО') {
+                    var toast = _this.toastCtrl.create({
+                        message: 'Обновление данных прошло: ' + JSON.stringify(res),
+                        duration: 3000,
+                        position: 'bottom',
+                        cssClass: 'success',
+                        showCloseButton: true,
+                        closeButtonText: 'OK'
+                    });
+                    toast.present();
+                }
+            }, function (error) {
+                if (_this.ionChangeFlag) {
+                    _this.ionChangeFlag = false;
+                    event.disabled = true;
+                    setTimeout(function () {
+                        _this.ionChangeFlag = true;
+                        event.disabled = false;
+                    }, 1000);
+                    setTimeout(function () {
+                        item.active = !item.active;
+                    }, 900);
+                    var toast = _this.toastCtrl.create({
+                        message: 'Обновление данных прошло: c ошибкой . Требуется восстановление связи. ',
+                        duration: 3000,
+                        position: 'bottom',
+                        cssClass: 'error',
+                        showCloseButton: true,
+                        closeButtonText: 'OK'
+                    });
+                    toast.present();
+                }
+            });
+        });
+    };
+    AdminPage.prototype.toggleContrActive = function (event, item) {
+        var _this = this;
+        this.storage.get('account').then(function (accountInfo) {
+            accountInfo.item = {
+                uuid_key: item.uuid_key,
+                active: item.active
+            };
+            _this.api.postData('updateContr', accountInfo)
                 .subscribe(function (res) {
                 if (res == 'УСПЕШНО') {
                     var toast = _this.toastCtrl.create({
@@ -276,6 +328,15 @@ var AdminPage = (function () {
             console.log(_this.adminUserCardItems);
         });
     };
+    AdminPage.prototype.getContrList = function (accountInfo) {
+        var _this = this;
+        return this.api.postData('getContrList', accountInfo).subscribe(function (res) {
+            _this.adminContrCardItems.list = res['contragents'];
+            _this.adminContrCardItems.dir = res['dir'];
+            console.log("adminPage.getContrList:");
+            console.log(_this.adminContrCardItems);
+        });
+    };
     AdminPage.prototype.openItem = function (item) {
         this.navCtrl.push('UserItemPage', {
             item: item,
@@ -312,15 +373,15 @@ var AdminPage = (function () {
     };
     AdminPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-admin',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/admin/admin.html"*/'<!--\n  Generated template for the AdminPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{adminTitle}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content >\n<!-- <ion-card>\n        <ion-card-header >\n              <ion-row>\n                  <ion-col><h2>{{adminUserCardItems.name}}</h2></ion-col> \n              </ion-row> \n        </ion-card-header>  \n      -->\n        <ion-list >\n            <ion-item-group>\n                <ion-item-divider color="light">\n                  <ion-label item-start>{{adminUserCardItems.name}}</ion-label>\n                    <ion-buttons item-end>\n                        <button ion-button clear small icon-only (click)="addUser()">\n                          <ion-icon name="add"></ion-icon>\n                        </button>\n                      </ion-buttons>                  \n                </ion-item-divider>\n                <ion-item-sliding  *ngFor="let item of adminUserCardItems.list | filter : query" >\n                <button ion-item (click)=\'openItem(item)\' >\n                        <ion-label><h5>{{item.last_name+\' \'+item.username}}</h5></ion-label>\n                        <ion-label><p>{{item.role_in_project}}</p></ion-label>\n                        <ion-toggle item-end  [(ngModel)]=\'item.active\' (ionChange)=\'toggleUserActive($event, item)\' ></ion-toggle>\n                </button>\n                <ion-item-options>\n                    <button ion-button color="danger" (click)="delUserConfirmation(item)">\n                      {{delButtonTitle}}\n                    </button>\n                  </ion-item-options>\n        \n              </ion-item-sliding>\n          </ion-item-group>\n        </ion-list>  \n      <ion-grid no-padding>\n        <ion-row>\n          <ion-col col-12 center>\n                <ion-note small>\n                    <ion-searchbar small [(ngModel)]="query" placeholder="поиск"></ion-searchbar>\n                  </ion-note>\n          </ion-col>   \n          <ion-col>\n            <button ion-button color="primary" clear  icon-start small (click)="addUser()">\n                <ion-icon name=\'person-add\'></ion-icon>\n                Добавить\n            </button>\n          </ion-col>\n          <ion-col>\n              <ion-chip #chip1>\n                <ion-avatar>\n                  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">\n                </ion-avatar>\n                <ion-label>With Avatar</ion-label>\n                <button ion-button clear color="dark" (click)="deleteChip(chip1)">\n                  <ion-icon name="close-circle"></ion-icon>\n                </button>\n              </ion-chip>\n            </ion-col> \n         </ion-row>\n      </ion-grid>\n <!--  </ion-card>-->\n</ion-content>\n'/*ion-inline-end:"/Users/afpopov/smart/src/pages/admin/admin.html"*/,
+            selector: 'page-admin',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/admin/admin.html"*/'<!--\n  Generated template for the AdminPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{adminTitle}}</ion-title>\n    <ion-toolbar>                   \n       <ion-searchbar small [(ngModel)]="query" placeholder="поиск"></ion-searchbar>\n       <button ion-button color="primary" clear  icon-start small (click)="addUser()">\n          <ion-icon name=\'person-add\'></ion-icon>\n          Пользователь\n      </button>\n      <button ion-button color="primary" clear  icon-start small (click)="addUser()">\n          <ion-icon name=\'person-add\'></ion-icon>\n          Контрагент\n      </button>\n</ion-toolbar>\n  </ion-navbar>\n\n</ion-header>\n\n<!--<ion-header>\n    <ion-navbar [attr.no-border-bottom]="showToolbar ? \'\' : null">\n        <ion-title>Example</ion-title>\n    </ion-navbar>\n\n    <ion-toolbar *ngIf="showToolbar" no-border-top>\n        <ion-segment [(ngModel)]="segment" primary>\n            <ion-segment-button value="1">Segment 1</ion-segment-button>\n            <ion-segment-button value="2">Segment 2</ion-segment-button>\n        </ion-segment>\n    </ion-toolbar>\n</ion-header>\n-->\n<ion-content >\n<!-- <ion-card>\n        <ion-card-header >\n              <ion-row>\n                  <ion-col><h2>{{adminUserCardItems.name}}</h2></ion-col> \n              </ion-row> \n        </ion-card-header>  \n      -->\n      <ion-card>\n        <ion-list >\n            <ion-item-group>\n                <ion-item-divider color="light">\n                  <ion-label item-start>Пользователи:</ion-label>\n                    <ion-buttons item-end>\n                        <button ion-button clear small icon-only (click)="addUser()">\n                          <ion-icon name="add"></ion-icon>\n                        </button>\n                      </ion-buttons>                  \n                </ion-item-divider>\n                <ion-item-sliding  *ngFor="let item of adminUserCardItems.list | filter : query" >\n                <button ion-item (click)=\'openItem(item)\' >\n                        <ion-label><h5>{{item.last_name+\' \'+item.username}}</h5></ion-label>\n                        <ion-label><p>{{item.role_in_project}}</p></ion-label>\n                        <ion-toggle item-end  [(ngModel)]=\'item.active\' (ionChange)=\'toggleUserActive($event, item)\' ></ion-toggle>\n                </button>\n                <ion-item-options>\n                    <button ion-button color="danger" (click)="delUserConfirmation(item)">\n                      {{delButtonTitle}}\n                    </button>\n                  </ion-item-options>\n        \n              </ion-item-sliding>\n          </ion-item-group>\n        </ion-list>  \n <!--  </ion-card>-->\n</ion-card>\n<ion-card>\n<ion-list >\n    <ion-item-group>\n        <ion-item-divider color="light">\n          <ion-label item-start>Контрагенты:</ion-label>\n            <ion-buttons item-end>\n                <button ion-button clear small icon-only (click)="addUser()">\n                  <ion-icon name="add"></ion-icon>\n                </button>\n              </ion-buttons>                  \n        </ion-item-divider>\n        <ion-item-sliding  *ngFor="let item of adminContrCardItems.list | filter : query" >\n        <button ion-item (click)=\'openItem(item)\' >\n                <ion-label><h5>{{item.org_short_name}}</h5></ion-label>\n                <ion-label><p>{{item.org_name}}</p></ion-label>\n                <ion-toggle item-end  [(ngModel)]=\'item.active\' (ionChange)=\'toggleContrActive($event, item)\' ></ion-toggle>\n        </button>\n        <ion-item-options>\n            <button ion-button color="danger" (click)="delContrConfirmation(item)">\n              {{delButtonTitle}}\n            </button>\n          </ion-item-options>\n\n      </ion-item-sliding>\n  </ion-item-group>\n</ion-list> \n</ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/afpopov/smart/src/pages/admin/admin.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["AlertController"],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["ModalController"],
             __WEBPACK_IMPORTED_MODULE_0__angular_core__["ApplicationRef"],
             __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* Api */],
             __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavParams"],
             __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */],
             __WEBPACK_IMPORTED_MODULE_5_ionic_angular_components_toast_toast_controller__["a" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_7__app_app_component__["a" /* MyApp */]])
@@ -332,7 +393,7 @@ var AdminPage = (function () {
 
 /***/ }),
 
-/***/ 399:
+/***/ 400:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

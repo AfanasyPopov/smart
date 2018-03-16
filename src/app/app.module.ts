@@ -17,7 +17,7 @@ import { MyApp } from './app.component';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { PipesModule } from '../pipes/pipes.module';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
-
+import { SelectSearchableModule } from 'ionic-select-searchable';
 
 const config: SocketIoConfig = { url: 'http://185.63.32.215:8080', options: {} };
 
@@ -59,6 +59,7 @@ export function provideSettings(storage: Storage) {
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
     SocketIoModule.forRoot(config),
+    SelectSearchableModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

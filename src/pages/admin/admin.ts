@@ -27,7 +27,14 @@ export class AdminPage {
   showConfirmForUserDelTitle = '';
   showConfirmForUserDelSubTitle = '';
   adminUserCardItems = {
-    name: "Пользователи",
+    name: "Пользователи:",
+    count_active: 5,
+    count: 5,
+    list: [],
+    dir: []
+  };
+  adminContrCardItems = {
+    name: "Контрагенты:",
     count_active: 5,
     count: 5,
     list: [],
@@ -60,6 +67,7 @@ export class AdminPage {
     });
     this.storage.get('account').then((val) => {
       this.getUserList(val)
+      this.getContrList(val)
     });
   }
   toggleUserActive(event: any, item: any): void {
@@ -106,8 +114,51 @@ export class AdminPage {
           })
 
     });
+  }
+  toggleContrActive(event: any, item: any): void {
+    this.storage.get('account').then(accountInfo => {
+      accountInfo.item = {
+        uuid_key: item.uuid_key,
+        active: item.active
+      }
+      this.api.postData('updateContr', accountInfo)
+        .subscribe(res => {
+            if (res == 'УСПЕШНО') {
+              let toast = this.toastCtrl.create({
+                message: 'Обновление данных прошло: ' + JSON.stringify(res),
+                duration: 3000,
+                position: 'bottom',
+                cssClass: 'success',
+                showCloseButton: true,
+                closeButtonText: 'OK'
+              });
+              toast.present();
+            }
+          },
+          error => {
+            if (this.ionChangeFlag) {
+              this.ionChangeFlag = false;
+              event.disabled = true;
+              setTimeout(() => {
+                this.ionChangeFlag = true
+                event.disabled = false;
+              }, 1000);
+              setTimeout(() => {
+                item.active = !item.active;
+              }, 900);
+              let toast = this.toastCtrl.create({
+                message: 'Обновление данных прошло: c ошибкой . Требуется восстановление связи. ',
+                duration: 3000,
+                position: 'bottom',
+                cssClass: 'error',
+                showCloseButton: true,
+                closeButtonText: 'OK'
+              });
+              toast.present();
+            }
+          })
 
-
+    });
   }
 
   toastLongRequest = this.toastCtrl.create({
@@ -232,6 +283,14 @@ export class AdminPage {
       }
       console.log("adminPage.adminUserCardItems:");
       console.log(this.adminUserCardItems);
+    });
+  }
+  getContrList(accountInfo: any): any {
+    return this.api.postData('getContrList', accountInfo).subscribe(res => {
+      this.adminContrCardItems.list = res['contragents'];
+      this.adminContrCardItems.dir = res['dir'];
+      console.log("adminPage.getContrList:");
+      console.log(this.adminContrCardItems);
     });
   }
   openItem(item: any) {

@@ -2,6 +2,7 @@
 
   <ion-navbar>
     <ion-title>{{ 'SEARCH_TITLE' | translate }}</ion-title>
+    
   </ion-navbar>
 
 </ion-header>
@@ -9,9 +10,9 @@
 
 <ion-content>
  <!-- <ion-searchbar (ionInput)="getItems($event)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>-->
- <ion-card >
+ <ion-card style="max-width:600px">
    <ion-card-header>
-     Создать движение:
+     Проект/задача:
    </ion-card-header>
    <ion-card-content>
   <ion-list>
@@ -32,6 +33,30 @@
     </ion-chip>
 
   </ion-list>
+  <ion-card-header>
+      Источники:
+  </ion-card-header>
+  <ion-list>
+      <!--
+        <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">
+        <h2>{{item.text}}</h2>
+        <ion-note item-end *ngIf="item.descr">{{item.desrc}}</ion-note>
+      </button>
+    -->
+    <div id="treegridbox" style="width:550px;height:250px;background-color:white;"></div>  
+    </ion-list>
+    <ion-item>
+        <select-searchable
+          title="Port"
+          [(ngModel)]="port"
+          [items]="ports"
+          itemValueField="id"
+          itemTextField="name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </select-searchable>
+    </ion-item>
+
 </ion-card-content>
 <button ion-button  >Деньги</button>
 <button ion-button   color="secondary">Материалы</button>

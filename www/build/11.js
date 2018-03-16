@@ -1,14 +1,14 @@
 webpackJsonp([11],{
 
-/***/ 387:
+/***/ 388:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProjectsPageModule", function() { return ProjectsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__projects__ = __webpack_require__(410);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__projects__ = __webpack_require__(411);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(125);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -29,7 +29,7 @@ var ProjectsPageModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_2__projects__["a" /* ProjectsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__projects__["a" /* ProjectsPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["IonicPageModule"].forChild(__WEBPACK_IMPORTED_MODULE_2__projects__["a" /* ProjectsPage */]),
                 __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ],
         })
@@ -41,13 +41,13 @@ var ProjectsPageModule = (function () {
 
 /***/ }),
 
-/***/ 410:
+/***/ 411:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProjectsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_component__ = __webpack_require__(248);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_api_api__ = __webpack_require__(128);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__(127);
@@ -232,12 +232,12 @@ var ProjectsPage = (function () {
             selector: 'page-projects',template:/*ion-inline-start:"/Users/afpopov/smart/src/pages/projects/projects.html"*/'<!--\n  Generated template for the ProjectsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{ \'PROJECTS_TITLE\' | translate }}</ion-title>\n    \n    <ion-buttons end>\n      <button ion-button [disabled]="!isHaveAddPermission" color="primary" icon-only (click)="addProject()">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content no-padding >\n  <ion-list >\n    <ion-row no-padding ><ion-col  *ngFor="let project of projectsList" no-padding >\n    <ion-card style="min-width: 300px"  no-padding >\n      <ion-item-sliding #item{{project.id}}>\n      <ion-item no-padding>\n        <ion-avatar item-start>\n          <!--<img [src]="item.user.avatar">-->\n        </ion-avatar>\n        <h2 (click)=\'openProject(project)\'>{{project.project_name}}</h2>\n        <ion-note>{{project.description}}</ion-note>\n        <button item-end ion-button color="primary" clear (click)=\'project.show=!project.show\'>\n          <ion-icon name="arrow-down"></ion-icon>\n        </button>\n      </ion-item>\n\n      <ion-item-options>\n          <button ion-button color="secondary" (click)="more(project.id)">\n            <ion-icon name="menu"></ion-icon>\n            More\n          </button>\n          <button ion-button color="dark" (click)="mute(project.id)">\n            <ion-icon name="volume-off"></ion-icon>\n            Mute\n          </button>\n          <button ion-button color="danger" (click)="delete(project.id)">\n            <ion-icon name="trash"></ion-icon>\n            Delete\n          </button>\n        </ion-item-options>\n  \n        <ion-item-options side="left" (ionSwipe)="archive(item)">\n          <button ion-button color="primary" expandable (click)="archive(item)">\n            <ion-icon name="archive" class="expand-hide"></ion-icon>\n            <div class="expand-hide">Archive</div>\n            <ion-spinner id="archive-spinner"></ion-spinner>\n          </button>\n        </ion-item-options>\n  \n    </ion-item-sliding>\n\n      <!--<img [src]="item.image">-->\n  \n      <ion-card-content *ngIf=\'project.show\'>\n          <ion-note (click)=\'openProject(project)\'>описание</ion-note>\n\n        </ion-card-content>\n  \n      <ion-row *ngIf=\'project.show\'>\n        <ion-col>\n          <button ion-button color="primary" clear small icon-start >\n              <ion-icon name=\'thumbs-up\'></ion-icon>\n              12 Likes\n            </button>\n        </ion-col>\n        <ion-col>\n          <button ion-button color="primary" clear small icon-start>\n              <ion-icon name=\'text\'></ion-icon>\n              4 Comments\n            </button>\n        </ion-col>\n        <ion-col style="min-width: 150px;display: flex !important;align-items: center;"  center text-center>\n          <ion-note>{{project.manager}}</ion-note>\n        </ion-col>\n      </ion-row>\n      </ion-card>\n    </ion-col></ion-row>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/afpopov/smart/src/pages/projects/projects.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6__ionic_native_screen_orientation__["a" /* ScreenOrientation */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["Platform"],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["AlertController"],
             __WEBPACK_IMPORTED_MODULE_5_ionic_angular_components_toast_toast_controller__["a" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavParams"],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["ModalController"],
             __WEBPACK_IMPORTED_MODULE_2__app_app_component__["a" /* MyApp */],
             __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* Api */]])
     ], ProjectsPage);

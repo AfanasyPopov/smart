@@ -269,7 +269,7 @@
 }
 .gantt_grid_data .gantt_row:hover,
 .gantt_grid_data .gantt_row.odd:hover {
-  background-color: #FFF3A1;
+/* background-color: #FFF3A1; */  /*Afanasy*/
 }
 .gantt_grid_data .gantt_row:hover .gantt_add,
 .gantt_grid_data .gantt_row.odd:hover .gantt_add {

@@ -187,6 +187,7 @@ export class ProjectItemPage {
     }
     gantt.config.auto_scheduling = true;
     gantt.config.auto_scheduling_strict = true;
+    gantt.config.order_branch = true;
     var opts_prior = [
       { key:1, label: "High" },                                            
       { key:2, label: "Normal" },                                         
@@ -215,7 +216,10 @@ export class ProjectItemPage {
   
   gant_config_desktop(){
     this.isSwiperShow=false;
-    this.getSelector(".gantt_cal_light").width = '530px';
+    gantt.config.grid_resize=true;
+    gantt.config.keep_grid_width = true;
+
+    //this.getSelector(".gantt_cal_light").width = '530px';
     gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
     gantt.templates.task_text=function(start,end,task){
       return task.id+":<b>"+task.text+"</b>";
@@ -229,6 +233,8 @@ export class ProjectItemPage {
     gantt.config.touch = "force";
     this.isSwiperShow=true;
     gantt.config.grid_resize=true;
+    gantt.config.keep_grid_width = true;
+    gantt.config.grid_width = screen.width-2;
     gantt.config.xml_date = "%Y-%m-%d %H:%i:%s";
     gantt.templates.task_text=function(start,end,task){
       return task.id+":<b>"+task.text+"</b>";
@@ -253,6 +259,7 @@ export class ProjectItemPage {
         {name:"duration", width:'*', align: "center",max_width:'50' },
         {name:"add", width:'30' }
         ];
+        gantt.config.drag_move = true;
       } else {
         gantt.config.columns = [
           {name:"text", tree:true, width:'280', resize:true },
@@ -261,6 +268,7 @@ export class ProjectItemPage {
             return '<div class="gantt_tree_icon gantt_unchecked"></div>'
             }}
           ];
+        gantt.config.drag_move = false;
       }
   }
   setLinksColors(){
@@ -308,6 +316,12 @@ export class ProjectItemPage {
         });
       });
     */
+    if(!gantt.checkEvent("onMouseMove")){
+      gantt.attachEvent("onMouseMove", function (){
+        //any custom logic here
+       // alert ('onMouseMove')
+      });
+    }
     if(!gantt.checkEvent("onLoadEnd")){
       gantt.attachEvent("onLoadEnd", function(){
         var count = gantt.getTaskCount();
