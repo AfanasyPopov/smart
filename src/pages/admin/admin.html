@@ -8,43 +8,34 @@
 
   <ion-navbar>
     <ion-title>{{adminTitle}}</ion-title>
-    <ion-toolbar>                   
-       <ion-searchbar small [(ngModel)]="query" placeholder="поиск"></ion-searchbar>
-       <button ion-button color="primary" clear  icon-start small (click)="addUser()">
-          <ion-icon name='person-add'></ion-icon>
-          Пользователь
-      </button>
-      <button ion-button color="primary" clear  icon-start small (click)="addUser()">
-          <ion-icon name='person-add'></ion-icon>
-          Контрагент
-      </button>
-</ion-toolbar>
+    <ion-grid no-padding>
+        <ion-row>
+          <ion-col col-12 center>
+                <ion-note small>
+                    <ion-searchbar small [(ngModel)]="query" placeholder="поиск"></ion-searchbar>
+                  </ion-note>
+          </ion-col>   
+          <ion-col>
+              <button ion-button color="primary" clear  icon-start small (click)="addUser()">
+                  <ion-icon name='person-add'></ion-icon>
+                  Добавить Пользователя
+              </button>
+              <button ion-button color="primary" clear  icon-start small (click)="addContr()">
+                  <ion-icon name='ribbon'></ion-icon>
+                  Добавить Контрагента
+              </button>
+              </ion-col>
+          <ion-col>
+          </ion-col> 
+         </ion-row>
+      </ion-grid>
+
   </ion-navbar>
 
 </ion-header>
 
-<!--<ion-header>
-    <ion-navbar [attr.no-border-bottom]="showToolbar ? '' : null">
-        <ion-title>Example</ion-title>
-    </ion-navbar>
 
-    <ion-toolbar *ngIf="showToolbar" no-border-top>
-        <ion-segment [(ngModel)]="segment" primary>
-            <ion-segment-button value="1">Segment 1</ion-segment-button>
-            <ion-segment-button value="2">Segment 2</ion-segment-button>
-        </ion-segment>
-    </ion-toolbar>
-</ion-header>
--->
 <ion-content >
-<!-- <ion-card>
-        <ion-card-header >
-              <ion-row>
-                  <ion-col><h2>{{adminUserCardItems.name}}</h2></ion-col> 
-              </ion-row> 
-        </ion-card-header>  
-      -->
-      <ion-card>
         <ion-list >
             <ion-item-group>
                 <ion-item-divider color="light">
@@ -71,9 +62,7 @@
           </ion-item-group>
         </ion-list>  
  <!--  </ion-card>-->
-</ion-card>
-<ion-card>
-<ion-list >
+ <ion-list >
     <ion-item-group>
         <ion-item-divider color="light">
           <ion-label item-start>Контрагенты:</ion-label>
@@ -98,5 +87,4 @@
       </ion-item-sliding>
   </ion-item-group>
 </ion-list> 
-</ion-card>
 </ion-content>
