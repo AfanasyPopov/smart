@@ -7,10 +7,11 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{adminTitle}}</ion-title>
     <ion-grid no-padding>
         <ion-row>
           <ion-col col-12 center>
+              <ion-title>{{adminTitle}}</ion-title>
+
                 <ion-note small>
                     <ion-searchbar small [(ngModel)]="query" placeholder="поиск"></ion-searchbar>
                   </ion-note>
